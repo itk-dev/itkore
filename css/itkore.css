@@ -1,11 +1,5 @@
 img,video,object,embed{max-width:100%;}
 ul.menu{border:none;list-style:none;}
-ul .expanded{list-style-type:circle;}
-ul .collapsed{list-style-type:disc;}
-ul .leaf{list-style-type:square;}
-ul.inline,ul.links.inline{display:inline;padding-left:0;}
-ul.inline li{display:inline;list-style-type:none;padding:0;}
-ul.inline>li>a{display:inline-block;padding:2px 4px;}
 .horizontal .leaf,.horizontal .expanded,.horizontal .collapsed{display:inline-block;}
 .expanded,.collapsed,.leaf{padding:0;margin:0;}
 .active{color:blue;}
