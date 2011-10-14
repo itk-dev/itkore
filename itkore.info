@@ -54,7 +54,7 @@ zones[postscript] = Postscript
 grids[itk_flexible][name] = Flexible Grid
 grids[itk_flexible][layouts][normal] = Normal
 grids[itk_flexible][layouts][narrow] = Narrow
-grids[itk_flexible][layouts][smalll] = Mobile
+grids[itk_flexible][layouts][small] = Mobile
 grids[itk_flexible][columns][12] = 12 Columns
 
 
