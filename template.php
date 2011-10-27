@@ -18,7 +18,9 @@ function itkore_preprocess_node(&$vars, $hook) {
 
 /**
  * Implements hook_preprocess_block().
+ *
  * Create helper function to target blocks from specific modules.
+ * Add common styling class to block-menu and block-menu-block.
  */
 function itkore_preprocess_block(&$vars, $hook) {
   $function = __FUNCTION__ . '_' . $vars['elements']['#block']->module;
