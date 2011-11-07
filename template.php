@@ -100,3 +100,23 @@ function itkore_menu_link(array $variables) {
   }
 }
 
+/**
+ * Implements hook_breadcrumb().
+ *
+ * Add the current page title to the end of the breadcrumb.
+ */
+function itkore_breadcrumb($variables) {
+  $output = '';
+  $breadcrumb = $variables['breadcrumb'];
+
+  // Build breadcrumb.
+  if (!empty($breadcrumb)) {
+    // Add current page title to the end of the breadcrumb.
+    $breadcrumb[] = '<span>' . drupal_get_title() . '</span>';
+  }
+
+  // Create the output
+  $output .= implode(' › ', $breadcrumb);
+
+  return $output;
+}
