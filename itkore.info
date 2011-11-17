@@ -65,9 +65,13 @@ grids[itk_flexible][columns][12] = 12 Columns
 
 ; ----- / OPTIONAL CSS / -----
 
-css[itkore.css][name] = 'Your custom global styles'
-css[itkore.css][description] = 'This file holds all the globally active custom CSS of your theme.'
+css[itkore.css][name] = 'ITKore Styling'
+css[itkore.css][description] = 'Screen and global styles for ITKore.'
 css[itkore.css][options][weight] = '10'
+
+css[itkore.print.css][name] = 'ITKore Print'
+css[itkore.print.css][description] = 'Generic print styles.'
+css[itkore.print.css][options][weight] = '11'
 
 
 ; ----- / SCRIPTS / -----
