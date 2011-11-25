@@ -115,8 +115,10 @@ function itkore_breadcrumb($variables) {
     $breadcrumb[] = '<span>' . drupal_get_title() . '</span>';
   }
 
-  // Create the output
-  $output .= implode(' › ', $breadcrumb);
+  // Provide a navigational heading to give context for breadcrumb links to
+  // screen-reader users. Make the heading invisible with .element-invisible.
+  $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+  $output .= '<nav class="breadcrumb">' . implode(' » ', $breadcrumb) . '</nav>';
 
   return $output;
 }

@@ -1,0 +1,90 @@
+// Print only styles for 
+@media print {
+
+  // Hide drupal regions
+  .region-page-top,
+  .region-page-bottom,
+  // Hide sections
+  .section-footer,
+  // Hide Zones
+  .zone-user,
+  .zone-user-wrapper,
+  .zone-menu,
+  .zone-preface,
+  .zone-postscript,
+  // Hide specific regions in remaining zones
+  .region-sidebar-first,
+  .region-sidebar-second,
+  .region-search,
+  // Hide tabs and breadcrumbs
+  .tabs,
+  .breadcrumb {
+    display: none !important;
+  }
+  
+  // Set widths to auto
+  .grid-1, .grid-2, .grid-3, .grid-4, 
+  .grid-5, .grid-6, .grid-7, .grid-8, 
+  .grid-9, .grid-10, .grid-11, .grid-12 {
+    width: auto !important;
+  }
+  
+  .page {
+    margin: 0 10mm !important;
+  }
+
+  // Remove unneeded paddings
+  .block,
+  .content-wrapper,
+  .zone,
+  .section,
+  .region {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  // Print typography
+  @font-size-print : 12pt;
+  @color-print : #000 !important;
+
+  body {
+    color: @color-print;
+    line-height: 1.4em !important;
+    font-size: @font-size-print !important;
+  }
+  p {
+    margin-bottom: 1em !important;
+  }
+  .title {
+    font-size: @font-size-print * 2 !important;
+    margin-bottom: 1em !important;
+    padding: 0 !important;
+  }
+  
+  // Block titles
+  .block-title {
+    font-size: @font-size-print * 2 !important;
+    margin-bottom: 1em !important;
+  }
+  
+  // Content headings H2
+  .text-content h2,
+  .zone-footer h2,
+  .field-label {
+    font-size: @font-size-print !important;
+  }
+  // Content headings H3
+  .text-content h3 {
+    font-size: @font-size-print !important;
+  }
+
+  // Include urls in print
+  .text-content a:link,
+  .text-content a:visited {
+    border-bottom: none !important;
+  }
+  .text-content a:after {
+    content: " (" attr(href) ") ";
+    color: #444 !important;
+  }
+}
