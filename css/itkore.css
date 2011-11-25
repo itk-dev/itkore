@@ -5,6 +5,13 @@ video,
 object,
 embed {
   max-width: 100%;
+  height: auto;
+}
+.ie8 img,
+.ie8 video,
+.ie8 object,
+.ie8 embed {
+  width: 100%;
 }
 /* !----- / Forms ----- */
 .content-form input[type="submit"] {
