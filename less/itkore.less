@@ -72,6 +72,19 @@ ul {
   .collapsed {
     display: inline-block;
   }
+}
+
+// IE7 and IE8 compatibility mode do not understand inline-block.
+// Horizontal menus
+.ie7,
+.ie8 {
+  .horizontal {
+    .leaf,
+    .expanded,
+    .collapsed {
+      display: inline;
+    }
+  }
 } 
  
 .expanded,

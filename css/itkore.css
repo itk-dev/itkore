@@ -29,6 +29,14 @@ ul.menu {
 .horizontal .leaf, .horizontal .expanded, .horizontal .collapsed {
   display: inline-block;
 }
+.ie7 .horizontal .leaf,
+.ie8 .horizontal .leaf,
+.ie7 .horizontal .expanded,
+.ie8 .horizontal .expanded,
+.ie7 .horizontal .collapsed,
+.ie8 .horizontal .collapsed {
+  display: inline;
+}
 .expanded, .collapsed, .leaf {
   padding: 0;
   margin: 0;
