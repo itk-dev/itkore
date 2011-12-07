@@ -19,6 +19,27 @@ img, video {
   }
 }
 
+/* !----- / Forms ----- */
+
+.content-form input[type="submit"] {
+  margin: .5em 0 0;
+}
+
+// Form with labels aligned TOP
+
+.form-top-aligned label {
+  display: block;
+  margin: .75em 0 0 .05em;
+}
+
+// TODO: Form with labels aligned RIGHT
+.form-top-aligned label {
+}
+
+// TODO: Form with labels aligned LEFT
+.form-top-aligned label {
+}
+
 /* ! Menus */
 // Replace styling from unset system.menus.css.
 ul.menu {
@@ -50,6 +71,19 @@ ul {
   .expanded,
   .collapsed {
     display: inline-block;
+  }
+}
+
+// IE7 and IE8 compatibility mode do not understand inline-block.
+// Horizontal menus
+.ie7,
+.ie8 {
+  .horizontal {
+    .leaf,
+    .expanded,
+    .collapsed {
+      display: inline;
+    }
   }
 } 
  

@@ -10,6 +10,14 @@ img, video {
 .ie8 embed {
   width: 100%;
 }
+/* !----- / Forms ----- */
+.content-form input[type="submit"] {
+  margin: .5em 0 0;
+}
+.form-top-aligned label {
+  display: block;
+  margin: .75em 0 0 .05em;
+}
 /* ! Menus */
 ul.menu {
   border: none;
@@ -17,6 +25,14 @@ ul.menu {
 }
 .horizontal .leaf, .horizontal .expanded, .horizontal .collapsed {
   display: inline-block;
+}
+.ie7 .horizontal .leaf,
+.ie8 .horizontal .leaf,
+.ie7 .horizontal .expanded,
+.ie8 .horizontal .expanded,
+.ie7 .horizontal .collapsed,
+.ie8 .horizontal .collapsed {
+  display: inline;
 }
 .expanded, .collapsed, .leaf {
   padding: 0;
