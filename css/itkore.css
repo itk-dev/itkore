@@ -1,9 +1,6 @@
 /* !----- / external libraries ----- */
 /* !----- / Diagnostic styles ----- *//* !----- / Developer ----- */
-img,
-video,
-object,
-embed {
+img, video {
   max-width: 100%;
   height: auto;
 }
