@@ -1,0 +1,6 @@
+name: Cookie message
+description: Show a message about cookies being used on the site
+package: Custom
+type: module
+version: 1.0
+core: 8.x

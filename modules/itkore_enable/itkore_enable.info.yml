@@ -1,0 +1,38 @@
+name: Itkore enable
+description: 'Enables modules used by itkore'
+type: module
+core: 8.x
+package: Itkore boilerplate
+dependencies:
+  - block
+  - ckeditor
+  - config
+  - contextual
+  - devel
+  - editor
+  - entity_reference
+  - field
+  - field_ui
+  - file
+  - filter
+  - globalredirect
+  - image
+  - imagick
+  - menu_link_content
+  - menu_ui
+  - node
+  - path
+  - system
+  - text
+  - toolbar
+  - views
+  - views_ui
+  - update
+  - user
+  - quickedit
+  - itk_cookie_message
+  - datetime
+  - link
+  - field_ui
+  - locale
+  - config_translation
