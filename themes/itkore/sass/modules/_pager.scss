@@ -1,0 +1,52 @@
+/**
+ *
+ * Pager
+ *
+ *
+ */
+
+
+/* Styles
+================================================================================================================== */
+
+.pager {
+	margin-top: 2em;
+	border-top: 1px solid $gray-lightest;
+	padding-top: 2em;
+
+	&__items {
+		margin: 0;
+		padding: 0;
+	}
+
+  &__item {
+		display: inline-block;
+		padding: 0;
+		margin: .5em;
+
+		background: $gray-lightest;
+		color: $gray;
+
+    a {
+      @include strip-link-styles($gray);
+			@include box-sizing(border-box);
+			display: block;
+			width: 100%;
+			height: 100%;
+			// margin: .5em;
+			padding: .5em 1em;
+    }
+
+		&.is-active {
+			background: $blue-dark;
+
+			a {
+				@include strip-link-styles($gray-lightest);
+			}
+		}
+
+		&--ellipsis {
+			background: none;
+		}
+  }
+}

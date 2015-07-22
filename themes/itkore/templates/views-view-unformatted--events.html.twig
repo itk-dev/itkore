@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="itk-boxlist--group">
+  {% if title %}
+    <div class="itk-boxlist--group-header">
+      <h3 class="itk-boxlist--group-header-text">{{ title }}</h3>
+      <div class="itk-boxlist--group-header-line-through"></div>
+    </div>
+  {% endif %}
+  <div class="itk-boxlist">
+    {% for row in rows %}
+      {%
+      set row_classes = [
+      default_row_class ? 'views-row',
+      ]
+      %}
+      <article class="itk-boxlist--item">
+        {{ row.content }}
+      </article>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,1 @@
+!function($){function e(){$(".js-click-open").click(function(){$(this).parent().parent().toggleClass("is-open")})}$(document).ready(function(){e(),$(".menus--site-nav-items-first .menus--site-nav-item").hasClass("menu-item--active-trail")&&$(".menus--site-nav-items-first .menus--site-nav-item.menu-item--active-trail").toggleClass("is-open")})}(jQuery);

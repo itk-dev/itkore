@@ -1,0 +1,63 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * For example, for a field named 'body' displayed on the 'article' content
+ * type, any of the following templates will override this default
+ * implementation. The first of these templates that exists is used:
+ * - field--body--article.html.twig
+ * - field--article.html.twig
+ * - field--body.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - content_attributes: HTML attributes for the content.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ *
+ * @see template_preprocess_field()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# We have row-wrappers so we need to know if we are en column 1 or 2 in order to close all open tags #}
+{% set alternator = 0 %}
+
+<div class="subpage">
+
+  {% for item in items %}
+
+    {% if alternator == 0 %}
+      <div class="itk-boxlist is-side-by-side">
+    {% endif %}
+
+    {{ item.content }}
+
+    {% if alternator == 1 %}
+      </div>
+    {% endif %}
+
+    {% if alternator == 0 %}
+      {% set alternator = 1 %}
+    {% else %}
+      {% set alternator = 0 %}
+    {% endif %}
+
+  {% endfor %}
+
+{% if alternator == 1 %}
+  </div>
+{% endif %}
+
+</div>

@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the node title field.
+ *
+ * This is an override of field.html.twig for the node title field. See that
+ * template for documentation about its details and overrides.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing span element.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see field.html.twig
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# Default display of this field. #}
+{% if element['#view_mode'] == 'full' %}
+
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+
+  {# The teaser display @todo use the same name for all teaser displays, Currently - News: teaser, Booking: frontpage_teaser #}
+{% elseif element['#view_mode'] == 'teaser' or element['#view_mode'] == 'frontpage_teaser' %}
+  {# If this field is displayed in a teaser it uses subpage styling. #}
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+
+  {# When title displayed in views #}
+{% else %}
+  {# If this field is displayed in a view through custom content it does not have a view mode. #}
+  {% for item in items %}
+    <h2 class="itk-boxlist--header">{{ item.content }}</h2>
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,826 @@
+/**
+ *
+ * Booking
+ *
+ * Display of booking pages
+ *
+ */
+
+
+
+/* Placholders related to this document only.
+================================================================================================================== */
+
+// Default display of a button used on booking pages.
+%booking--button {
+  @extend %button;
+
+  text-shadow: 0;
+  font-size: 1em;
+  padding: .3em 2em;
+  margin: 0 auto;
+  display: block;
+  max-width: 8em;
+  margin-bottom: 3em;
+
+  @include strip-link-styles($white);
+}
+
+
+// Default display of an arrow with possible state clases for turning it.
+%booking--arrow {
+  cursor: pointer;
+  display: inline-block;
+
+  &.is-left {
+    float: left;
+
+    @include transform(rotate(90deg));
+  }
+
+  &.is-right {
+    float: right;
+
+    @include transform(rotate(270deg));
+  }
+
+  &.is-up {
+    @include transform(rotate(180deg));
+  }
+
+  svg {
+    height: 1.4em;
+    width: 1.3em;
+  }
+}
+
+
+// Default display of a popup.
+%booking--popup {
+  position: relative;
+  z-index: 3;
+
+  margin-top: -4.5em;
+  min-height: 10em;
+  width: 100%;
+
+  background: $white;
+  border-bottom: 1px solid $gray;
+  color: $black;
+
+  @include box-sizing(border-box);
+
+  @include breakpoint($breakpoint-desk) {
+    position: absolute;
+    top: 3em;
+
+    border-top: 1px solid $gray;
+    border-right: 1px solid $gray;
+    border-left: 1px solid $gray;
+
+    margin-top: 0;
+  }
+}
+
+
+/* Styles
+================================================================================================================== */
+
+.booking {
+
+  /* Icons. */
+  &--arrow {
+    @extend %booking--arrow;
+  }
+
+  &--arrow-close {
+    @extend %booking--arrow;
+
+    height: 1.4em;
+    margin-right: .3em;
+    width: 1.4em;
+  }
+
+  // Change dimensions of arrow icon.
+  &--arrow-large {
+    @extend %booking--arrow;
+
+    margin-top: -.4em; // Center positioning of arrow.
+
+    svg {
+      height: 1.8em;
+      width: 1.6em;
+    }
+  }
+
+
+  &--popup {
+    @extend %booking--popup;
+
+    position: relative;
+    border-top: 1px solid $gray-lightest;
+    border-bottom: 1px solid $gray-lightest;
+    border-color: $gray-light;
+    top: 0;
+  }
+
+  /* Popups for selecting date, time and resource. */
+  &--popup-calendar {
+    @extend %booking--popup;
+
+    @include breakpoint($breakpoint-desk){
+      border-bottom: 0; // Use the month wrapper for providing the border on wide screens rather than the default.
+    }
+  }
+
+  &--popup-time {
+    @extend %booking--popup;
+
+    @include breakpoint($breakpoint-desk){
+      width: 34%; // The time picker widget uses a 34% width.
+    }
+  }
+
+  &--popup-resource {
+    @extend %booking--popup;
+
+    @include breakpoint($breakpoint-desk){
+      right: 0; // Position resource at far right.
+      width: calc(33% + 1px); // The resource popup wants an extra 1px width to align with the borders of the time select widget.
+    }
+  }
+
+  &--popup-inner {
+    position: relative;
+    text-align: left;
+
+    @include breakpoint($breakpoint-desk) {
+      padding-left: 0;
+      padding-top: 0;
+    }
+  }
+
+  // The popup header, text and close link.
+  &--popup-header {
+    padding: .5em 1em;
+  }
+
+  // Popup content wrappers, differs for popup calendar content.
+  &--popup-content {
+    padding: 1em;
+  }
+
+  // The calendar widget. Further styling of popup calendar in _ui-datepicker.scss .
+  &--popup-calendar-wrapper {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+
+  // The resource picker widget.
+  &--popup-radio-input {
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  &--popup-radio-label {
+    color: $blue-light;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+
+  // The timepicker widget.
+  &--popup-timepicker-wrapper {
+    line-height: 10em;
+    text-align: center;
+  }
+
+  &--popup-timepicker {
+    display: inline-block;
+    line-height: 2em;
+    vertical-align: middle;
+    width: 6em;
+
+    &-text {
+      color: $gray;
+      display: inline-block;
+      vertical-align: middle;
+      width: 10%;
+    }
+
+    &-inner {
+      text-align: center;
+    }
+
+    &-display {
+      background: $white;
+      color: $black;
+      margin: .5em 0;
+
+      @include border-radius(.5em);
+    }
+
+    &-dec,
+    &-inc {
+      cursor: pointer;
+      width: 100%;
+    }
+  }
+
+  &--popup-close {
+    @extend %booking--button;
+
+    background: $blue-light;
+    color: $white;
+  }
+
+
+
+  /* Calendar page (Create booking page 1.)
+  ===============================================  */
+  &--calendar-page {
+    margin: 0 -1em; // Counter default 1em margin on small devices.
+    position: relative;
+
+    @include breakpoint($breakpoint-lap){
+      margin-left: -1px;  // We want a px left to divide by 3.
+      margin-right: 0;
+    }
+  }
+
+  // Booking selection
+  &--selection {
+    width: 100%;
+
+    // Date and time selection widget.
+    // The resource widget is hidden on small devices. (A resource picker for mobile is added)
+    // Borders are attached to seperate elements to ensure proper border aligning to popup.
+    &-date-time-wrapper {
+      margin-bottom: 2em;
+
+      @include flex-wrap(wrap);
+      @include flexbox();
+
+      @include breakpoint($breakpoint-desk) {
+        @include flex-wrap();
+      }
+    }
+
+
+    &-date-picker {
+      box-sizing: border-box;
+      left: 0;
+      margin-bottom: 1em;
+      width: 100%;
+
+      @include flex-grow(1);
+
+      @include breakpoint($breakpoint-lap) {
+        border-bottom: 1px solid $gray;
+        border-left: 1px solid $gray;
+        border-right: 1px solid $gray;
+      }
+
+      @include breakpoint($breakpoint-desk) {
+        border: 0;
+        margin-bottom: 0;
+        width: 33%;
+      }
+    }
+
+
+    &-time-picker {
+      box-sizing: border-box;
+      margin-bottom: 1em;
+      width: 100%;
+
+      @include flex-grow(1);
+
+      @include breakpoint($breakpoint-lap) {
+        border-bottom: 1px solid $gray;
+        border-left: 1px solid $gray;
+        border-right: 1px solid $gray;
+      }
+
+      @include breakpoint($breakpoint-desk) {
+        border: 0;
+        margin-bottom: 0;
+        width: 34%;
+      }
+    }
+
+
+    &-resource-picker {
+      box-sizing: border-box;
+      margin-bottom: 1em;
+      margin-left: 0;
+      width: 100%;
+
+      @include flex-grow(1);
+      @include box-sizing(border-box);
+
+      @include breakpoint($breakpoint-lap) {
+        border-bottom: 1px solid $gray;
+        border-left: 1px solid $gray;
+        border-right: 1px solid $gray;
+      }
+
+      @include breakpoint($breakpoint-desk) {
+        border: 0;
+        margin-top: 0;  // Margin top since this is the diverting node.
+        margin-bottom: 0;
+        width: 33%;
+      }
+    }
+
+
+    // Header of date time select, black border to align with display border below.
+    &-header-resource,
+    &-header-date,
+    &-header-time {
+      background: $gray-lightest;
+      border-bottom: 1px solid $gray;
+      border-top: 1px solid $gray;
+      box-sizing: border-box;
+      color: $gray;
+      cursor: pointer;
+      font-size: 1.2em;
+      padding: .5em 1em;
+      text-align: left;
+
+      @include breakpoint($breakpoint-desk) {
+        background: $white;
+        border-top: 1px solid $white;
+        text-align: center;
+
+        &.is-active {
+          border-top: 1px solid $gray;
+
+          background: $gray-lightest;
+          color: $gray-darkest;
+        }
+
+        &.is-inactive {
+          color: $gray-lighter;
+        }
+      }
+    }
+
+    &-header-date.is-active {
+      @include breakpoint($breakpoint-desk) {
+        border-left: 1px solid $gray;
+      }
+    }
+
+    &-header-resource.is-active {
+      @include breakpoint($breakpoint-desk) {
+        border-right: 1px solid $gray;
+      }
+    }
+
+    // Tee display of date, time and resource.
+    &-display-resource,
+    &-display-date,
+    &-display-time {
+      text-align: center;
+      padding: 1.5em 1em;
+
+      @include breakpoint($breakpoint-desk) {
+        border-bottom: 1px solid $gray;
+      }
+    }
+
+    &-header-time,
+    &-display-time {
+      @include breakpoint($breakpoint-desk) {
+        border-left: 1px solid $gray;
+        border-right: 1px solid $gray;
+      }
+    }
+
+
+    &-text {
+      color: $blue-dark;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  &--message-wrapper {
+    padding-bottom: 1em;
+    margin: 0 1em;
+
+    @include breakpoint($breakpoint-desk) {
+      margin: 0;
+    }
+  }
+
+  &--description {
+    padding-bottom: 2em;
+    margin: 0 1em;
+
+    @include breakpoint($breakpoint-desk) {
+      margin: 0;
+    }
+  }
+
+
+
+  // Display of calendar. (NOT the popup!)
+  &--display {
+    background: $gray-lightest;
+    border-top: 1px solid $gray-light;
+    border-bottom: 1px solid $gray-light;
+    box-sizing: border-box;
+    font-family: "Gibson Light";
+    width: 100%;
+
+    @include breakpoint($breakpoint-desk) {
+      border-top: 1px solid $gray-light;
+    }
+
+    &-content-wrapper {
+      display: block;
+    }
+
+    // Calendar split in two columns (Time/Content).
+    &-time-column {
+      box-sizing: border-box;
+      display: inline-block;
+      margin-right: 1px;  // Make room for a border right.
+      width: 20%;
+
+      @include breakpoint($breakpoint-lap) {
+        width: 15%;
+      }
+
+      @include breakpoint($breakpoint-desk) {
+        width: 8%;
+      } 
+    }
+
+    &-content-column {
+      display: inline-block;
+      margin-left: $inline-margin-correction;
+      margin-right: -1px;  // Make room for a margin right time column.
+      vertical-align: top;
+      width: 80%;
+
+      @include breakpoint($breakpoint-lap) {
+        width: 85%;
+      }
+
+      @include breakpoint($breakpoint-desk) {
+        width: 92%;
+      }
+
+    }
+
+    // Each row.
+    &-row-wrapper {
+      position: relative;
+
+      &:last-child .booking--display-row-inner {
+        border-bottom: 0;
+      }
+    }
+
+    &-time-row,
+    &-row {
+      box-sizing: border-box;
+      height: 2.25em;
+      position: relative;
+
+      &.is-disabled {
+        color: $gray;
+      }
+
+      &.is-selected {
+        border-color: $yellow;
+      }
+    }
+
+    // A tranparent overlay to disable angular clicks on rows that are booked or not active.
+    &-row-disable {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
+
+    &-time-row {
+      cursor: auto;
+      height: 4.5em;
+
+      &:last-child {
+        .booking--display-row-inner {
+          border-bottom: 0;
+        }
+      }
+    }
+
+
+    // Set the different states of the view.
+    &-row-inner {
+      border-bottom: 1px solid $gray-light;
+      box-sizing: border-box;
+
+      cursor: pointer;
+      height: 100%;
+      font-size: .9em;
+
+      &.is-booked {
+        border-bottom: 1px solid $red;
+
+        background: $red;
+      }
+    }
+
+    &-row-your-selection {
+      position: absolute;
+      top: 0;
+
+      border-bottom: 1px solid $yellow;
+      height: 100%;
+      padding-top: .5em;
+      width: 50%;
+
+      background: $yellow;
+      text-align: center;
+
+      @include box-sizing(border-box);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    // Center the text.
+    &-time,
+    &-description {
+      position: relative;
+      text-align: center;
+    }
+
+    &-text {
+      padding: 0 1em;
+    }
+  }
+
+
+  /* Create form (Create booking page 2.)
+  ===============================================  */
+
+  &--header {
+    @extend %header-line-through-wrapper;
+  }
+
+  &--header-information {
+    @extend %header-line-through-wrapper;
+
+    border-bottom: 1px solid $gray-lighter;
+    margin-left: -1em;
+    margin-right: -1em;
+
+    @include breakpoint($breakpoint-lap){
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &--header-text{
+    @extend %header-line-through-text;
+  }
+
+  &--header-text-information {
+    @extend %header-line-through-text;
+
+    @include breakpoint($breakpoint-lap){
+      padding: 0 1em;
+    }
+  }
+
+  &--header-line-through {
+    @extend %header-line-through;
+  }
+
+  &--header-line-through-information {
+    @extend %header-line-through;
+    margin-left: 1em;
+    margin-right: 1em;
+
+    @include breakpoint($breakpoint-lap){
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &--icon {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  &--content {
+    display: inline-block;
+  }
+
+  &--add-prefix {
+    padding-bottom: 1em;
+  }
+
+  &--information {
+    background: $gray-lightest;
+    margin-bottom: 1em;
+    margin-left: -1em;
+    margin-right: -1em;
+
+    @include breakpoint($breakpoint-lap){
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    @include breakpoint($layout-max-width) {
+      border-right: 1px solid $gray-lighter;
+      border-left: 1px solid $gray-lighter;
+    }
+  }
+
+  &--information-item {
+    border-top: 1px solid $white;
+    border-bottom: 1px solid $gray-lighter;
+    padding: .5em 1em;
+    overflow: hidden;
+  }
+
+  &--information-label {
+    font-family: "Gibson SemiBold", Helvetica, Arial, sans-serif;
+    float: left;
+    width: 7em;
+  }
+
+  &--information-content {
+    float: right;
+
+    @include breakpoint(40em){
+      float: left;
+    }
+  }
+
+  &--information-message-content {
+    @extend .booking--information-content;
+
+    clear: left;
+  }
+
+  // Time for the drupal form!! ----- Beware!! Here be nesting!!! ------
+  &--calendar-button {
+    @extend %booking--button;
+
+    background: $red;
+  }
+
+  // Some fields are readonly.
+  &--readonly[readonly] {
+    background: $gray-lightest;
+  }
+
+  &--add-information {
+    legend {
+      margin-bottom: .5em;
+
+      color: $gray-darker;
+      font-family: $font-bold-family;
+
+      span {
+        font-weight: normal;
+      }
+    }
+
+    // Nesting once for required text. We change the default required "*" to actual text and hide the background.
+    .form-required:after {
+      content: "(påkrævet)"; // Language. Meh...
+      color: $red;
+      background: none;
+      vertical-align: top;
+    }
+
+    // Nesting twice for the required text on name! The name field is different.
+    .form-item-booking-name-0-value .form-required:after {
+      color: inherit; // Override required color.
+      content: "(automatisk)"; // Language. Meh...
+    }
+
+    // Nesting once for default radios wrapper override.
+    .form-radios {
+      border: 1px solid $gray-lighter;
+      padding: .5em 1em;
+
+      @include border-radius(.8em);
+    }
+
+    // Nesting once for default radios override.
+    .form-type-radio {
+      padding: .5em 0;
+
+      // Nesting once for default label override.
+      label {
+        color: $blue-light;
+      }
+    }
+  }
+
+  &--description-link {
+    text-decoration: underline;
+    color: $link-color;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // Relative positioning to contain absolute positioning within.
+  &--field-wrapper {
+    position: relative;
+
+    margin-bottom: 1.5em;
+
+    label {
+      font-family: $font-bold-family;
+    }
+
+    .description {
+      margin-top: .25em;
+      margin-bottom: .25em;
+      margin-left: .25em;
+
+      color: $gray;
+    }
+  }
+
+
+  &--id-display {
+    font-family: "Gibson SemiBold", Helvetica, Arial, sans-serif;
+  }
+
+
+  // Submit button for calendar page (Javascript enables button when a date/ time and resource is selected.)
+  &--submit-wrapper {
+    background: rgba(0,0,0,.8);
+    color: $white;
+    bottom: -7em;
+    left: 0;
+    height: 7em;
+    position: fixed;
+    text-align: center;
+    z-index: 2;
+    width: 100%;
+
+    &.is-active {
+      @include animation(open-submit 3s ease 1 forwards);
+    }
+  }
+
+  &--add-submit-date {
+    @extend %booking--button;
+
+    background: $blue-light;
+
+    @include strip-link-styles($white);
+  }
+
+
+  // Submit button. (Form submit for page 2.)
+  &--add-submit {
+    margin-top: 2.5em; // Going against margin rule because of lack of markup flexibility.
+
+    .button {
+      @extend %booking--button;
+
+      background: $blue-light;
+      color: $white;
+    }
+  }
+}
+
+
+// Drupal specifik markup styling
+.booking--wrapper {
+  .form-item,
+  .fieldset-wrapper {
+    .description {
+      margin-top: .25em;
+      margin-bottom: .25em;
+      margin-left: .25em;
+
+      color: $gray;
+    }
+  }
+
+  .form-type-textfield{
+    label {
+      font-family: $font-bold-family;
+    }
+  }
+}

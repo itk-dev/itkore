@@ -1,0 +1,143 @@
+/**
+ *
+ * Page
+ *
+ * The wrapping elements holding layout html.
+ *
+ */
+
+
+/* Styles
+================================================================================================================== */
+
+// Page layout
+.page {
+  position: relative;
+  padding: 1em 1em 0 1em;
+
+  // Center content.
+  @extend %auto-margins;
+
+  // No padding on frontpage.
+  &.is-front {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // Moving to lab width we make room for the menu.
+  @include breakpoint($breakpoint-lap) {
+    padding-left: $layout-left-spacing - 1em; // Extra padding and small menu.
+    padding-right: 1em;
+  }
+
+  // On desk display the menu expands a bit.
+  @include breakpoint($breakpoint-desk) {
+    padding-right: 0;
+    padding-left: $layout-left-spacing; // Default menu width.
+
+    // Override the state class specification above.
+    &.is-front {
+      padding-top: 2em;
+    }
+  }
+
+  // The header container holding the page title.
+  &--headercontainer {
+    @extend %auto-margins;
+
+    position: relative;
+    z-index: 1;
+
+    @include breakpoint($breakpoint-desk) {
+      max-width: $layout-max-width-desk;
+    }
+
+    @include breakpoint($breakpoint-bigscreen) {
+      max-width: $layout-max-width;
+    }
+
+
+    // Make spacing to the content on nodes and create a height for the image background.
+    @include breakpoint($breakpoint-desk) {
+      min-height: $layout-header-image-height;
+      margin-bottom: 1em;
+    }
+
+    // If it's not a node we don't want image spacing.
+    &.is-front {
+      min-height: 0
+    }
+  }
+
+  // Node content wrapper. Ensures that headercontainer and node content aligns and centers.
+  &--content {
+    @extend %auto-margins;
+
+    position: relative;
+
+    margin-bottom: 3em;
+
+    @include breakpoint($breakpoint-desk) {
+      max-width: $layout-max-width-desk;
+    }
+
+    @include breakpoint($breakpoint-bigscreen) {
+      max-width: $layout-max-width;
+    }
+  }
+
+  // The page header. Default is black, White on nodes/images.
+  &--heading {
+    color: $black;
+    font-size: 2.3em;
+
+    /* Breakpoints */
+
+    @include breakpoint($breakpoint-desk) {
+      font-size: 4.3em;
+
+      bottom: 0;
+      color: $white;
+      position: absolute;
+
+    }
+  }
+}
+
+// Content wrapper for none node pages.
+.page--default {
+  @extend %auto-margins;
+
+  margin-left: 0;
+
+  @include breakpoint($breakpoint-lap) {
+    padding-left: 0;
+  }
+
+  @include breakpoint($breakpoint-desk) {
+    min-height: 15em;
+    padding-left: 0;
+  }
+
+  @include breakpoint($breakpoint-bigscreen) {
+    max-width: $layout-max-width;
+    margin: 0 auto;
+  }
+
+  &.is-front {
+    margin-top: 0;
+    padding-left: 0;
+  }
+}
+
+// Wrapper for pages that are neither node nor front (See page template)
+.page--wrapper {
+  @extend %auto-margins;
+
+  @include breakpoint($breakpoint-desk) {
+    max-width: $layout-max-width-desk;
+  }
+  @include breakpoint($breakpoint-bigscreen) {
+    max-width: $layout-max-width;
+  }
+}
