@@ -25,7 +25,7 @@ cd /vagrant
 Download Drupal:
 
 ```
-drush dl drupal-8.0.0-beta10 --drupal-project-rename=htdocs
+drush dl drupal-8.0.0-beta12 --drupal-project-rename=htdocs
 ```
 
 Apply [patch 1838242-65](https://www.drupal.org/files/issues/1838242-65.patch) ([Improve Views integration for datetime field](https://www.drupal.org/node/1838242)):
@@ -40,7 +40,7 @@ Clone this repository:
 
 ```
 cd htdocs/sites
-git clone git@github.com:aakb/dokk1.git all
+git clone git@github.com:aakb/itkore.git all
 cd -
 ```
 
@@ -48,14 +48,14 @@ Install Drupal:
 
 ```
 cd htdocs
-drush --yes site-install minimal --db-url='mysql://root:vagrant@localhost/dokk1' --site-name=dokk1 --account-name=admin --account-pass=admin --writable
+drush --yes site-install minimal --db-url='mysql://root:vagrant@localhost/itkore' --site-name=itkore --account-name=admin --account-pass=admin --writable
 ```
 
 Install modules:
 
 ```
-drush --yes pm-enable dokk_enable
-drush --yes pm-enable dokk seven
+drush --yes pm-enable itkore_enable
+drush --yes pm-enable itkore seven
 drush --yes updatedb
 ```
 
@@ -94,35 +94,7 @@ drush --yes updatedb
 
 Done!
 
-WAYF configuration
-------------------
 
-Outside vagrant box, in vagrant/dokk1:
-
-```
-mkdir -p wayf
-curl --location '«url of koba_wayf.yml, cf. Skype»' > wayf/wayf_dk_login.settings.yml
-vagrant ssh
-cd /vagrant/htdocs
-drush --yes config-import --source=../wayf/ --partial
-drush cache-rebuild
-```
-
-
-Loading data
-------------
-
-You can load data from stg.dokk1.dk like this
-
-```
-drush pull-stg
-```
-
-Or from dev.dokk1.dk like this
-
-```
-drush pull-dev
-```
 
 Resetting the admin password
 ----------------------------
@@ -233,7 +205,7 @@ We choose this approach in order to maintain a single git repository sites/all.
 All contrib and custom files should be moved to this location.
 This may not be possible throughout the project, and we may need to create a different git structure at a later stage.
 
-- If using codekit create a compass project from the "themes/dokk" directory.
+- If using codekit create a compass project from the "themes/itkore" directory.
 
 Structure
 ------------
@@ -241,7 +213,13 @@ Structure
 - Contributed modules are located at sites/all/modules/contrib
 - Custom modules are located at sites/all/modules
 - Default system templates are located at core/modules/* (check system module for several base templates).
-  These templates should be copied into sites/all/themes/dokk/templates
+  These templates should be copied into sites/all/themes/itkore/templates
+  
+Itkore Enable Module
+------------
+
+This is just a shortcut to enable dependencies all at once. Any modules added to this install should also be added as dependencies to this module.   
+
 
 Workflow
 -----------
@@ -253,3 +231,12 @@ Workflow
 	```
 
 - Push/pull them to server and synchronize on server
+
+
+The Roads Not Taken
+----------------------
+
+- Install Profiles: Have to live in /profiles - this repo is designed to live under /sites/all - so in order to use a install profile it would need it's own repo. 
+  As long as we don't need anything then managing dependencies this can be achieved with the Itkore Enable Module.
+- Drush make: There is a know bug when using pm-enable with D8 that results in an infinite loop. This means we have to have contrib modules as part of this repo. 
+  They can't (easily) be downloaded on demand - https://github.com/drush-ops/drush/issues/5
