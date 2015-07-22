@@ -1,6 +1,3 @@
-**_Private repository because included font is commercial_**
-
-
 Setup guidelines
 ================
 
