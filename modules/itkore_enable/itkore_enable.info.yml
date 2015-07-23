@@ -34,7 +34,7 @@ dependencies:
 
 #contrib
   - devel
-#  - globalredirect
+#  - globalredirect [incompatible with beta12]
   - imagick
   - imce
   
