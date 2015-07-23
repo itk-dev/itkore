@@ -7,21 +7,23 @@ dependencies:
   - block
   - ckeditor
   - config
+  - config_translation
   - contextual
-  - devel
+  - datetime
   - editor
   - entity_reference
   - field
   - field_ui
   - file
   - filter
-  - globalredirect
   - image
-  - imagick
+  - link
+  - locale
   - menu_link_content
   - menu_ui
   - node
   - path
+  - quickedit
   - system
   - text
   - toolbar
@@ -29,10 +31,12 @@ dependencies:
   - views_ui
   - update
   - user
-  - quickedit
+
+#contrib
+  - devel
+  - globalredirect
+  - imagick
+  - imce
+  
+#itk modules
   - itk_cookie_message
-  - datetime
-  - link
-  - field_ui
-  - locale
-  - config_translation
