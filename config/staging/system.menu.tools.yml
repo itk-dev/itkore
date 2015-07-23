@@ -1,0 +1,8 @@
+uuid: cfd17b48-dc60-4641-8647-7112cfadfc2a
+langcode: en
+status: true
+dependencies: {  }
+id: tools
+label: Tools
+description: 'Contains links for site visitors. Some modules add their links here.'
+locked: true

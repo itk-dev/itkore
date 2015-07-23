@@ -1,0 +1,19 @@
+uuid: dc2cfd74-5deb-4010-b100-e33c0cd4efb1
+langcode: en
+status: true
+dependencies: {  }
+id: admin
+label: 'Admin profile'
+description: 'Configuration for site administrators'
+conf:
+  extensions: '*'
+  maxsize: 0
+  quota: 0
+  maxwidth: 0
+  maxheight: 0
+  replace: 0
+  folders:
+    -
+      path: .
+      permissions:
+        all: true

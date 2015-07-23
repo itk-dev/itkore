@@ -1,0 +1,12 @@
+uuid: 01cb96ca-b10f-414b-a749-7380403de3de
+name: itkore
+mail: admin@example.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /user/login
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
