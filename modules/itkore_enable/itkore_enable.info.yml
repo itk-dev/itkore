@@ -36,7 +36,6 @@ dependencies:
   - devel
 #  - globalredirect [incompatible with beta12]
   - imagick
-  - imce
   
 #itk modules
   - itk_cookie_message
