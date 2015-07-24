@@ -39,7 +39,7 @@ class Autorotate extends ImagickImageToolkitOperationBase {
 
     $orientation = $res->getImageOrientation();
 
-    switch($orientation) {
+    switch ($orientation) {
       case imagick::ORIENTATION_BOTTOMRIGHT:
         $res->rotateimage(new ImagickPixel(), 180); // rotate 180 degrees
         break;

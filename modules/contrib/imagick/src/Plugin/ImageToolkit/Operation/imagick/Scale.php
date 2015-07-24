@@ -7,8 +7,6 @@
 
 namespace Drupal\imagick\Plugin\ImageToolkit\Operation\imagick;
 
-use Imagick;
-
 /**
  * Defines imagick scale operation.
  *
@@ -36,7 +34,8 @@ class Scale extends Resize {
     // target dimensions is missing, that is the one that is calculated. If both
     // are specified then the dimension calculated is the one that would not be
     // calculated to be bigger than its target.
-    $aspect = $this->getToolkit()->getHeight() / $this->getToolkit()->getWidth();
+    $aspect = $this->getToolkit()->getHeight() / $this->getToolkit()
+        ->getWidth();
     if (($arguments['width'] && !$arguments['height']) || ($arguments['width'] && $arguments['height'] && $aspect < $arguments['height'] / $arguments['width'])) {
       $arguments['height'] = (int) round($arguments['width'] * $aspect);
     }
@@ -50,10 +49,10 @@ class Scale extends Resize {
 
     // Fail when width or height are 0 or negative.
     if ($arguments['width'] <= 0) {
-      throw new \InvalidArgumentException(String::format("Invalid width (@value) specified for the image 'scale' operation", array('@value' => $arguments['width'])));
+      throw new \InvalidArgumentException($this->t("Invalid width (@value) specified for the image 'scale' operation", array('@value' => $arguments['width'])));
     }
     if ($arguments['height'] <= 0) {
-      throw new \InvalidArgumentException(String::format("Invalid height (@value) specified for the image 'scale' operation", array('@value' => $arguments['height'])));
+      throw new \InvalidArgumentException($this->t("Invalid height (@value) specified for the image 'scale' operation", array('@value' => $arguments['height'])));
     }
 
     return $arguments;
@@ -63,12 +62,14 @@ class Scale extends Resize {
    * {@inheritdoc}
    */
   protected function execute(array $arguments = array()) {
-    /* @var $res \Imagick */
-    $res = $this->getToolkit()->getResource();
-
-    if ($arguments['width'] !== $this->getToolkit()->getWidth() || $arguments['height'] !== $this->getToolkit()->getHeight()) {
+    if ($arguments['width'] !== $this->getToolkit()
+        ->getWidth() || $arguments['height'] !== $this->getToolkit()
+        ->getHeight()
+    ) {
       return parent::execute($arguments);
     }
+
+    return NULL;
   }
 
 }

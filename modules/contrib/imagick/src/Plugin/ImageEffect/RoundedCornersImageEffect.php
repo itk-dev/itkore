@@ -27,7 +27,11 @@ class RoundedCornersImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('rounded_corners', $this->configuration)) {
-      $this->logger->error('Image rounded corners failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image rounded corners failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -52,32 +56,32 @@ class RoundedCornersImageEffect extends ConfigurableImageEffectBase {
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['x_rounding'] = array(
       '#type' => 'number',
-      '#title' => t('X rounding'),
-      '#description' => t('The x rounding of the rounded corners'),
+      '#title' => $this->t('X rounding'),
+      '#description' => $this->t('The x rounding of the rounded corners'),
       '#default_value' => $this->configuration['x_rounding'],
     );
     $form['y_rounding'] = array(
       '#type' => 'number',
-      '#title' => t('Y rounding'),
-      '#description' => t('The y rounding of the rounded corners'),
+      '#title' => $this->t('Y rounding'),
+      '#description' => $this->t('The y rounding of the rounded corners'),
       '#default_value' => $this->configuration['y_rounding'],
     );
     $form['stroke_width'] = array(
       '#type' => 'number',
-      '#title' => t('Stroke width'),
-      '#description' => t('The stroke width of the rounded corners (used to fine-tune the process)'),
+      '#title' => $this->t('Stroke width'),
+      '#description' => $this->t('The stroke width of the rounded corners (used to fine-tune the process)'),
       '#default_value' => $this->configuration['stroke_width'],
     );
     $form['displace'] = array(
       '#type' => 'number',
-      '#title' => t('Displace'),
-      '#description' => t('The displace of the rounded corners (used to fine-tune the process)'),
+      '#title' => $this->t('Displace'),
+      '#description' => $this->t('The displace of the rounded corners (used to fine-tune the process)'),
       '#default_value' => $this->configuration['displace'],
     );
     $form['size_correction'] = array(
       '#type' => 'number',
-      '#title' => t('Size correction'),
-      '#description' => t('The size correction of the rounded corners (used to fine-tune the process)'),
+      '#title' => $this->t('Size correction'),
+      '#description' => $this->t('The size correction of the rounded corners (used to fine-tune the process)'),
       '#default_value' => $this->configuration['size_correction'],
     );
 

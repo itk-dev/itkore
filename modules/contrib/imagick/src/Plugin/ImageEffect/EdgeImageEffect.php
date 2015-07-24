@@ -27,7 +27,11 @@ class EdgeImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('edge', $this->configuration)) {
-      $this->logger->error('Image edge failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image edge failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -48,8 +52,8 @@ class EdgeImageEffect extends ConfigurableImageEffectBase {
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['radius'] = array(
       '#type' => 'number',
-      '#title' => t('Radius'),
-      '#description' => t('The radius of the edge operation.'),
+      '#title' => $this->t('Radius'),
+      '#description' => $this->t('The radius of the edge operation.'),
       '#default_value' => $this->configuration['radius'],
     );
 

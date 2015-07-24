@@ -7,7 +7,7 @@
 
 namespace Drupal\imagick\Plugin\ImageToolkit\Operation\imagick;
 
-use imagick;
+use Imagick;
 
 /**
  * Defines imagick encipher operation.

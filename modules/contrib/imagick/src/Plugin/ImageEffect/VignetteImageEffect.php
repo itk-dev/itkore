@@ -27,7 +27,11 @@ class VignetteImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('vignette', $this->configuration)) {
-      $this->logger->error('Image vignette failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image vignette failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -51,26 +55,26 @@ class VignetteImageEffect extends ConfigurableImageEffectBase {
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['blackpoint'] = array(
       '#type' => 'textfield',
-      '#title' => t('Blackpoint'),
-      '#description' => t('The black point'),
+      '#title' => $this->t('Blackpoint'),
+      '#description' => $this->t('The black point'),
       '#default_value' => $this->configuration['blackpoint'],
     );
     $form['whitepoint'] = array(
       '#type' => 'textfield',
-      '#title' => t('Whitepoint'),
-      '#description' => t('The white point'),
+      '#title' => $this->t('Whitepoint'),
+      '#description' => $this->t('The white point'),
       '#default_value' => $this->configuration['whitepoint'],
     );
     $form['x'] = array(
       '#type' => 'number',
-      '#title' => t('X'),
-      '#description' => t('The X offset of the ellipse'),
+      '#title' => $this->t('X'),
+      '#description' => $this->t('The X offset of the ellipse'),
       '#default_value' => $this->configuration['x'],
     );
     $form['y'] = array(
       '#type' => 'number',
-      '#title' => t('Y'),
-      '#description' => t('The Y offset of the ellipse'),
+      '#title' => $this->t('Y'),
+      '#description' => $this->t('The Y offset of the ellipse'),
       '#default_value' => $this->configuration['y'],
     );
 

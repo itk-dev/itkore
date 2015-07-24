@@ -8,8 +8,8 @@
 namespace Drupal\imagick\Plugin\ImageToolkit\Operation\imagick;
 
 use Imagick;
-use ImagickPixel;
 use ImagickDraw;
+use ImagickPixel;
 
 /**
  * Defines imagick annotate operation.
@@ -105,6 +105,13 @@ class Annotate extends ImagickImageToolkitOperationBase {
 
   /**
    * Helper funtion to wrap text when it is to long
+   *
+   * @param Imagick $image
+   * @param ImagickDraw $draw
+   * @param string $text
+   * @param int $maxWidth
+   *
+   * @return array
    */
   private function _image_imagick_word_wrap_annotation($image, $draw, $text, $maxWidth) {
     $text = trim($text);
@@ -114,17 +121,16 @@ class Annotate extends ImagickImageToolkitOperationBase {
     $i = 0;
     $lineHeight = 0;
 
-    while (count($words) > 0)
-    {
+    while (count($words) > 0) {
       $metrics = $image->queryFontMetrics($draw, implode(' ', array_slice($words, 0, ++$i)));
       $lineHeight = max($metrics['textHeight'], $lineHeight);
 
       // check if we have found the word that exceeds the line width
-      if ($metrics['textWidth'] > $maxWidth or count($words) < $i)
-      {
+      if ($metrics['textWidth'] > $maxWidth or count($words) < $i) {
         // handle case where a single word is longer than the allowed line width (just add this as a word on its own line?)
-        if ($i == 1)
+        if ($i == 1) {
           $i++;
+        }
 
         $lines[] = implode(' ', array_slice($words, 0, --$i));
         $words = array_slice($words, $i);

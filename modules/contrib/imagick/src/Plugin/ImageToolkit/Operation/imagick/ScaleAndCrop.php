@@ -8,7 +8,6 @@
 namespace Drupal\imagick\Plugin\ImageToolkit\Operation\imagick;
 
 use Drupal\system\Plugin\ImageToolkit\Operation\gd\ScaleAndCrop as GdScaleAndCrop;
-use Imagick;
 
 
 /**

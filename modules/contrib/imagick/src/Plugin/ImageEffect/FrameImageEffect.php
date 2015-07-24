@@ -27,7 +27,11 @@ class FrameImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('frame', $this->configuration)) {
-      $this->logger->error('Image frame failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image frame failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -59,9 +63,8 @@ class FrameImageEffect extends ConfigurableImageEffectBase {
 
     $form['matte_color'] = array(
       '#type' => 'textfield',
-      '#title' => t('Color of the shadow'),
+      '#title' => $this->t('Color of the shadow'),
       '#default_value' => $this->configuration['matte_color'],
-      '#element_validate' => array('imagecache_rgb_validate'),
       '#attributes' => array(
         'class' => array('colorentry'),
       ),
@@ -81,26 +84,26 @@ class FrameImageEffect extends ConfigurableImageEffectBase {
     );
     $form['width'] = array(
       '#type' => 'number',
-      '#title' => t('Width'),
-      '#description' => t('The width of the frame'),
+      '#title' => $this->t('Width'),
+      '#description' => $this->t('The width of the frame'),
       '#default_value' => $this->configuration['width'],
     );
     $form['height'] = array(
       '#type' => 'number',
-      '#title' => t('Height'),
-      '#description' => t('The height of the frame'),
+      '#title' => $this->t('Height'),
+      '#description' => $this->t('The height of the frame'),
       '#default_value' => $this->configuration['height'],
     );
     $form['inner_bevel'] = array(
       '#type' => 'number',
-      '#title' => t('Inner bevel'),
-      '#description' => t('The inner bevel of the frame'),
+      '#title' => $this->t('Inner bevel'),
+      '#description' => $this->t('The inner bevel of the frame'),
       '#default_value' => $this->configuration['inner_bevel'],
     );
     $form['outer_bevel'] = array(
       '#type' => 'number',
-      '#title' => t('Outer bevel'),
-      '#description' => t('The outer bevel of the frame'),
+      '#title' => $this->t('Outer bevel'),
+      '#description' => $this->t('The outer bevel of the frame'),
       '#default_value' => $this->configuration['outer_bevel'],
     );
 

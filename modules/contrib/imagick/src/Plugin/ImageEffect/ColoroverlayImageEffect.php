@@ -27,7 +27,11 @@ class ColoroverlayImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('coloroverlay', $this->configuration)) {
-      $this->logger->error('Image coloroverlay failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image coloroverlay failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -56,9 +60,8 @@ class ColoroverlayImageEffect extends ConfigurableImageEffectBase {
 
     $form['HEX'] = array(
       '#type' => 'textfield',
-      '#title' => t('HEX'),
+      '#title' => $this->t('HEX'),
       '#default_value' => $this->configuration['HEX'],
-      '#element_validate' => array('imagecache_rgb_validate'),
       '#attributes' => array(
         'class' => array('colorentry'),
       ),
@@ -78,8 +81,8 @@ class ColoroverlayImageEffect extends ConfigurableImageEffectBase {
     );
     $form['alpha'] = array(
       '#type' => 'number',
-      '#title' => t('Opacity'),
-      '#description' => t('Opacity of the color overlay in percents.'),
+      '#title' => $this->t('Opacity'),
+      '#description' => $this->t('Opacity of the color overlay in percents.'),
       '#default_value' => $this->configuration['alpha'],
       '#min' => 0,
       '#max' => 100,

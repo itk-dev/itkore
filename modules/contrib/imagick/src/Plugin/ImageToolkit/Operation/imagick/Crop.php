@@ -30,7 +30,8 @@ class Crop extends GdCrop {
     /* @var $res \Imagick */
     $res = $this->getToolkit()->getResource();
 
-    return $res->cropImage($arguments['width'], $arguments['height'], $arguments['x'], $arguments['y']);
+    $res->cropImage($arguments['width'], $arguments['height'], $arguments['x'], $arguments['y']);
+    return $res->setImagePage($arguments['width'], $arguments['height'], 0, 0);
   }
 
 }

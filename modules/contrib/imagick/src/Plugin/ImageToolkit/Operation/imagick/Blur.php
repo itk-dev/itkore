@@ -65,6 +65,9 @@ class Blur extends ImagickImageToolkitOperationBase {
       case ImagickConst::RADIAL_BLUR:
         return $res->radialBlurImage($arguments['angle']);
         break;
+      default:
+        return NULL;
+        break;
     }
   }
 

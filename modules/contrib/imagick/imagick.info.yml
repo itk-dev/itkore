@@ -6,8 +6,8 @@ package: Imagick
 # core: 8.x
 configure: system.image_toolkit_settings
 
-# Information added by Drupal.org packaging script on 2015-04-22
+# Information added by Drupal.org packaging script on 2015-06-08
 version: '8.x-1.x-dev'
 core: '8.x'
 project: 'imagick'
-datestamp: 1429721166
+datestamp: 1433795584

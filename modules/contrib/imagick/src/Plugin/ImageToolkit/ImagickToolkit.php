@@ -7,9 +7,10 @@
 
 namespace Drupal\imagick\Plugin\ImageToolkit;
 
-use Drupal\system\Plugin\ImageToolkit\GDToolkit;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StreamWrapper\StreamWrapperInterface;
 use Drupal\imagick\ImagickException;
+use Drupal\system\Plugin\ImageToolkit\GDToolkit;
 use Imagick;
 
 /**
@@ -38,10 +39,23 @@ class ImagickToolkit extends GDToolkit {
       $res = new Imagick($path);
       $this->setResource($res);
       return TRUE;
-    }
-    catch (ImagickException $e) {
+    } catch (ImagickException $e) {
       return FALSE;
     }
+  }
+
+  /**
+   * Sets the Imagick image resource.
+   *
+   * @param Imagick $resource
+   *   The Imagick image resource.
+   *
+   * @return $this
+   */
+  public function setResource($resource) {
+    $this->preLoadInfo = NULL;
+    $this->resource = $resource;
+    return $this;
   }
 
   /**
@@ -53,15 +67,17 @@ class ImagickToolkit extends GDToolkit {
 
     $scheme = file_uri_scheme($destination);
     // Work around lack of stream wrapper support in imagejpeg() and imagepng().
-    if ($scheme && file_stream_wrapper_valid_scheme($scheme)) {
+    if ($scheme && \Drupal::service('file_system')->validScheme($scheme)) {
       // If destination is not local, save image to temporary local file.
-      $local_wrappers = file_get_stream_wrappers(STREAM_WRAPPERS_LOCAL);
+      $local_wrappers = \Drupal::service('stream_wrapper_manager')
+        ->getWrappers(StreamWrapperInterface::LOCAL);
       if (!isset($local_wrappers[$scheme])) {
         $permanent_destination = $destination;
-        $destination = drupal_tempnam('temporary://', 'imagick_');
+        $destination = \Drupal::service('file_system')
+          ->tempnam('temporary://', 'imagick_');
       }
       // Convert stream wrapper URI to normal path.
-      $destination = drupal_realpath($destination);
+      $destination = \Drupal::service('file_system')->realpath($destination);
     }
 
     // If preferred format is set, use it as prefix for writeImage
@@ -69,8 +85,8 @@ class ImagickToolkit extends GDToolkit {
     try {
       $image_format = strtolower($res->getImageFormat());
       $destination = implode(':', array($image_format, $destination));
+    } catch (ImagickException $e) {
     }
-    catch (ImagickException $e) {}
 
     // Only compress JPEG files because other filetypes will increase in filesize
     if (isset($image_format) && in_array($image_format, array('jpeg', 'jpg'))) {
@@ -82,7 +98,8 @@ class ImagickToolkit extends GDToolkit {
         $res->setImageCompressionQuality($effect_quality);
       }
       else {
-        $quality = $this->configFactory->get('imagick.config')->get('jpeg_quality');
+        $quality = $this->configFactory->get('imagick.config')
+          ->get('jpeg_quality');
         $res->setImageCompressionQuality($quality);
       }
     }
@@ -144,12 +161,13 @@ class ImagickToolkit extends GDToolkit {
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['image_jpeg_quality'] = array(
       '#type' => 'number',
-      '#title' => t('JPEG quality'),
-      '#description' => t('Define the image quality for JPEG manipulations. Ranges from 0 to 100. Higher values mean better image quality but bigger files.'),
+      '#title' => $this->t('JPEG quality'),
+      '#description' => $this->t('Define the image quality for JPEG manipulations. Ranges from 0 to 100. Higher values mean better image quality but bigger files.'),
       '#min' => 0,
       '#max' => 100,
-      '#default_value' => $this->configFactory->get('imagick.config')->get('jpeg_quality'),
-      '#field_suffix' => t('%'),
+      '#default_value' => $this->configFactory->get('imagick.config')
+        ->get('jpeg_quality'),
+      '#field_suffix' => $this->t('%'),
     );
     return $form;
   }
@@ -159,7 +177,10 @@ class ImagickToolkit extends GDToolkit {
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     $this->configFactory->getEditable('imagick.config')
-      ->set('jpeg_quality', $form_state->getValue(array('imagick', 'image_jpeg_quality')))
+      ->set('jpeg_quality', $form_state->getValue(array(
+        'imagick',
+        'image_jpeg_quality'
+      )))
       ->save();
   }
 
@@ -173,9 +194,9 @@ class ImagickToolkit extends GDToolkit {
     if (!$this->isAvailable()) {
       $requirements['not_installed'] = array(
         'title' => 'ImageMagick PHP extension',
-        'value' => t('Not installed'),
+        'value' => $this->t('Not installed'),
         'severity' => REQUIREMENT_ERROR,
-        'description' => t('The Imagick image toolkit requires that the Imagick extension for PHP be installed and configured properly. For more information see <a href="@url">PHP\'s ImageMagick documentation</a>.', array('@url' => 'http://php.net/manual/book.imagick.php')),
+        'description' => $this->t('The Imagick image toolkit requires that the Imagick extension for PHP be installed and configured properly. For more information see <a href="http://php.net/manual/book.imagick.php">PHP\'s ImageMagick documentation</a>.'),
       );
     }
 

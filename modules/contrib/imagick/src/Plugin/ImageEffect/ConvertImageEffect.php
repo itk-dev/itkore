@@ -28,7 +28,11 @@ class ConvertImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('convert', $this->configuration)) {
-      $this->logger->error('Image convert failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image convert failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -49,15 +53,15 @@ class ConvertImageEffect extends ConfigurableImageEffectBase {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['format'] = array(
-      '#title' => t("File format"),
+      '#title' => $this->t("File format"),
       '#type' => 'select',
       '#default_value' => $this->configuration['format'],
       '#options' => ImagickConst::imagick_file_formats(),
     );
     $form['quality'] = array(
       '#type' => 'textfield',
-      '#title' => t('Quality'),
-      '#description' => t('Override the default image quality. Works for Imagemagick only. Ranges from 0 to 100. For jpg, higher values mean better image quality but bigger files. For png it is a combination of compression and filter'),
+      '#title' => $this->t('Quality'),
+      '#description' => $this->t('Override the default image quality. Works for Imagemagick only. Ranges from 0 to 100. For jpg, higher values mean better image quality but bigger files. For png it is a combination of compression and filter'),
       '#size' => 3,
       '#maxlength' => 3,
       '#default_value' => $this->configuration['quality'],

@@ -7,8 +7,8 @@
 
 namespace Drupal\imagick\Plugin\ImageToolkit\Operation\imagick;
 
-use imagick;
-use imagickPixel;
+use Imagick;
+use ImagickPixel;
 
 /**
  * Defines imagick frame operation.

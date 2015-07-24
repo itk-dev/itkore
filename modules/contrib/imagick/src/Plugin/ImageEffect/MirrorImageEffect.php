@@ -27,7 +27,11 @@ class MirrorImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('mirror', $this->configuration)) {
-      $this->logger->error('Image mirror failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image mirror failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -49,12 +53,12 @@ class MirrorImageEffect extends ConfigurableImageEffectBase {
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['flip'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Mirror image verticaly'),
+      '#title' => $this->t('Mirror image verticaly'),
       '#default_value' => $this->configuration['flip'],
     );
     $form['flop'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Mirror image horizontaly'),
+      '#title' => $this->t('Mirror image horizontaly'),
       '#default_value' => $this->configuration['flop'],
     );
 

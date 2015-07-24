@@ -27,7 +27,11 @@ class SpreadImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('spread', $this->configuration)) {
-      $this->logger->error('Image spread failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image spread failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -46,12 +50,13 @@ class SpreadImageEffect extends ConfigurableImageEffectBase {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['help'] = array('#value' => t('Special effects method that randomly displaces each pixel in a block defined by the radius parameter.')
+    $form['help'] = array(
+      '#value' => $this->t('Special effects method that randomly displaces each pixel in a block defined by the radius parameter.')
     );
     $form['radius'] = array(
       '#type' => 'number',
-      '#title' => t('Radius'),
-      '#description' => t('The spread radius, in pixels.'),
+      '#title' => $this->t('Radius'),
+      '#description' => $this->t('The spread radius, in pixels.'),
       '#default_value' => $this->configuration['radius'],
     );
 

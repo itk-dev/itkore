@@ -27,7 +27,11 @@ class SolarizeImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('solarize', $this->configuration)) {
-      $this->logger->error('Image solarize failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image solarize failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -48,8 +52,8 @@ class SolarizeImageEffect extends ConfigurableImageEffectBase {
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form['threshold'] = array(
       '#type' => 'number',
-      '#title' => t('Threshold'),
-      '#description' => t('The number of threshold of the solarize effect.'),
+      '#title' => $this->t('Threshold'),
+      '#description' => $this->t('The number of threshold of the solarize effect.'),
       '#default_value' => $this->configuration['threshold'],
     );
 

@@ -27,7 +27,11 @@ class ColorshiftImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('colorshift', $this->configuration)) {
-      $this->logger->error('Image colorshift failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image colorshift failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -55,9 +59,8 @@ class ColorshiftImageEffect extends ConfigurableImageEffectBase {
 
     $form['HEX'] = array(
       '#type' => 'textfield',
-      '#title' => t('HEX'),
+      '#title' => $this->t('HEX'),
       '#default_value' => $this->configuration['HEX'],
-      '#element_validate' => array('imagecache_rgb_validate'),
       '#attributes' => array(
         'class' => array('colorentry'),
       ),

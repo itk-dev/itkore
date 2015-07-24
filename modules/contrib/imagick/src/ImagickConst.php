@@ -16,9 +16,13 @@ class ImagickConst {
   const MOTION_BLUR = 3;
   const RADIAL_BLUR = 4;
 
-  public function imagick_file_formats() {
+  public static function imagick_file_formats() {
     // @TODO use imagick::queryFormats() to generate full format list
-    return array('image/jpeg' => 'jpg', 'image/gif' => 'gif', 'image/png' => 'png');
+    return array(
+      'image/jpeg' => 'jpg',
+      'image/gif' => 'gif',
+      'image/png' => 'png'
+    );
   }
 
 }

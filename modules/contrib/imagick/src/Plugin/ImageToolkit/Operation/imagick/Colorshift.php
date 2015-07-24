@@ -42,7 +42,6 @@ class Colorshift extends ImagickImageToolkitOperationBase {
     $res = $this->getToolkit()->getResource();
 
     $color = $arguments['HEX'];
-    $alpha = $arguments['alpha'];
 
     $color = empty($color) ? 'none' : $color;
 

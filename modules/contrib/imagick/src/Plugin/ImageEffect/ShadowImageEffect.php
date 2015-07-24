@@ -27,7 +27,11 @@ class ShadowImageEffect extends ConfigurableImageEffectBase {
    */
   public function applyEffect(ImageInterface $image) {
     if (!$image->apply('shadow', $this->configuration)) {
-      $this->logger->error('Image shadow failed using the %toolkit toolkit on %path (%mimetype)', array('%toolkit' => $image->getToolkitId(), '%path' => $image->getSource(), '%mimetype' => $image->getMimeType()));
+      $this->logger->error('Image shadow failed using the %toolkit toolkit on %path (%mimetype)', array(
+        '%toolkit' => $image->getToolkitId(),
+        '%path' => $image->getSource(),
+        '%mimetype' => $image->getMimeType()
+      ));
       return FALSE;
     }
     return TRUE;
@@ -58,9 +62,8 @@ class ShadowImageEffect extends ConfigurableImageEffectBase {
     );
     $form['color'] = array(
       '#type' => 'textfield',
-      '#title' => t('Color of the shadow'),
+      '#title' => $this->t('Color of the shadow'),
       '#default_value' => $this->configuration['color'],
-      '#element_validate' => array('imagecache_rgb_validate'),
       '#attributes' => array('class' => array('colorentry')),
     );
     $form['colorpicker'] = array(
@@ -77,26 +80,26 @@ class ShadowImageEffect extends ConfigurableImageEffectBase {
     );
     $form['opacity'] = array(
       '#type' => 'number',
-      '#title' => t('Opacity'),
-      '#description' => t('The opacity of the shadow'),
+      '#title' => $this->t('Opacity'),
+      '#description' => $this->t('The opacity of the shadow'),
       '#default_value' => $this->configuration['opacity'],
     );
     $form['sigma'] = array(
       '#type' => 'number',
-      '#title' => t('Sigma'),
-      '#description' => t('The sigma of the shadow'),
+      '#title' => $this->t('Sigma'),
+      '#description' => $this->t('The sigma of the shadow'),
       '#default_value' => $this->configuration['sigma'],
     );
     $form['x'] = array(
       '#type' => 'number',
-      '#title' => t('X'),
-      '#description' => t('The X value of the shadow'),
+      '#title' => $this->t('X'),
+      '#description' => $this->t('The X value of the shadow'),
       '#default_value' => $this->configuration['x'],
     );
     $form['y'] = array(
       '#type' => 'number',
-      '#title' => t('Y'),
-      '#description' => t('The Y value of the shadow'),
+      '#title' => $this->t('Y'),
+      '#description' => $this->t('The Y value of the shadow'),
       '#default_value' => $this->configuration['y'],
     );
 
