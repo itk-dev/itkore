@@ -36,10 +36,10 @@ devel.settings:
       type: mapping
       mapping:
         error_handler_type:
-          type: 'integer'
+          type: integer
           label: 'Error handler type'
         error_handler_value:
-          type: 'integer'
+          type: integer
           label: 'Error handler value'
     krumo_skin:
       type: string
@@ -47,9 +47,6 @@ devel.settings:
     rebuild_theme:
       type: boolean
       label: 'Rebuild theme information'
-    use_uncompressed_jquery:
-      type: boolean
-      label: 'Use uncompressed jquery'
     debug_mail_file_format:
       type: string
       label: 'Mail debug file format'

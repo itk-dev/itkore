@@ -22,6 +22,7 @@ use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Component\Utility\Timer;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Component\Utility\Xss;
+use Drupal\Core\Database\Database;
 use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -30,7 +31,6 @@ use Drupal\Core\Render\Element;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\Core\Utility\Error;
-use Drupal\devel\Controller\DevelController;
 
 /**
  * Implements hook_help().
@@ -362,30 +362,17 @@ function _devel_switch_user_list_cmp($a, $b) {
 }
 
 /**
- * Implements hook_library_info_alter().
+ * Returns the core version.
  */
-function devel_library_info_alter(array &$libraries, $module) {
-  // Use an uncompressed version of jQuery for debugging.
-  if ($module === 'core' && isset($libraries['jquery']) && \Drupal::config('devel.settings')->get('use_uncompressed_jquery')) {
-    // Make sure we're not changing the jQuery version used on the site.
-    if (version_compare($libraries['jquery']['version'], '2.1.3', '=')) {
-      $minified = 'assets/vendor/jquery/jquery.min.js';
-
-      if (isset($libraries['jquery']['js'][$minified])) {
-        $options = $libraries['jquery']['js'][$minified];
-        unset($libraries['jquery']['js'][$minified]);
-
-        $uncompressed = '/' . drupal_get_path('module', 'devel') . '/js/jquery-2.1.3-uncompressed.js';
-        $libraries['jquery']['js'][$uncompressed] = array('minified' => FALSE);
-
-        // To accurately replace jquery file the options have to be retained.
-        $libraries['jquery']['js'][$uncompressed] += $options;
-      }
-
-    }
-    elseif (!devel_silent() && \Drupal::currentUser()->hasPermission('access devel information')) {
-      drupal_set_message(t('jQuery could not be replaced with an uncompressed version of 2.1.3, because jQuery @version is running on the site.', array('@version' => $libraries['jquery']['version'])));
-    }
+function devel_get_core_version($version) {
+  $version_parts = explode('.', $version);
+  // Map from 4.7.10 -> 4.7
+  if ($version_parts[0] < 5) {
+    return $version_parts[0] . '.' . $version_parts[1];
+  }
+  // Map from 5.5 -> 5 or 6.0-beta2 -> 6
+  else {
+    return $version_parts[0];
   }
 }
 
@@ -462,7 +449,7 @@ function devel_shutdown_real() {
     }
 
     if (\Drupal::currentUser()->hasPermission('access devel information')) {
-      $queries = (devel_query_enabled() ? \Drupal\Core\Database\Database::getLog('devel', 'default') : NULL);
+      $queries = (devel_query_enabled() ? Database::getLog('devel', 'default') : NULL);
       if (!empty($queries)) {
         // Remove caller args to avoid recursion.
         foreach ($queries as &$query) {
@@ -629,7 +616,8 @@ function t_safe($string, $args) {
  */
 function kdevel_print_object($object, $prefix = NULL) {
   // @todo: quick fix to avoid Kint output floating. Remove when fixed upstream.
-  return has_kint() ? '<div style="clear:both">' . @Kint::dump($object) . '</div>' : devel_print_object($object, $prefix);
+  $dump = has_kint() ? '<div style="clear:both">' . @Kint::dump($object) . '</div>' : devel_print_object($object, $prefix);
+  return SafeMarkup::set($dump);
 }
 
 /**
@@ -786,7 +774,7 @@ function _devel_print_object($obj, $prefix = NULL, $parents = NULL, $object = FA
  * queries that were made to generate the page.
  */
 function devel_query_table($queries, $counts) {
-  $version = DevelController::getCoreVersion(\Drupal::VERSION);
+  $version = devel_get_core_version(\Drupal::VERSION);
   $header = array('ms', '#', 'where', 'ops', 'query', 'target');
   $i = 0;
   $config_devel = \Drupal::config('devel.settings');
@@ -808,11 +796,8 @@ function devel_query_table($queries, $counts) {
       $cell[$i][] = $diff;
     }
     $cell[$i][] = $count;
-    $url = Url::fromUri("http://$api/api/drupal/$file/function/$function_name/$version");
-    $cell[$i][] = \Drupal::l($function, $url, array(
-      'attributes' => array(
-        'target' => '_blank'))
-    );
+    $url = Url::fromUri("http://$api/api/drupal/$file/function/$function_name/$version", array('attributes' => array('target' => '_blank')));
+    $cell[$i][] = \Drupal::l($function, $url, FALSE);
     $ops[] = '<a href="#" title="' . t('Show placeholders') . '" class="dev-placeholders" qid="' . $i . '">P</a>';
     $ops[] = '<a href="#" title="' . t('Show arguments') . '" class="dev-arguments" qid="' . $i . '">A</a>';
     // EXPLAIN only valid for select queries.
@@ -913,7 +898,7 @@ function _devel_table_sort($a, $b) {
  * Displays page execution time at the bottom of the page.
  */
 function devel_timer() {
-  $time = Timer::read('page');
+  $time = Timer::read('devel_page');
   return t_safe(' Page execution time was @time ms.', array('@time' => $time));
 }
 
@@ -982,7 +967,7 @@ function dpq($query, $return = FALSE, $name = NULL) {
     }
     $sql = (string) $query;
     $quoted = array();
-    $connection = Drupal\Core\Database\Database::getConnection();
+    $connection = Database::getConnection();
     foreach ((array) $query->arguments() as $key => $val) {
       $quoted[$key] = is_null($val) ? 'NULL' : $connection->quote($val);
     }

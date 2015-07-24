@@ -9,8 +9,8 @@ dependencies:
   - text
   - entity_test
 
-# Information added by Drupal.org packaging script on 2015-04-25
+# Information added by Drupal.org packaging script on 2015-07-05
 version: '8.x-1.x-dev'
 core: '8.x'
 project: 'devel'
-datestamp: 1429973920
+datestamp: 1436096049
