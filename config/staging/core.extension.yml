@@ -16,7 +16,6 @@ module:
   filter: 0
   image: 0
   imagick: 0
-  imce: 0
   itk_cookie_message: 0
   itkore_enable: 0
   language: 0
