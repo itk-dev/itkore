@@ -1,6 +1,6 @@
 uuid: af8dd08f-10d0-47d7-b116-2260fecc0926
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.admin
@@ -10,7 +10,7 @@ dependencies:
     - stark
 id: stark_admin
 theme: stark
-region: sidebar_first
+region: '-1'
 weight: 1
 provider: null
 plugin: 'system_menu_block:admin'
