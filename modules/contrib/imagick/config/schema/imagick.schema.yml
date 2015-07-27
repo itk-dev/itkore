@@ -1,7 +1,0 @@
-imagick.config:
-  type: mapping
-  label: 'Imagick image settings'
-  mapping:
-    jpeg_quality:
-      type: integer
-      label: 'JPEG quality'
