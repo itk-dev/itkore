@@ -1,0 +1,19 @@
+uuid: 0241fe61-0604-4595-8600-df09de03f060
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_itkcore_starttime
+field_name: field_itkcore_starttime
+entity_type: node
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
