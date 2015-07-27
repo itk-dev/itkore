@@ -1,0 +1,27 @@
+uuid: 47d9f68f-4a71-4027-833e-627e4a7b9e37
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.itkore_resource.body
+    - node.type.itkore_resource
+  module:
+    - text
+    - user
+id: node.itkore_resource.teaser
+targetEntityType: node
+bundle: itkore_resource
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  langcode: true
