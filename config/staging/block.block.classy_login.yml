@@ -1,0 +1,22 @@
+uuid: 9616c216-1f20-4735-870a-108f0d70352e
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - classy
+id: classy_login
+theme: classy
+region: sidebar_first
+weight: 0
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  provider: user
+  label_display: visible
+  cache:
+    max_age: -1
+visibility: {  }

@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Itkore theme.
+ */
+
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * Adds viewport meta data to prevent user scaling (cf. http://stackoverflow.com/a/4389976).
+ */
+function itkore_page_attachments_alter(array &$page) {
+  $viewport = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+    ),
+  );
+  $page['#attached']['html_head'][] = array($viewport, 'viewport');
+}
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * Adds body classes if certain regions have content.
+ */
+function itkore_preprocess_page(&$variables) {
+  $path = \Drupal::service('path.current')->getPath();
+  $path_array = explode('/', $path);
+  if ($path == '/') {
+    $variables['is_front'] = TRUE;
+  }
+
+  if ($path_array['1'] == 'booking') {
+    $variables['is_booking'] = TRUE;
+  }
+
+  if (($nid = theme_get_setting('itkore_opening_hours_url')) && ($node = \Drupal\node\Entity\Node::load($nid))) {
+    $url = \Drupal::service('path.alias_manager')->getAliasByPath('node/' . $node->id());
+    $variables['opening_hours_url'] = $url;
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ *
+ * Calls node type specific preprocess functions, e.g. "itkore_preprocess_node_event" for nodes of type event.
+ *
+ */
+
+function itkore_preprocess_node(&$variables) {
+
+  $function = __FUNCTION__ . '_'. $variables['node']->getType();
+
+  if (function_exists($function)) {
+    $function($variables);
+  }
+
+  // Call "parent"
+  itkore_preprocess_node_all($variables);
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function itkore_preprocess_node_event(&$variables) {
+  // We don't want to use the title template for printing a link title, so we add the node title as a seperate variable, to access it from twig.
+  $variables['event_title_text'] = $variables['node']->getTitle();
+
+  $DateTimeZoneUTC = new DateTimeZone('UTC');
+  $startDateTime = DateTime::CreateFromFormat('Y-m-d\TH:i:s', $variables['node']->field_starttime->value, $DateTimeZoneUTC);
+  $endDateTime = DateTime::CreateFromFormat('Y-m-d\TH:i:s', $variables['node']->field_endtime->value, $DateTimeZoneUTC);
+
+  $variables['eventdate'] = format_date($startDateTime->getTimestamp(), 'itkore_dato');
+  $variables['eventstarttime'] = format_date($startDateTime->getTimestamp(), 'itkore_tidspunkt');
+  $variables['eventendtime'] = format_date($endDateTime->getTimestamp(), 'itkore_tidspunkt');
+  $variables['free_event'] = $variables['node']->field_is_free_event->value;
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function itkore_preprocess_node_all(&$variables) {
+
+  // Add image blur path to nodes.
+  $variables['header_image_blurred'] = FALSE;
+  if ($variables['elements']['#node']->field_image->entity) {
+    $original_image = $variables['elements']['#node']->field_image->entity
+      ->getFileUri();
+
+    // Load the image style configuration entity.
+    $style = ImageStyle::load('header_blur_image');
+
+    // Build the destination folder tree if it doesn't already exist.
+    $destination = $style->buildUri($original_image);
+    $directory = \Drupal::service('file_system')->dirname($destination);
+    if (!file_prepare_directory($directory, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
+      \Drupal::logger('image')->error('Failed to create style directory: %directory', array('%directory' => $directory));
+      return FALSE;
+    };
+
+    // Create image path.
+    $variables['header_image_blurred'] = $style->buildUrl($original_image);
+  }
+}
+
+function itkore_preprocess_views_view(&$variables) {
+  $function = __FUNCTION__ . '_'. $variables['id'];
+
+  if (function_exists($function)) {
+    $function($variables);
+  }
+}
+
+function itkore_preprocess_views_view_events(&$variables) {
+
+}

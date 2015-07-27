@@ -1,0 +1,39 @@
+/**
+ *
+ * Drupal specific
+ *
+ *
+ */
+
+
+
+/* Drupal specific styles
+   =============================================================================================================== */
+
+// Drupals messages display.
+.messages {
+  top: 4em;
+  position: absolute;
+  z-index: 1;
+
+  left: 0;
+  right: 0;
+
+  @include breakpoint($breakpoint-lap) {
+    margin-left: 4.5em;
+    top: 4em;
+  }
+
+  @include breakpoint($breakpoint-desk) {
+    margin-left: 6.4em;
+    top: 6.2em;
+    z-index: 6;
+
+  }
+}
+
+// Change burger menu positioning with toolbar tray open. (Based on drupals body classes)
+body.toolbar-tray-open.toolbar-horizontal .layout--header.is-node,
+body.toolbar-tray-open.toolbar-horizontal .menus--burger {
+  top: 79px;
+}

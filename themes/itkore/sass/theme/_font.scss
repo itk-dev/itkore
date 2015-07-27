@@ -1,0 +1,28 @@
+/**
+ *
+ * Font definitions
+ *
+ * Should contain definitions for all font-families used on the site
+ *
+ */
+
+@font-face {
+  font-family: 'Gibson SemiBold';
+  src: url('../fonts/Gibson-SemiBold-webfont.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Gibson-SemiBold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/Gibson-SemiBold-webfont.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Gibson Regular';
+  src: url('../fonts/Gibson-Regular-webfont.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Gibson-Regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/Gibson-Regular-webfont.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Gibson Light';
+  src: url('../fonts/Gibson-Light-webfont.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Gibson-Light-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/Gibson-Light-webfont.woff') format('woff'); /* Pretty Modern Browsers */
+}

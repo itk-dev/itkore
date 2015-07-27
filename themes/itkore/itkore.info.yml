@@ -1,0 +1,31 @@
+name: itkore
+type: theme
+description: 'The Itkore1 theme.'
+package: Itkore1
+
+libraries:
+  - itkore/menus-site-nav
+  - itkore/global-styling
+  - itkore/nav-open-sub-items
+  - itkore/header-scrolling
+  - itkore/google-analytics
+  - itkore/siteimprove
+
+stylesheets-remove:
+  - normalize.css
+
+regions:
+  primary_menu: 'Primary menu'
+  nav_menu: 'Nav menu'
+  content_top: 'Content top'
+  content: 'Content'
+  front_events: 'Front Page Events'
+  front_news: 'Front Page News'
+  footer: 'Footer'
+regions_hidden:
+  - sidebar_first
+
+version: '8.0.0-beta4'
+core: '8.x'
+datestamp: 1418825451
+

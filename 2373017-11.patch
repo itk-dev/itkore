@@ -1,0 +1,85 @@
+diff --git a/core/lib/Drupal/Core/Menu/MenuLinkBase.php b/core/lib/Drupal/Core/Menu/MenuLinkBase.php
+index c82bef3..bc591f7 100644
+--- a/core/lib/Drupal/Core/Menu/MenuLinkBase.php
++++ b/core/lib/Drupal/Core/Menu/MenuLinkBase.php
+@@ -9,7 +9,6 @@
+ 
+ use Drupal\Component\Plugin\Exception\PluginException;
+ use Drupal\Component\Utility\String;
+-use Drupal\Core\Access\AccessResult;
+ use Drupal\Core\Plugin\PluginBase;
+ use Drupal\Core\Url;
+ 
+@@ -77,7 +76,7 @@ public function isExpanded() {
+    * {@inheritdoc}
+    */
+   public function isResettable() {
+-    return AccessResult::forbidden();
++    return FALSE;
+   }
+ 
+   /**
+diff --git a/core/lib/Drupal/Core/Menu/MenuLinkDefault.php b/core/lib/Drupal/Core/Menu/MenuLinkDefault.php
+index e118824..c224142 100644
+--- a/core/lib/Drupal/Core/Menu/MenuLinkDefault.php
++++ b/core/lib/Drupal/Core/Menu/MenuLinkDefault.php
+@@ -7,7 +7,6 @@
+ 
+ namespace Drupal\Core\Menu;
+ 
+-use Drupal\Core\Access\AccessResult;
+ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
+ 
+@@ -95,8 +94,7 @@ public function getDescription() {
+    */
+   public function isResettable() {
+     // The link can be reset if it has an override.
+-    // @todo This will be cacheable after https://www.drupal.org/node/2040135.
+-    return AccessResult::allowedIf($this->staticOverride->loadOverride($this->getPluginId()))->setCacheable(FALSE);
++    return (bool) $this->staticOverride->loadOverride($this->getPluginId());
+   }
+ 
+   /**
+diff --git a/core/modules/menu_ui/src/MenuForm.php b/core/modules/menu_ui/src/MenuForm.php
+index 2415032..1ad5271 100644
+--- a/core/modules/menu_ui/src/MenuForm.php
++++ b/core/modules/menu_ui/src/MenuForm.php
+@@ -397,7 +397,7 @@ protected function buildOverviewTreeForm($tree, $delta) {
+           );
+         }
+         elseif ($delete_link = $link->getDeleteRoute()) {
+-          $operations['delete'] = $delete_link;
++          $operations['delete']['url'] = $delete_link;
+           $operations['delete']['query']['destination'] = $this->entity->url();
+           $operations['delete']['title'] = $this->t('Delete');
+         }
+diff --git a/core/modules/menu_ui/src/Tests/MenuTest.php b/core/modules/menu_ui/src/Tests/MenuTest.php
+index 098ed0a..ebd21ce 100644
+--- a/core/modules/menu_ui/src/Tests/MenuTest.php
++++ b/core/modules/menu_ui/src/Tests/MenuTest.php
+@@ -11,6 +11,7 @@
+ use Drupal\Component\Utility\Unicode;
+ use Drupal\Core\Cache\Cache;
+ use Drupal\Core\Menu\MenuLinkInterface;
++use Drupal\Core\Url;
+ use Drupal\menu_link_content\Entity\MenuLinkContent;
+ use Drupal\system\Entity\Menu;
+ use Drupal\node\Entity\Node;
+@@ -103,6 +104,16 @@ function testMenu() {
+     // Login the administrator.
+     $this->drupalLogin($this->admin_user);
+ 
++    // Verify delete link exists and reset link does not exist.
++    $this->drupalGet('admin/structure/menu/manage/' . $this->menu->id());
++    $this->assertLinkByHref('admin/structure/menu/item/' . $this->items[0]->id() . '/delete');
++    $this->assertNoLinkByHref(Url::fromUri('base://admin/structure/menu/link/' . $this->items[0]->getPluginId() . '/reset')->toString());
++    // Check delete and reset access.
++    $this->drupalGet('admin/structure/menu/item/' . $this->items[0]->id() . '/delete');
++    $this->assertResponse(200);
++    $this->drupalGet('admin/structure/menu/link/' . $this->items[0]->getPluginId() . '/reset');
++    $this->assertResponse(403);
++
+     // Delete menu links.
+     foreach ($this->items as $item) {
+       $this->deleteMenuLink($item);

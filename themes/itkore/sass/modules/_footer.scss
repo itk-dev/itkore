@@ -1,0 +1,155 @@
+/**
+ *
+ * Footer
+ *
+ *
+ */
+
+
+/* Silent classes.
+================================================================================================================== */
+
+
+// Item list grouping for positioning circle icon.
+%footer--item {
+
+}
+
+
+/* Styles
+================================================================================================================== */
+
+.footer {
+  background: $gray-darkest;
+  bottom: 0;
+  color: $white;
+  display: table-row;
+  height: 100%;
+
+  h3 {
+    margin-bottom: 1em;
+  }
+
+  p {
+    margin-bottom: 0.6em;
+  }
+
+  &--social {
+    @include order(1);
+
+    &-facebook-link,
+    &-instagram-link,
+    &-youtube-link {
+      padding: 0.5em 2em 1em 0;
+
+      @include flexbox;
+      @include align-items(center);
+
+      svg {
+        margin-right: 1em;
+        width: 2.5em;
+        height: 2.5em;
+      }
+
+      path, rect {
+        fill: $white;
+      }
+
+      a {
+        @include strip-link-styles($white, none);
+      }
+    }
+  }
+
+  &--opening-hours {
+    @include order(2);
+
+    &-body {
+      margin-bottom: 1.75em;
+
+      line-height: 1.75em;
+    }
+  }
+
+  &--contact {
+    @include order(3);
+  }
+
+  &--social,
+  &--opening-hours,
+  &--contact {
+    @include align-self(flex-start);
+
+    padding-bottom: 3em;
+
+    &-body {
+      color: $gray-lighter;
+    }
+
+    &-link,
+    &-email,
+    &-phone {
+      @include flexbox;
+
+      svg {
+        margin-right: .5em;
+        width: 1.2em;
+        height: 1.7em;
+      }
+
+      path, rect {
+        fill: $yellow;
+      }
+
+      a {
+        @include strip-link-styles($yellow, none);
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    @include breakpoint($breakpoint-tablet) {
+      max-width: 33%;
+    }
+
+  }
+
+  &--contact {
+    @include breakpoint($breakpoint-tablet) {
+      &-email,
+      &-phone {
+        @include align-items(flex-start);
+      }
+    }
+  }
+
+  // Maintain the same positioning and max width across the main regions.
+  &--inner {
+    @extend %auto-margins;
+
+    padding: 3em 1em;
+
+    @include box-sizing(content-box);
+    @include flexbox;
+    @include flex-wrap(wrap);
+
+    @include breakpoint($breakpoint-lap) {
+      padding-left: $layout-left-spacing - 1em; // No extra padding and small burger menu.
+    }
+
+    @include breakpoint($breakpoint-tablet) {
+      @include flex-wrap(nowrap);
+      @include justify-content(space-between);
+    }
+
+    @include breakpoint($breakpoint-desk) {
+      padding-left: $layout-left-spacing + 1em; // Default menu width.
+    }
+
+    @include breakpoint($breakpoint-bigscreen) {
+      max-width: $layout-max-width;
+    }
+  }
+}
