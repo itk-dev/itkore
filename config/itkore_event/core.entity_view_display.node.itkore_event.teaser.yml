@@ -1,0 +1,27 @@
+uuid: cee2ca58-f184-40b4-8303-3a4906938b1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.itkore_event.body
+    - node.type.itkore_event
+  module:
+    - text
+    - user
+id: node.itkore_event.teaser
+targetEntityType: node
+bundle: itkore_event
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  langcode: true

@@ -1,0 +1,21 @@
+uuid: a406082e-9f28-4522-802a-4208668c156a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_itkore_endtime
+    - node.type.itkore_event
+  module:
+    - datetime
+id: node.itkore_event.field_itkore_endtime
+field_name: field_itkore_endtime
+entity_type: node
+bundle: itkore_event
+label: 'itkore endtime'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
