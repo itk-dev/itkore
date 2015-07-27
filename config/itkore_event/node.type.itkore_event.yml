@@ -2,8 +2,6 @@ uuid: 4eeb24d6-b55d-4021-bf00-dc5f3119c6c3
 langcode: en
 status: true
 dependencies:
-  config:
-    - node.type.itkore_resource
   module:
     - menu_ui
 third_party_settings:
