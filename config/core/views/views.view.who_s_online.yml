@@ -1,13 +1,13 @@
-uuid: e54fabda-37c5-4945-b90a-100504b3c74f
+uuid: 9852c61e-3b1e-46f6-9407-7e3670765a5a
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - user
-id: who_s_new
-label: 'Who''s new'
+id: who_s_online
+label: 'Who''s online block'
 module: user
-description: 'Shows a list of the newest user accounts on the site.'
+description: 'Shows the user names of the most recently active users, and the total number of active users.'
 tag: default
 base_table: users_field_data
 base_field: uid
@@ -22,7 +22,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access content'
+          perm: 'access user profiles'
       cache:
         type: tag
         options: {  }
@@ -47,10 +47,17 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 5
+          items_per_page: 10
           offset: 0
       style:
         type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
       fields:
@@ -107,26 +114,28 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '>'
+          operator: '>='
           value:
             min: ''
             max: ''
-            value: '1970-01-01'
-            type: date
+            value: '-15 minutes'
+            type: offset
           group: 1
           exposed: false
           expose:
-            operator_id: '0'
-            label: ''
-            description: ''
+            operator_id: access_op
+            label: 'Last access'
+            description: 'A user is considered online for this long after they have last viewed a page.'
             use_operator: false
-            operator: ''
-            identifier: ''
+            operator: access_op
+            identifier: access
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -143,25 +152,46 @@ display:
           entity_type: user
           entity_field: access
       sorts:
-        created:
-          id: created
+        access:
+          id: access
           table: users_field_data
-          field: created
+          field: access
+          order: DESC
           relationship: none
           group_type: group
           admin_label: ''
-          order: DESC
           exposed: false
           expose:
             label: ''
           granularity: second
           plugin_id: date
           entity_type: user
-          entity_field: created
-      title: 'Who''s new'
-      header: {  }
+          entity_field: access
+      title: 'Who''s online'
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          content: 'There are currently @total users online.'
+          plugin_id: result
       footer: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: 'There are currently 0 users online.'
+          plugin_id: text_custom
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
@@ -171,15 +201,14 @@ display:
         - 'languages:language_interface'
         - user.permissions
       cacheable: false
-  block_1:
+  who_s_online_block:
     display_plugin: block
-    id: block_1
-    display_title: 'Who''s new'
+    id: who_s_online_block
+    display_title: 'Who''s online'
     position: 1
     display_options:
-      display_description: 'A list of new users'
-      block_description: 'Who''s new'
-      block_category: User
+      block_description: 'Who''s online'
+      display_description: 'A list of users that are currently logged in.'
       display_extenders: {  }
     cache_metadata:
       contexts:
