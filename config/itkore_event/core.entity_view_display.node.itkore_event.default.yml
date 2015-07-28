@@ -27,7 +27,7 @@ content:
     third_party_settings: {  }
   field_itkcore_starttime:
     weight: 102
-    label: above
+    label: hidden
     settings:
       format_type: medium
       timezone_override: ''
@@ -35,7 +35,7 @@ content:
     type: datetime_default
   field_itkore_endtime:
     weight: 103
-    label: above
+    label: hidden
     settings:
       format_type: medium
       timezone_override: ''
@@ -43,7 +43,7 @@ content:
     type: datetime_default
   field_itkore_image:
     weight: 105
-    label: above
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
@@ -51,7 +51,7 @@ content:
     type: image
   field_itkore_resource:
     weight: 104
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
