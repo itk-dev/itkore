@@ -1,7 +1,7 @@
 name: itkore
 type: theme
 description: 'The Itkore1 theme.'
-package: Itkore1
+package: Itkore
 
 libraries:
   - itkore/menus-site-nav
