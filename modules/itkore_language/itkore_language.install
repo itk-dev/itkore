@@ -10,7 +10,6 @@
  * Implements hook_install().
  */
 function itkore_language_install() {
-  print '------ test ------';
   module_load_include('fetch.inc', 'locale');
   $config = \Drupal::config('locale.settings');
   $options = array(
@@ -26,4 +25,5 @@ function itkore_language_install() {
   // Download and import translations for the newly added language.
   $batch = locale_translation_batch_update_build(array(), array('da'), $options);
   batch_set($batch);
+  print_r($batch);
 }
