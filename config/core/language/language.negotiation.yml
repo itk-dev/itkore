@@ -3,9 +3,9 @@ session:
 url:
   source: path_prefix
   prefixes:
-    en: ''
-    da: da
-  domains:
-    en: ''
     da: ''
+    en: en
+  domains:
+    da: ''
+    en: ''
 selected_langcode: site_default
