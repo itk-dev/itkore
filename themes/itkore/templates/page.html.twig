@@ -63,120 +63,21 @@
  */
 #}
 
-{# Create string for state classes. #}
-{% set state_classes = '' %}
-
-{# State class for frontpage. #}
-{% if is_front == true %}
-  {% set state_classes = state_classes ~ ' is-front' %}
-{% endif %}
-
-{# State class for page type (Node or not node). #}
-{% if node or is_booking %}
-  {% set state_classes = state_classes ~ ' is-node' ~ ' is-' ~ node.getType() %}
-{% else %}
-  {% set state_classes = state_classes ~ ' is-not-node' %}
-{% endif %}
-
-{# State class for admin user. #}
-{% if is_admin == true %}
-  {% set state_classes = state_classes ~ ' is-admin' %}
-{% endif %}
-
-{# Navigation menu (Sidebar) #}
-<div class="menus--burger js-menus-burger{{ state_classes }}">
-  <div class="menus--toggle-wrapper js-burger-toggle">
-    {% include '@itkore/svgs/menu-image.svg' %}
-  </div>
-  <div class="menus--burger-inner">
-    {{ page.nav_menu }}
-  </div>
-</div>
-{# Overlay for menu open #}
-<a class="menus--nav-overlay js-nav-overlay js-nav-click-overlay"></a>
-
-{# Header containing main menu. #}
-<header role="banner" class="layout--header js-layout-header {{ state_classes }}">
-  <div class="layout--header-opacity">
-    <div class="layout--header-outer">
-      <div class="layout--header-inner">
-        <div class="layout--header-mobile-nav-toggle-wrapper js-menus-burger">
-          <span class="layout--header-mobile-nav-toggle js-burger-toggle is-start">
-            {% include '@itkore/svgs/menu-image.svg' %}
-          </span>
-        </div>
-        <div class="layout--header-logo">
-          {% if logo %}
-            <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home">
-              <img src="{{ logo }}" alt="{{ 'Home'|t }}"/>
-            </a>
-          {% endif %}
-        </div>
-        {{ page.primary_menu }}
-      </div>
-    </div>
-  </div>
+<header>
+  {{ page.primary_menu }}
 </header>
 
-{# If this is not a node display content top region. (Prints frontpage top news block) #}
-{% if not node %}
-  {{ page.content_top }}
-{% endif %}
+
 
 {# Main content. (Includes heading and breadcrumb and content region) #}
-<main class="layout--content{{ state_classes }}">
-  <a name="main-content"></a>
-  <article class="page{{ state_classes }}">
-
-    {# Opening hours block, only showed on frontpage #}
-    {% if is_front and opening_hours_url %}
-    <div class="opening-hours-link js-opening-hours-link">
-      <figure>{% include '@itkore/svgs/clock-icon.svg' %}</figure>
-      <a href="{{ opening_hours_url }}" class="opening-hours-link--link">{{ 'Opening hours'|t }}</a>
-    </div>
-    <div class="opening-hours-block">
-      <h2>{{ 'Opening hours'|t }}</h2>
-      <p>{{ 'See all opening hours for various offers in Itkore1.'|t }}</p>
-      <div class="opening-hours-block--inner">
-        <figure>{% include '@itkore/svgs/clock-icon.svg' %}</figure>
-        <a href="{{ opening_hours_url }}" class="opening-hours-block--link">{{ 'View opening hours'|t }}</a>
-      </div>
-    </div>
-    {% endif %}
-
-    <div class="page--headercontainer{{ state_classes }}">
-      {% if title %}
-          <h1 class="page--heading{{ state_classes }}">{{ title }}</h1>
-      {% endif %}
-    </div>
-    {% if breadcrumb and not front %}
-      <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb" itemprop="breadcrumb"> {{ breadcrumb }} {{ title }}</nav>
-    {% endif %}
-
-    {{ page.front_events }}
-    {{ page.front_news }}
-
-    {# If it's not a node we want a content wrapper extra. #}
-    {% if node or is_booking %}
-      {{ page.content }}
-    {% elseif is_front %}
-      {{ page.content }}
-
-    {% else %}
-      <div class="page--wrapper{{ state_classes }}">
-        {{ page.content }}
-      </div>
-    {% endif %}
-
-  </article>
+<main>
+  {{ page.content }}
 </main>
 
 {# Footer content holds footer region and a custom block. #}
 {% if page.footer %}
-  <footer role="contentinfo" class="footer">
-    <div class="footer--inner">
-      {{ page.footer }}
-    </div>
+  <footer>
+    {{ page.footer }}
   </footer>
 {% endif %}
 {# Tabs positioned fixed. #}

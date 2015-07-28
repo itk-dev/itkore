@@ -28,23 +28,23 @@
 #}
 <!DOCTYPE html>
 <html{{ html_attributes }}>
-  <head>
-    {{ head }}
-    <title>{{ head_title }}</title>
-    {{ styles }}
-    {{ scripts }}
-    <!--[if IE 9]>
-      <link rel="stylesheet" type="text/css" href="/sites/all/themes/itkore/css/ie9.css">
-    <![endif]-->
-  </head>
-  <body{{ attributes }}>
-    <a href="#main-content" class="visually-hidden focusable skip-link">
-      {{ 'Skip to main content'|t }}
-    </a>
-    {{ page_top }}
-    {{ page }}
-    {{ page_bottom }}
-    {{ scripts_bottom }}
+<head>
+  {{ head }}
+  <title>{{ head_title }}</title>
+  {{ styles }}
+  {{ scripts }}
+  <!--[if IE 9]>
+  <link rel="stylesheet" type="text/css" href="/sites/all/themes/dokk/css/ie9.css">
+  <![endif]-->
+</head>
+<body{{ attributes }}>
+<a href="#main-content" class="visually-hidden focusable skip-link">
+  {{ 'Skip to main content'|t }}
+</a>
+{{ page_top }}
+{{ page }}
+{{ page_bottom }}
+{{ scripts_bottom }}
 
-  </body>
+</body>
 </html>
