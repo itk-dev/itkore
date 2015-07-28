@@ -15,5 +15,6 @@ function itkore_enable_install() {
     ->fields(array(
       'preferred_admin_langcode' => 'en',
     ))
+    ->condition('uid', 1)
     ->execute();
 }
