@@ -1,0 +1,7 @@
+# Ignore files
+themes/*/config.codekit
+config.rb
+
+# Ignore folders
+config/active/
+
