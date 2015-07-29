@@ -6,30 +6,13 @@
  *
  */
 
-html {
-  height: 100%;
-}
 
 body {
-  position: relative; // For absolute positioned burger menu to have 100 height.
-
-  display: table; // http://galengidman.com/2014/03/25/responsive-flexible-height-sticky-footers-in-css/
-  height: 100%;
-  width: 100%;
-
   background-color: $white;
-
   color: $gray-darkest;
   font: $font;
 }
 
-html,
-body {
-  &.is-locked {
-    position: fixed;
-    overflow: hidden;
-  }
-}
 
 h1,
 h2,
@@ -40,7 +23,7 @@ h6 {
   margin-top: 0;
   margin-bottom: .5em;
 
-  font-family: $font-bold-family;
+  font-family: $font-family;
   font-weight: normal;
 
   /* This fixes huge spaces when a heading wraps onto two lines */
@@ -95,7 +78,6 @@ a {
 
 p {
   margin-top: 0;
-  margin-bottom: 1.2em;
 }
 
 
@@ -106,6 +88,5 @@ img {
   display: inline;
   height: auto;
   max-width: 100%;
-  width: 100%;
   vertical-align: bottom;
 }

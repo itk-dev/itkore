@@ -1,0 +1,63 @@
+/**
+ *
+ * Itk tabs example file
+ *
+ * An example of using itk tabs component.
+ *
+ */
+
+// Import dependencies.
+@import "compass/css3";
+@import "../../../sass/base/_vars";
+@import "../../../sass/base/_mixins";
+
+// Import the component sass file.
+@import "../files/_itk-tabs";
+
+.example--tabs-one {
+  @extend %itk--tabs;
+
+  &-item {
+    @extend %itk--tabs-item;
+  }
+}
+
+.example--tabs-two {
+  @extend %itk--tabs;
+
+  &-item {
+    @extend %itk--tabs-item;
+  }
+}
+
+.example--tabs-three {
+  @extend %itk--tabs;
+
+  &-item {
+    @extend %itk--tabs-item;
+  }
+}
+
+.example--tabs-four {
+  @extend %itk--tabs;
+
+  &-item {
+    @extend %itk--tabs-item;
+  }
+}
+
+.example--tabs-five {
+  @extend %itk--tabs;
+
+  &-item {
+    @extend %itk--tabs-item;
+  }
+}
+
+.example--tabs-six {
+  @extend %itk--tabs;
+
+  &-item {
+    @extend %itk--tabs-item;
+  }
+}

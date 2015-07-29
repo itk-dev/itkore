@@ -1,0 +1,12 @@
+<article {{ attributes }}>
+
+  {% if label %}
+    <h1>{{ label }}</h1>
+  {% endif %}
+  {{ title_suffix }}
+
+  {{ content.body }}
+
+  <figure>{{ content.field_itkore_image }}</figure>
+
+</article> <!-- /article #node -->

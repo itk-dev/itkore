@@ -1,42 +1,5 @@
 global-styling:
-  version: VERSION
+  version: 1.x
   css:
     theme:
-      css/styles.css: { media: screen }
-
-menus-site-nav:
-  version: 1.x
-  js:
-    js/toggle-nav.js: {}
-  dependencies:
-    - core/jquery
-    - core/jquery.once
-
-nav-open-sub-items:
-  version: 1.x
-  js:
-    js/nav-open-sub-items.js: {}
-  dependencies:
-    - core/jquery
-    - core/jquery.once
-
-header-scrolling:
-  version: 1.x
-  js:
-    js/header-scrolling.js: {}
-  dependencies:
-    - core/jquery
-    - core/jquery.once
-
-google-analytics:
-  version: 1.x
-  js:
-    js/google-analytics.js: {}
-  dependencies:
-    - core/jquery
-    - core/jquery.once
-
-siteimprove:
-  version: 1.x
-  js:
-    js/siteimprove.js: {}
+      css/styles.css: { }
