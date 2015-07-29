@@ -1,2 +1,2 @@
 label: 'Langt datoformat'
-pattern: 'l, j F, Y - H:i'
+pattern: 'l, \d. j F Y - H:i'
