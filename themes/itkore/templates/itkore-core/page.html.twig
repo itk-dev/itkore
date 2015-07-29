@@ -71,10 +71,6 @@
 
 {# Main content. (Includes heading and breadcrumb and content region) #}
 <main>
-  {% if title %}
-    <h1 class="page--heading{{ state_classes }}">{{ title }}</h1>
-  {% endif %}
-
   {{ page.content }}
 </main>
 

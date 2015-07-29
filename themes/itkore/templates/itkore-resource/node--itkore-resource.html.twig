@@ -1,7 +1,11 @@
-<article>
+<article class="itkcore-resource">
+
+  {% if label %}
+    <h1>{{ label }}</h1>
+  {% endif %}
 
   {{ content.body }}
 
-  {{ content.field_itkore_image }}
+  <figure>{{ content.field_itkore_image }}</figure>
 
 </article> <!-- /article #node -->
