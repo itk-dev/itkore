@@ -1,0 +1,29 @@
+/**
+ *
+ * Mixins
+ *
+ */
+
+/* Strip link styles, default to inherited color and no text decoration.
+   ================================================================================================================== */
+@mixin strip-link-styles($color:inherit, $decoration: none) {
+  &:link {
+    color: $color;
+    text-decoration: $decoration;
+  }
+
+  &:visited {
+    color: $color;
+    text-decoration: $decoration;
+  }
+
+  &:hover {
+    color: $color;
+    text-decoration: $decoration;
+  }
+
+  &:focus {
+    color: $color;
+    text-decoration: $decoration;
+  }
+}

@@ -5,33 +5,13 @@
  */
 
 
-/* Breakpoints
-   ================================================================================================================== */
-
-
-$breakpoint-lap:              481px;
-$breakpoint-lap-big:          581px;
-$breakpoint-tablet:           720px;
-$breakpoint-desk:             1024px;
-$breakpoint-bigscreen:        1200px;
-
-
 
 /* Layout
    ================================================================================================================== */
 
-$layout-max-width:            62.5em;
-$layout-max-width-event:      50em;
-$layout-max-width-desk:       50em;
-$layout-left-spacing:         6.4em; // Offset to make room for burger menu
-$layout-header-image-height:  25em;
-$layout-header-height:        4.35em;
-$layout-header-height-sticky: 3.25em;
-$border-radius:               .6em !default;
-
-// Temp
-$left-spacing:                6em; // Replace this, then delete it
-
+$border-radius:    .6em !default;
+$border-width:      1px !default;
+$inline-block-fix:     -4px;
 
 
 /* Colors
@@ -39,9 +19,22 @@ $left-spacing:                6em; // Replace this, then delete it
 
 $black:            #000 !default;
 $white:            #fff !default;
-$grey-border:      #D8D8D8;
-$orange:           #D2411E;
 
+$gray-lightest:       lighten($black, 98%);
+$gray-lighter:        lighten($black, 90%);
+$gray-light:          lighten($black, 80%);
+$gray:                lighten($black, 70%);
+$gray-dark:           lighten($black, 45%);
+$gray-darker:         lighten($black, 35%);
+$gray-darkest:        lighten($black, 25%);
+
+
+
+/* Typograhy
+   ================================================================================================================== */
+
+$font-family:      "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font:             1em/1.5 $font-family !default;
 
 
 
@@ -55,6 +48,5 @@ $link-color:       blue !default;
 /* Spacing
    ================================================================================================================== */
 
-$padding-mobile:      1em;
-$padding-lap:         2em;
-$padding-desk:        0;
+$margin-bottom:    1.5em !default;
+$padding-bottom:   1.5em !default;

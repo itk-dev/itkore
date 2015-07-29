@@ -1,0 +1,41 @@
+/**
+ *
+ * Itk tabs example file
+ *
+ * An example of using itk tabs component.
+ *
+ */
+/**
+ *
+ * ITK messages
+ *
+ * A component for displaying messages
+ *
+ */
+/* Variables
+   ========================================================================== */
+/* Styles
+   ========================================================================== */
+.itk-message, .example-message {
+  margin-bottom: 1em; }
+
+.itk-message--inner, .example-message--inner {
+  -moz-border-radius: 0.75em;
+  -webkit-border-radius: 0.75em;
+  border-radius: 0.75em;
+  padding: 1em;
+  background-color: #f1f1f1;
+  border: 1px solid #b1b1b1;
+  color: #717171; }
+  .itk-message--inner.is-info, .is-info.example-message--inner {
+    background-color: #dff2bf;
+    border: 1px solid #aadc55;
+    color: #68941e; }
+  .itk-message--inner.is-warning, .is-warning.example-message--inner {
+    background-color: #feefb3;
+    border: 1px solid #fcd535;
+    color: #b08d02; }
+  .itk-message--inner.is-error, .is-error.example-message--inner {
+    background-color: #ffbaba;
+    border: 1px solid #ff3b3b;
+    color: #ba0000; }

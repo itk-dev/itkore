@@ -23,7 +23,7 @@ content:
     third_party_settings: {  }
   field_itkore_image:
     weight: 102
-    label: above
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
