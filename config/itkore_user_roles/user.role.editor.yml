@@ -1,0 +1,23 @@
+uuid: 99a77c3e-8c7e-44e6-b300-fe73956e5291
+langcode: en
+status: true
+dependencies: {  }
+id: editor
+label: Editor
+weight: 2
+is_admin: null
+permissions:
+  - 'access contextual links'
+  - 'use text format filtered_html'
+  - 'translate interface'
+  - 'create itkore_event content'
+  - 'delete own itkore_event content'
+  - 'edit any itkore_event content'
+  - 'create itkore_resource content'
+  - 'delete own itkore_resource content'
+  - 'edit any itkore_resource content'
+  - 'access content overview'
+  - 'administer nodes'
+  - 'view own unpublished content'
+  - 'access toolbar'
+  - 'administer users'

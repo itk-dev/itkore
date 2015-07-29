@@ -10,19 +10,22 @@
  * Implements hook_install().
  */
 function itkore_language_install() {
-  module_load_include('fetch.inc', 'locale');
-  $config = \Drupal::config('locale.settings');
+  // Import translations from .po file in sites/all/translations
+  \Drupal::moduleHandler()->loadInclude('locale', 'bulk.inc');
   $options = array(
-    'customized' => 0,
-    'overwrite_options' => array(
-      'not_customized' => $config->get('translation.overwrite_not_customized'),
-      'customized' => $config->get('translation.overwrite_customized'),
+    'langcode' => 'da',
+    'overwrite_options' => array (
+      'not_customized' => 0,
+      'customized' => 0,
     ),
-    'finish_feedback' => TRUE,
-    'use_remote' => 'remote_and_local',
+    'customized' => 0
   );
 
-  // Download and import translations for the newly added language.
-  $batch = locale_translation_batch_update_build(array(), array('da'), $options);
+  $file = array (
+    'filename' => 'da.po',
+    'uri' => 'translations://da.po',
+    'langcode' => 'da'
+  );
+  $batch = locale_translate_batch_build($file, $options);
   batch_set($batch);
 }
