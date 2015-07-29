@@ -1,3 +1,0 @@
-devel.entities:
-  class: \Drupal\Core\Menu\LocalTaskDefault
-  deriver: \Drupal\devel\Plugin\Derivative\DevelLocalTask

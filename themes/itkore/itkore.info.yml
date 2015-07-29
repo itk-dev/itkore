@@ -25,7 +25,7 @@ regions:
 regions_hidden:
   - sidebar_first
 
-version: '8.0.0-beta4'
+version: '8.0.0-beta12'
 core: '8.x'
 datestamp: 1418825451
 

@@ -1,0 +1,7 @@
+id: en
+label: English
+direction: 'ltr'
+weight: 1
+locked: false
+status: true
+langcode: en

@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the itkore_language module.
+ */
+
+
+/**
+ * Implements hook_install().
+ */
+function itkore_enable_install() {
+  // Update user/1 to use english language for administration pages and Drush.
+  db_update('users_field_data')
+    ->fields(array(
+      'preferred_admin_langcode' => 'en',
+    ))
+    ->condition('uid', 1)
+    ->execute();
+}
