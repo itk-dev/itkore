@@ -1,0 +1,27 @@
+uuid: 1009cb1e-097b-445e-b100-d7556fca4a8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_itkore_resource
+    - node.type.itkore_event
+  module:
+    - entity_reference
+id: node.itkore_event.field_itkore_resource
+field_name: field_itkore_resource
+entity_type: node
+bundle: itkore_event
+label: Resource
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      itkore_resource: itkore_resource
+    sort:
+      field: _none
+field_type: entity_reference

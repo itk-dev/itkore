@@ -1,0 +1,11 @@
+uuid: e101d99b-e550-4c0c-b908-8a2cb3554859
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.itkore_event
+id: node.itkore_event
+target_entity_type_id: node
+target_bundle: itkore_event
+default_langcode: site_default
+language_alterable: false
