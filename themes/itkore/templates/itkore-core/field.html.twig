@@ -38,11 +38,30 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes }}>
+{% set field_name_class = field_name|clean_class %}
+{%
+  set classes = [
+    'field',
+    'field-' ~ entity_type|clean_class ~ '--' ~ field_name_class,
+    'field-name-' ~ field_name_class,
+    'field-type-' ~ field_type|clean_class,
+    'field-label-' ~ label_display,
+    label_display == 'inline' ? 'clearfix',
+  ]
+%}
+{%
+  set title_classes = [
+    'field-label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
   {% if not label_hidden %}
-    {{ label }}
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
   {% endif %}
-  {% for item in items %}
-    {{ item.content }}
-  {% endfor %}
+  <div{{ content_attributes.addClass('field-items') }}>
+    {% for item in items %}
+      <div{{ item.attributes.addClass('field-item') }}>{{ item.content }}</div>
+    {% endfor %}
+  </div>
 </div>

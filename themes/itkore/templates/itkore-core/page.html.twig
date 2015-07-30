@@ -67,10 +67,15 @@
   {{ page.primary_menu }}
 </header>
 
-
-
 {# Main content. (Includes heading and breadcrumb and content region) #}
 <main>
+  {% if not node %}
+    {{ title_prefix }}
+    {% if title %}
+      <h1>{{ title }}</h1>
+    {% endif %}
+    {{ title_suffix }}
+  {% endif %}
   {{ page.content }}
 </main>
 

@@ -21,3 +21,5 @@ permissions:
   - 'view own unpublished content'
   - 'access toolbar'
   - 'administer users'
+  - 'view the administration theme'
+  - 'access in-place editing'
