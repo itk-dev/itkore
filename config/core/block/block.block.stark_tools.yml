@@ -1,5 +1,5 @@
-uuid: ee322354-1980-4a9d-8e00-ac633cbbbd0d
-langcode: en
+uuid: e7784e84-3743-4251-b401-01647e62c33a
+langcode: da
 status: false
 dependencies:
   config:
@@ -7,16 +7,16 @@ dependencies:
   module:
     - system
   theme:
-    - itkore
-id: itkore_tools
-theme: itkore
-region: '-1'
+    - stark
+id: stark_tools
+theme: stark
+region: sidebar_first
 weight: 0
 provider: null
 plugin: 'system_menu_block:tools'
 settings:
   id: 'system_menu_block:tools'
-  label: Tools
+  label: Værktøjer
   provider: system
   label_display: visible
   cache:

@@ -1,13 +1,13 @@
-uuid: 7d979ab5-1d69-4214-af05-5f867841797f
-langcode: en
-status: true
+uuid: 6a8c511d-9284-42ae-8e16-22a4db8c9163
+langcode: da
+status: false
 dependencies:
   module:
     - system
   theme:
-    - seven
-id: seven_messages
-theme: seven
+    - stark
+id: stark_messages
+theme: stark
 region: highlighted
 weight: 0
 provider: null

@@ -1,5 +1,5 @@
-uuid: 8842cf89-a6f1-4e22-b13e-626dfb274b44
-langcode: en
+uuid: 1e6c3d7b-956b-4f5b-a400-d722c0daa85c
+langcode: da
 status: false
 dependencies:
   config:
@@ -7,10 +7,10 @@ dependencies:
   module:
     - system
   theme:
-    - itkore
-id: itkore_admin
-theme: itkore
-region: '-1'
+    - stark
+id: stark_admin
+theme: stark
+region: sidebar_first
 weight: 1
 provider: null
 plugin: 'system_menu_block:admin'
