@@ -67,6 +67,7 @@ class ImceFileField {
    * Processes widget form.
    */
   public static function processWidget($element, FormStateInterface $form_state, $form) {
+    $element['#id'] = $element['#attributes']['data-drupal-selector'];
     // Button
     $element['imce_button'] = array(
       '#name' => $element['#name'] . '[imce_button]',

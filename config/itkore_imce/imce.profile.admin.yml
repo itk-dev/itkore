@@ -1,0 +1,48 @@
+uuid: d1377d31-7100-498e-902c-44abdd015eb1
+langcode: da
+status: true
+dependencies: {  }
+id: admin
+label: 'Admin profile'
+description: 'Configuration for site administrators'
+conf:
+  extensions: '*'
+  maxsize: !!float 0
+  quota: !!float 0
+  maxwidth: 0
+  maxheight: 0
+  replace: 0
+  folders:
+    -
+      path: images
+      permissions:
+        all: true
+        browse_files: false
+        browse_subfolders: false
+        create_subfolders: false
+        upload_files: false
+        delete_files: false
+        delete_subfolders: false
+        resize_images: false
+    -
+      path: ''
+      permissions:
+        all: false
+        browse_files: false
+        browse_subfolders: false
+        create_subfolders: false
+        upload_files: false
+        delete_files: false
+        delete_subfolders: false
+        resize_images: false
+    -
+      path: ''
+      permissions:
+        all: false
+        browse_files: false
+        browse_subfolders: false
+        create_subfolders: false
+        upload_files: false
+        delete_files: false
+        delete_subfolders: false
+        resize_images: false
