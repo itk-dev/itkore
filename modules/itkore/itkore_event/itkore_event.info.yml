@@ -1,0 +1,5 @@
+name: ITKore enable
+description: 'Holds event content type'
+type: module
+core: 8.x
+package: ITKore

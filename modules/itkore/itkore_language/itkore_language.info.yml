@@ -1,0 +1,8 @@
+name: ITKore language
+description: 'Adds Danish language entity and downloads language package'
+type: module
+core: 8.x
+package: ITKore
+dependencies:
+  - locale
+  - language

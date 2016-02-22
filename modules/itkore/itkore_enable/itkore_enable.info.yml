@@ -1,0 +1,43 @@
+name: ITKore enable
+description: 'Enables modules used by itkore'
+type: module
+core: 8.x
+package: ITKore
+dependencies:
+  - block
+  - ckeditor
+  - config
+  - config_translation
+  - contextual
+  - datetime
+  - editor
+  - entity_reference
+  - field
+  - field_ui
+  - file
+  - filter
+  - image
+  - link
+  - locale
+  - menu_link_content
+  - menu_ui
+  - node
+  - path
+  - quickedit
+  - system
+  - text
+  - toolbar
+  - views
+  - views_ui
+  - update
+  - user
+
+#ITKore modules
+  - itkore_event
+  - itkore_imce
+  - itkore_language
+  - itkore_text_filters
+  - itkore_user_roles
+
+#ITK modules
+  - itk_cookie_message

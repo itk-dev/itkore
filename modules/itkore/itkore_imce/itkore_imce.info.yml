@@ -1,0 +1,7 @@
+name: ITKore enable
+description: 'Holds IMCE configuration'
+type: module
+core: 8.x
+package: ITKore
+dependencies:
+  - imce
