@@ -17,6 +17,7 @@ dependencies:
   - file
   - filter
   - image
+  - imce
   - link
   - locale
   - menu_link_content
@@ -34,7 +35,6 @@ dependencies:
 
 #ITKore modules
   - itkore_event
-  - itkore_imce
   - itkore_language
   - itkore_text_filters
   - itkore_user_roles

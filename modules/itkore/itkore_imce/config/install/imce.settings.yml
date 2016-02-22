@@ -1,6 +1,0 @@
-abs_urls: false
-roles_profiles:
-  editor:
-    public: member
-langcode: da
-abs_url: null
