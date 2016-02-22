@@ -6,7 +6,6 @@ dependencies:
     - field.field.node.itkore_event.field_itkcore_starttime
     - field.field.node.itkore_event.field_itkore_endtime
     - field.field.node.itkore_event.field_itkore_image
-    - field.field.node.itkore_event.field_itkore_resource
     - node.type.itkore_event
   module:
     - datetime
