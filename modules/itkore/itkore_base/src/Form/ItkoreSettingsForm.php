@@ -190,17 +190,18 @@ class ItkoreSettingsForm extends FormBase {
       }
     }
 
-    $this->configFactory()->$this->getBaseConfig()->setMultiple(array(
-      'itkore_frontpage.frontpage_title', $form_state->getValue('frontpage_title'),
-      'itkore_frontpage.frontpage_lead', $form_state->getValue('frontpage_lead'),
-      'itkore_frontpage.frontpage_sub', $form_state->getValue('frontpage_sub'),
-      'itkore_frontpage.frontpage_button', $form_state->getValue('frontpage_button'),
-      'itkore_frontpage.frontpage_link', $form_state->getValue('frontpage_link'),
-      'itkore_footer.footer_text', $form_state->getValue('footer_text')['value'],
-      'itkore_footer.footer_twitter', $form_state->getValue('footer_twitter'),
-      'itkore_footer.footer_instagram', $form_state->getValue('footer_instagram'),
-      'itkore_footer.footer_linkedin', $form_state->getValue('footer_linkedin'),
-      'itkore_frontpage.frontpage_image', $file ? $file->id() : NULL)
+    $this->getBaseConfig()->setMultiple(array(
+      'itkore_frontpage.frontpage_title' => $form_state->getValue('frontpage_title'),
+      'itkore_frontpage.frontpage_lead' => $form_state->getValue('frontpage_lead'),
+      'itkore_frontpage.frontpage_sub' => $form_state->getValue('frontpage_sub'),
+      'itkore_frontpage.frontpage_button' => $form_state->getValue('frontpage_button'),
+      'itkore_frontpage.frontpage_link' => $form_state->getValue('frontpage_link'),
+      'itkore_footer.footer_text' => $form_state->getValue('footer_text')['value'],
+      'itkore_footer.footer_twitter' => $form_state->getValue('footer_twitter'),
+      'itkore_footer.footer_instagram' => $form_state->getValue('footer_instagram'),
+      'itkore_footer.footer_linkedin' => $form_state->getValue('footer_linkedin'),
+      'itkore_frontpage.frontpage_image' => $file ? $file->id() : NULL
+      )
     );
   }
 }
