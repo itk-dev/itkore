@@ -1,0 +1,10 @@
+name: Pathauto menu-link-parents hack
+type: module
+description: Temporary fix for the pathauto token node:menu-link:parents:join-path
+core: 8.x
+package: Other
+
+dependencies:
+- path
+- token
+- pathauto

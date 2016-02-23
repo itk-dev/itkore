@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Contains pathauto_menu_link_parents_hack.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_insert().
+ */
+function pathauto_menu_link_parents_hack_entity_insert(EntityInterface $entity) {
+  _pathauto_menu_link_parents_hack_fix_alias($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function pathauto_menu_link_parents_hack_entity_update(EntityInterface $entity) {
+  _pathauto_menu_link_parents_hack_fix_alias($entity);
+}
+
+function _pathauto_menu_link_parents_hack_fix_alias(EntityInterface $entity) {
+  global $pathauto_resave_node;
+
+  $entity_type = $entity->getEntityTypeId();
+  if ($entity_type === 'node') {
+    $pathauto_resave_node = $entity;
+  }
+  elseif ($entity_type === 'menu_link_content' && $pathauto_resave_node) {
+    // Clear the cache used in token_menu_link_load_all_parents().
+    drupal_static_reset('token_menu_link_load_all_parents');
+
+    \Drupal::service('pathauto.manager')->updateAlias($pathauto_resave_node, 'update', array('force' => TRUE));
+    $pathauto_resave_node = FALSE;
+  }
+}

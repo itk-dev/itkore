@@ -1,0 +1,6 @@
+# Define the menu links for this module
+itkore_base.settings:
+  title: ITKore
+  route_name: itkore_base.settings
+  parent: system.admin
+  description: 'Settings for ITKore'

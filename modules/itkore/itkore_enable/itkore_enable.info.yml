@@ -4,6 +4,7 @@ type: module
 core: 8.x
 package: ITKore
 dependencies:
+#Core modules
   - block
   - ckeditor
   - config
@@ -17,7 +18,6 @@ dependencies:
   - file
   - filter
   - image
-  - imce
   - link
   - locale
   - menu_link_content
@@ -33,11 +33,20 @@ dependencies:
   - update
   - user
 
+#Contrib modules
+  - imce
+  - pathauto
+  - pathauto_menu_link_parent_hack
+  - redirect
+  - token
+
 #ITKore modules
   - itkore_event
   - itkore_language
   - itkore_text_filters
   - itkore_user_roles
+  - itkore_user_theme
 
 #ITK modules
   - itk_cookie_message
+  - itk_instagram_hashtag

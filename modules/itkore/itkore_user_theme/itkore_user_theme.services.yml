@@ -1,0 +1,5 @@
+services:
+  itkore_user_theme.route_subscriber:
+    class: Drupal\itkore_user_theme\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

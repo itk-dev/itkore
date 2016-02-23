@@ -1,0 +1,12 @@
+itkore_frontpage:
+  frontpage_title: 'Hi omnes lingua, institutis, legibus inter se differunt'
+  frontpage_lead: 'At nos hinc posthac, sitientis piros Afros. Ut enim ad minim veniam, quis nostrud exercitation.'
+  frontpage_sub: 'Ambitioni dedisse scripsisse iudicaretur. Prima luce, cum quibus mons aliud consensu ab eo.'
+  frontpage_button: 'Lorem ipsum'
+  frontpage_link: '/front'
+  frontpage_image: '0'
+itkore_footer:
+  footer_text: 'Prima luce, cum quibus mons aliud consensu ab eo.'
+  footer_twitter: 'https://twitter.com/'
+  footer_instagram: 'https://instagram.com/'
+  footer_linkedin: 'https://linkedin.com/'
