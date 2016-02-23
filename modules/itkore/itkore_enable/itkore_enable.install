@@ -22,12 +22,12 @@ function itkore_enable_install() {
   \Drupal::service('config.factory')->getEditable('system.theme')->set('admin', 'seven')->save();
   \Drupal::service('config.factory')->getEditable('system.theme')->set('default', 'itkore')->save();
 
-  \Drupal::service('config.factory')->getEditable('block.block.itkore_admin')->set('status', 'false')->save();
-  \Drupal::service('config.factory')->getEditable('block.block.itkore_branding')->set('status', 'false')->save();
-  \Drupal::service('config.factory')->getEditable('block.block.itkore_local_actions')->set('status', 'false')->save();
-  \Drupal::service('config.factory')->getEditable('block.block.itkore_local_tasks')->set('status', 'false')->save();
-  \Drupal::service('config.factory')->getEditable('block.block.itkore_login')->set('status', 'false')->save();
-  \Drupal::service('config.factory')->getEditable('block.block.itkore_tools')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.itkore_admin')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.itkore_branding')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.itkore_local_actions')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.itkore_local_tasks')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.itkore_login')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.itkore_tools')->set('status', 'false')->save();
 
   //\Drupal::service('config.factory')->getEditable('block.block.seven_admin')->set('status', 'false')->save();
   //\Drupal::service('config.factory')->getEditable('block.block.seven_branding')->set('status', 'false')->save();
