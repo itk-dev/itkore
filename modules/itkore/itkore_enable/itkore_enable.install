@@ -29,8 +29,8 @@ function itkore_enable_install() {
   \Drupal::service('config.factory')->getEditable('block.block.itkore_login')->set('status', 'false')->save();
   \Drupal::service('config.factory')->getEditable('block.block.itkore_tools')->set('status', 'false')->save();
 
-  \Drupal::service('config.factory')->getEditable('block.block.seven_admin')->set('status', 'false')->save();
-  \Drupal::service('config.factory')->getEditable('block.block.seven_branding')->set('status', 'false')->save();
-  \Drupal::service('config.factory')->getEditable('block.block.seven_login')->set('status', 'false')->save();
-  \Drupal::service('config.factory')->getEditable('block.block.seven_tools')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.seven_admin')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.seven_branding')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.seven_login')->set('status', 'false')->save();
+  //\Drupal::service('config.factory')->getEditable('block.block.seven_tools')->set('status', 'false')->save();
 }
