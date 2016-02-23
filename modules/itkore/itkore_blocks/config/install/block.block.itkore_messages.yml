@@ -1,0 +1,21 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - itkore
+id: itkore_messages
+theme: itkore
+region: '-1'
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+  cache:
+    max_age: -1
+visibility: {  }
