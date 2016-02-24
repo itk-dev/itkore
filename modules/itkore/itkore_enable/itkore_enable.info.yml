@@ -43,7 +43,6 @@ dependencies:
 
 #ITKore modules
   - itkore_content_types
-  - itkore_event
   - itkore_fields
   - itkore_language
   - itkore_text_filters
