@@ -1,2 +1,2 @@
-Itkore
-==========
+#Itkore theme
+
