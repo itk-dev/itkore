@@ -1,0 +1,10 @@
+uuid: d89410db-367b-4e5c-8f00-a6f4901f2cdc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.related_pages
+label: 'Related Pages'
+targetEntityType: node
+cache: true

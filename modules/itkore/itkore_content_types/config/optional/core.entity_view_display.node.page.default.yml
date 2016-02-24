@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.body
+    - field.field.node.page.field_instagram
+    - field.field.node.page.field_main_image
+    - field.field.node.page.field_related_page_image
+    - field.field.node.page.field_related_page_teaser
+    - field.field.node.page.field_related_pages
+    - node.type.page
+  module:
+    - image
+    - itk_instagram_hashtag
+    - text
+    - user
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_instagram:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: field_instagram_hashtag_default_formatter
+  field_main_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: main_image
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_related_pages:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: related_pages
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+hidden:
+  field_related_page_image: true
+  field_related_page_teaser: true
+  langcode: true
+  links: true

@@ -35,13 +35,16 @@ dependencies:
 
 #Contrib modules
   - imce
+  - ctools
   - pathauto
-  - pathauto_menu_link_parent_hack
+  - pathauto_menu_link_parents_hack
   - redirect
   - token
 
 #ITKore modules
+  - itkore_content_types
   - itkore_event
+  - itkore_fields
   - itkore_language
   - itkore_text_filters
   - itkore_user_roles

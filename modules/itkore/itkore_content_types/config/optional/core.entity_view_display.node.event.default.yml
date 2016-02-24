@@ -1,0 +1,81 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.body
+    - field.field.node.event.field_endtime
+    - field.field.node.event.field_instagram
+    - field.field.node.event.field_location
+    - field.field.node.event.field_main_image
+    - field.field.node.event.field_pages
+    - field.field.node.event.field_related_page_image
+    - field.field.node.event.field_related_page_teaser
+    - field.field.node.event.field_starttime
+    - node.type.event
+  module:
+    - datetime
+    - image
+    - itk_instagram_hashtag
+    - text
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+  field_endtime:
+    weight: 2
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+  field_instagram:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: field_instagram_hashtag_default_formatter
+  field_location:
+    weight: 3
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_main_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: main_image
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_pages:
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_starttime:
+    weight: 1
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+hidden:
+  field_related_page_image: true
+  field_related_page_teaser: true
+  langcode: true
+  links: true

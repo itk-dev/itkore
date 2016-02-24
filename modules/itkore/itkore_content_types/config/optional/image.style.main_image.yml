@@ -1,0 +1,15 @@
+uuid: 9968edba-716c-4842-b700-f90379d172cf
+langcode: en
+status: true
+dependencies: {  }
+name: main_image
+label: 'Main Image (W: 1216)'
+effects:
+  b02ce3d8-5e82-4358-a000-dad79b75cf0b:
+    uuid: b02ce3d8-5e82-4358-a000-dad79b75cf0b
+    id: image_scale
+    weight: 1
+    data:
+      width: 1216
+      height: null
+      upscale: false

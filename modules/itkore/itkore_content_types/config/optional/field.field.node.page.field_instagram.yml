@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_instagram
+    - node.type.page
+  module:
+    - itk_instagram_hashtag
+id: node.page.field_instagram
+field_name: field_instagram
+entity_type: node
+bundle: page
+label: Instagram
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: field_instagram_hashtag

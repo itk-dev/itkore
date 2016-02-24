@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.body
+    - field.field.node.event.field_endtime
+    - field.field.node.event.field_instagram
+    - field.field.node.event.field_location
+    - field.field.node.event.field_main_image
+    - field.field.node.event.field_pages
+    - field.field.node.event.field_related_page_image
+    - field.field.node.event.field_related_page_teaser
+    - field.field.node.event.field_starttime
+    - node.type.event
+  module:
+    - image
+    - user
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  field_related_page_image:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_style: related_page_image
+      image_link: content
+    third_party_settings: {  }
+  field_related_page_teaser:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_endtime: true
+  field_instagram: true
+  field_location: true
+  field_main_image: true
+  field_pages: true
+  field_starttime: true
+  langcode: true
+  links: true

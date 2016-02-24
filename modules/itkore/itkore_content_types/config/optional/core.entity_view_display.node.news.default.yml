@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news.body
+    - field.field.node.news.field_instagram
+    - field.field.node.news.field_main_image
+    - field.field.node.news.field_pages
+    - field.field.node.news.field_related_page_image
+    - field.field.node.news.field_related_page_teaser
+    - node.type.news
+  module:
+    - image
+    - itk_instagram_hashtag
+    - text
+    - user
+id: node.news.default
+targetEntityType: node
+bundle: news
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_instagram:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: field_instagram_hashtag_default_formatter
+  field_main_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: main_image
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_pages:
+    type: entity_reference_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+hidden:
+  field_related_page_image: true
+  field_related_page_teaser: true
+  langcode: true
+  links: true

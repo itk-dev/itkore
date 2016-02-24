@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.news_teaser
+    - field.field.node.news.body
+    - field.field.node.news.field_instagram
+    - field.field.node.news.field_main_image
+    - field.field.node.news.field_pages
+    - field.field.node.news.field_related_page_image
+    - field.field.node.news.field_related_page_teaser
+    - node.type.news
+  module:
+    - image
+    - user
+id: node.news.news_teaser
+targetEntityType: node
+bundle: news
+mode: news_teaser
+content:
+  field_related_page_image:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_style: news_teaser_image
+      image_link: content
+    third_party_settings: {  }
+  field_related_page_teaser:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_instagram: true
+  field_main_image: true
+  field_pages: true
+  langcode: true
+  links: true
