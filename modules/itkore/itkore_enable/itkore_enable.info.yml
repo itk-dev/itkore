@@ -42,6 +42,7 @@ dependencies:
   - token
 
 #ITKore modules
+  - itkore_base
   #- itkore_content_types
   - itkore_fields
   - itkore_language
