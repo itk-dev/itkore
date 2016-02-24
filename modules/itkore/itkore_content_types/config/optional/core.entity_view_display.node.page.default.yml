@@ -5,15 +5,18 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.field_instagram
     - field.field.node.page.field_main_image
+    - field.field.node.page.field_pages
     - field.field.node.page.field_related_page_image
     - field.field.node.page.field_related_page_teaser
-    - field.field.node.page.field_related_pages
+    - image.style.main_image
     - node.type.page
   module:
     - image
     - itk_instagram_hashtag
     - text
     - user
+_core:
+  default_config_hash: hJF57Qn7dzO79CuGikIspUJH5CaypzllzaKqkD8KDpM
 id: node.page.default
 targetEntityType: node
 bundle: page
@@ -39,11 +42,11 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
-  field_related_pages:
-    weight: 2
+  field_pages:
+    weight: 4
     label: hidden
     settings:
-      view_mode: related_pages
+      view_mode: teaser
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view

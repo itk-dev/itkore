@@ -5,9 +5,10 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.field_instagram
     - field.field.node.page.field_main_image
+    - field.field.node.page.field_pages
     - field.field.node.page.field_related_page_image
     - field.field.node.page.field_related_page_teaser
-    - field.field.node.page.field_related_pages
+    - image.style.thumbnail
     - node.type.page
   module:
     - image
@@ -15,6 +16,8 @@ dependencies:
     - itk_instagram_hashtag
     - path
     - text
+_core:
+  default_config_hash: UZJz-gmXuPHLm561UZPCyj-pkCXDORsQyOUNMY3j6_w
 id: node.page.default
 targetEntityType: node
 bundle: page
@@ -45,8 +48,16 @@ content:
       preview_image_style: thumbnail
     third_party_settings:
       imce:
-        enabled: 1
+        enabled: true
     type: image_image
+  field_pages:
+    weight: 27
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_related_page_image:
     weight: 10
     settings:
@@ -54,7 +65,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings:
       imce:
-        enabled: 1
+        enabled: true
     type: image_image
   field_related_page_teaser:
     weight: 9
@@ -63,14 +74,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_related_pages:
-    weight: 11
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
   langcode:
     type: language_select
     weight: 1

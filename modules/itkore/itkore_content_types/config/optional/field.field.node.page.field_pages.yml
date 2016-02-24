@@ -2,19 +2,19 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_related_pages
+    - field.storage.node.field_pages
     - node.type.event
     - node.type.news
     - node.type.overview_page
     - node.type.page
-id: node.page.field_related_pages
-field_name: field_related_pages
+id: node.page.field_pages
+field_name: field_pages
 entity_type: node
 bundle: page
-label: 'Related Pages'
+label: 'Related pages'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
