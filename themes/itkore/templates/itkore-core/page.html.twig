@@ -66,19 +66,12 @@
 <header>
   {{ page.primary_menu }}
 </header>
-
-
-
-{# Main content. (Includes heading and breadcrumb and content region) #}
 <main>
   {{ page.content }}
 </main>
-
-{# Footer content holds footer region and a custom block. #}
 {% if page.footer %}
   <footer>
     {{ page.footer }}
   </footer>
 {% endif %}
-{# Tabs positioned fixed. #}
 {{ tabs }}
