@@ -3,8 +3,6 @@ type: theme
 description: 'The Itkore theme.'
 package: Itkore
 
-libraries:
-
 stylesheets-remove:
   - normalize.css
 
