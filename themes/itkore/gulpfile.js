@@ -26,7 +26,7 @@ browserSync.init({
 // We only want to process our own non-processed JavaScript files.
 var jsPath = ['./js/*.js', '!./js/*.min.*'];
 var sassPath = './sass/**/*.scss';
-var phpPath = './**/*.php'; //could also be twig files
+var twigPath = './templates/**/*.twig';
 var buildDir = './js';
 
 /**
@@ -63,7 +63,7 @@ gulp.task('sass', function () {
 gulp.task('watch', function() {
   gulp.watch(jsPath, ['jshint']);
   gulp.watch(sassPath, ['sass']);
-  gulp.watch(phpPath).on('change', browserSync.reload);
+  gulp.watch(twigPath).on('change', browserSync.reload);
   gulp.watch(jsPath).on('change',browserSync.reload);
 });
 
