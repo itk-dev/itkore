@@ -10,7 +10,7 @@
  * Implements hook_install().
  */
 function itkore_enable_install() {
-  // Update user/1 to use english language for administration pages and Drush.
+  // Update user/1 to use english language for administration pages.
   db_update('users_field_data')
     ->fields(array(
       'preferred_admin_langcode' => 'en',
