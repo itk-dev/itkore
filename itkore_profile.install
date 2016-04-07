@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Implements hook_install().
+ *
+ * Performs actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function itkore_profile_install() {
+  // Disable the user pictures on nodes.
+  \Drupal::configFactory()->getEditable('system.theme.global')->set('features.node_user_picture', FALSE)->save(TRUE);
+
+  // Allow visitor account creation, but with administrative approval.
+  \Drupal::configFactory()->getEditable('user.settings')->set('register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)->save(TRUE);
+
+  // Set toolbar visibility.
+  \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore', 'itkore')->save(TRUE);
+}
