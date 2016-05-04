@@ -24,19 +24,26 @@
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-{{ menus.menu_links(items, {'class' : 'nav--link'}, 0) }}
 
-{% macro menu_links(items, attributes, menu_level) %}
+{{ menus.menu_links(items, {'class' : 'nav--link'}, 0, hamburger_menu) }}
+{% macro menu_links(items, attributes, menu_level, hamburger_menu) %}
   {% import _self as menus %}
-  {% if items %}
-    {% for item in items %}
-      {% set classes = [
-      item.in_active_trail ? 'is-active',
-      ] %}
-      {{ link(item.title, item.url, attributes) }}
-      {% if item.below %}
-        {{ menus.menu_links(item.below, {'class' : 'nav--link is-sub'}, menu_level + 1) }}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+    {% if items %}
+      {% for item in items %}
+        {% set classes = [item.in_active_trail ? 'is-active'] %}
+        {% if hamburger_menu == true %}
+          {% if menu_level == 0 %}
+            <div class="hamburger-menu--group {% if item.in_active_trail %} is-active {% endif %}">
+          {% endif %}
+            {{ link(item.title, item.url, attributes) }}
+            {{ menus.menu_links(item.below, {'class' : 'hamburger-menu--link is-sub'}, menu_level + 1, hamburger_menu) }}
+          {% if menu_level == 0 %}
+            </div>
+          {% endif %}
+        {% else %}
+          {{ link(item.title, item.url, attributes) }}
+          {{ menus.menu_links(item.below, {'class' : 'nav--link is-sub'}, menu_level + 1, hamburger_menu) }}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
 {% endmacro %}

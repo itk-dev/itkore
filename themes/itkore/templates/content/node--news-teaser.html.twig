@@ -68,12 +68,14 @@
  */
 #}
 
-<article class="itk-boxlist-news--item">
+<article class="itk-boxlist--item">
   <header>
-    <h2 class="itk-boxlist-news--header"><a href="{{ url }}">{{ label }}</a></h2>
-    <p class="itk-boxlist--meta">{{ date }}</p>
+    <h2 class="itk-boxlist--header"><a href="{{ url }}">{{ label }}</a></h2>
+    <div class="itk-boxlist--meta">{{ date }}</div>
     {{ content.field_related_page_teaser }}
     <a href="{{ url }}">{% trans %}Read news{% endtrans %}</a>
   </header>
-  {{ content.field_main_image }}
+  <figure><a href="/5pack/nyheder/nyhed/">
+      {{ content.field_related_page_image }}
+    </a></figure>
 </article>

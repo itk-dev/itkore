@@ -63,7 +63,7 @@
  */
 #}
 <div class="overlay js-menu-toggle"></div>
-<a href="/" class="logo js-logo" title="ITKore"><img src="/themes/custom/itkore/logo.svg"></a>
+<a href="/" class="logo js-logo" title="ITKore"><img src="{{ base_path ~ directory }}/logo-alt.svg"></a>
 <nav class="nav js-nav">
   <div class="nav--links">
     {{ page.nav_menu }}
@@ -104,8 +104,10 @@
   </div>
 </div>
 
-<main role="main">
-  {{ page.content }}
+<main role="main" class="content">
+  <div class="content--inner">
+    {{ page.content }}
+  </div>
 </main>
 
 {% include '@itkore/layout/_footer.html.twig' %}

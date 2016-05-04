@@ -5,6 +5,7 @@ package: Itkore
 
 libraries:
   - itkore/global-styling
+  - itkore/global-js
 
 stylesheets-remove:
   - normalize.css

@@ -1,0 +1,5 @@
+name: ITKore views
+description: 'Adds default views setup to ITKore'
+type: module
+core: 8.x
+package: ITKore

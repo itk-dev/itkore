@@ -1,0 +1,28 @@
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.itk_youtube.field_title
+    - field.field.paragraph.itk_youtube.field_youtube
+    - paragraphs.paragraphs_type.itk_youtube
+  module:
+    - youtube
+id: paragraph.itk_youtube.default
+targetEntityType: paragraph
+bundle: itk_youtube
+mode: default
+content:
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_youtube:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: youtube
+hidden:
+  created: true
+  uid: true

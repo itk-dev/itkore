@@ -1,0 +1,20 @@
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.itk_title_paragraph.field_title
+    - paragraphs.paragraphs_type.itk_title_paragraph
+id: paragraph.itk_title_paragraph.default
+targetEntityType: paragraph
+bundle: itk_title_paragraph
+mode: default
+content:
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  uid: true

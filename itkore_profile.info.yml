@@ -52,10 +52,12 @@ dependencies:
   - itkore_text_filters
   - itkore_user_roles
   - itkore_user_theme
+  - itkore_views
 
 #ITK modules
   - itk_cookie_message
   - itk_instagram_hashtag
+  - itk_paragraph
 
 themes:
   - itkore
