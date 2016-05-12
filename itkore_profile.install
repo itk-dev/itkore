@@ -16,4 +16,15 @@ function itkore_profile_install() {
 
   // Set toolbar visibility.
   \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore', 'itkore')->save(TRUE);
+
+  // Set frontpage.
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/front')->save(TRUE);
+  \Drupal::getContainer()->get('itkore_base.itkore_config')->setMultiple(array(
+      'itkore_frontpage.frontpage_title' => 'ITKore default',
+      'itkore_frontpage.frontpage_lead' => 'This is the default display of ITKore',
+      'itkore_frontpage.frontpage_sub' => 'No frontpage image has been set yet, so a random one is displayed',
+      'itkore_frontpage.frontpage_button' => 'Find us @ Dokk1',
+      'itkore_frontpage.frontpage_link' => 'https://www.aakb.dk/bibliotek/itk',
+    )
+  );
 }

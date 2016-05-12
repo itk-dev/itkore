@@ -8,6 +8,8 @@ dependencies:
   module:
     - node
     - user
+_core:
+  default_config_hash: Bb31d14MUWTpEkxz4Glwvztpd3tu_w32eb3nLuBTPlQ
 id: itkore_frontpage
 label: 'ITKore Frontpage'
 module: node
@@ -157,26 +159,10 @@ display:
           entity_field: status
           plugin_id: boolean
       pager:
-        type: full
+        type: some
         options:
-          items_per_page: 10
+          items_per_page: 6
           offset: 0
-          id: 0
-          total_pages: 0
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          tags:
-            previous: '‹ previous'
-            next: 'next ›'
-            first: '« first'
-            last: 'last »'
-          quantity: 9
       query:
         type: views_query
         options:
@@ -219,7 +205,7 @@ display:
       fields: {  }
       arguments: {  }
       display_extenders: {  }
-      css_class: itk-boxlist-column
+      css_class: itk-boxlist-gallery
     display_plugin: default
     display_title: Master
     id: default
@@ -227,7 +213,6 @@ display:
     cache_metadata:
       contexts:
         - 'languages:language_interface'
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       cacheable: false
@@ -244,7 +229,6 @@ display:
     cache_metadata:
       contexts:
         - 'languages:language_interface'
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       cacheable: false

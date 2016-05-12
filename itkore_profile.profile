@@ -23,4 +23,5 @@ function itkore_profile_form_install_configure_submit($form, FormStateInterface 
   \Drupal::service('module_installer')->install(['itkore_blocks']);
   \Drupal::service('module_installer')->install(['itkore_content_types']);
   \Drupal::service('module_installer')->install(['itk_paragraph']);
+  \Drupal::service('module_installer')->install(['itkore_views']);
 }

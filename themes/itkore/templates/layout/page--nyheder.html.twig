@@ -62,6 +62,7 @@
  * @ingroup themeable
  */
 #}
+
 <div class="overlay js-menu-toggle"></div>
 <a href="/" class="logo js-logo" title="ITKore"><img src="{{ base_path ~ directory }}/logo-alt.png"></a>
 <nav class="nav js-nav">
@@ -83,28 +84,10 @@
   </div>
 </nav>
 
-<div class="header" role="banner" id="home" style="background-image: url({{ front_image }})">
-  <div class="header--inner">
-    <h1 class="header--big">{{ front_title }}</h1>
-    {% if front_lead %}
-      <p class="header--lead">
-        {{ front_lead }}
-      </p>
-    {% endif %}
-    {% if front_sub %}
-      <p class="header--sub">
-        {{ front_sub }}
-      </p>
-    {% endif %}
-    {% if front_button_text and front_button_link %}
-      <div class="header--button-wrapper">
-        <a href="{{ front_button_link }}" class="header--button-link is-primary">{{ front_button_text }}</a>
-      </div>
-    {% endif %}
-  </div>
-</div>
-
 <main role="main" class="content">
+  <figure class="content--image-wrapper">
+    <img src="{{ front_image }}">
+  </figure>
   <div class="content--inner">
     {{ page.content }}
   </div>

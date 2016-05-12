@@ -1,6 +1,7 @@
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.news_teaser
     - field.storage.node.field_main_image
     - field.storage.node.field_related_page_teaser
     - image.style.news_teaser_image
@@ -9,6 +10,8 @@ dependencies:
     - image
     - node
     - user
+_core:
+  default_config_hash: qsGU2VnAo4T1mog5FA8HAwg99eEvDaaNzFaQaEisBSw
 id: itkore_frontpage_news
 label: 'ITKore Frontpage news'
 module: node
@@ -131,12 +134,10 @@ display:
           query_comment: ''
           query_tags: {  }
       row:
-        type: fields
+        type: 'entity:node'
         options:
-          default_field_elements: false
-          inline: {  }
-          separator: ''
-          hide_empty: false
+          relationship: none
+          view_mode: news_teaser
       sorts:
         created:
           id: created
@@ -592,7 +593,7 @@ display:
           plugin_id: custom
       arguments: {  }
       display_extenders: {  }
-      css_class: itk-boxlist-news
+      css_class: itk-boxlist
       use_more: true
       use_more_always: true
       use_more_text: 'All news'
@@ -650,7 +651,7 @@ display:
       use_more_always: true
       use_more_text: 'All news'
       pager:
-        type: mini
+        type: full
         options:
           items_per_page: 12
           offset: 0
@@ -659,6 +660,8 @@ display:
           tags:
             previous: ‹‹
             next: ››
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -667,6 +670,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 9
       header:
         area_text_custom:
           id: area_text_custom

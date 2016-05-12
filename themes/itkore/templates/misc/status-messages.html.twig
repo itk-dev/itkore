@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override for status messages.
+ * Default theme implementation for status messages.
  *
  * Displays status, error, and warning messages, grouped by type.
  *
@@ -20,39 +20,34 @@
  * - attributes: HTML attributes for the element, including:
  *   - class: HTML classes.
  *
- * @see template_preprocess_status_messages()
+ * @ingroup themeable
  */
 #}
-{{ attach_library('classy/messages') }}
-{% block messages %}
 {% for type, messages in message_list %}
-  {%
-    set classes = [
-      'messages',
-      'messages--' ~ type,
-    ]
-  %}
-  <div role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes.addClass(classes)|without('role', 'aria-label') }}>
+  <div role="contentinfo" aria-label="{{ status_headings[type] }}" class="itk-message">
     {% if type == 'error' %}
-      <div role="alert">
+      <div class="itk-message--inner is-error">
     {% endif %}
-      {% if status_headings[type] %}
-        <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
-      {% endif %}
-      {% if messages|length > 1 %}
-        <ul class="messages__list">
-          {% for message in messages %}
-            <li class="messages__item">{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        {{ messages|first }}
-      {% endif %}
-    {% if type == 'error' %}
+    {% if type == 'warning' %}
+      <div class="itk-message--inner is-error">
+    {% endif %}
+    {% if type == 'status' %}
+      <div class="itk-message--inner is-info">
+    {% endif %}
+    {% if status_headings[type] %}
+      <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
+    {% endif %}
+    {% if messages|length > 1 %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      {{ messages|first }}
+    {% endif %}
+    {% if type == 'error' or type == 'warning' or type == 'status' %}
       </div>
     {% endif %}
   </div>
-  {# Remove type specific classes. #}
-  {{ attributes.removeClass(classes) }}
 {% endfor %}
-{% endblock messages %}
