@@ -7,6 +7,10 @@
     "drupal/ctools": "~8",
     "drupal/pathauto": "~8",
     "drupal/field_group": "~8",
+    "drupal/youtube": "~8",
+    "drupal/entity_reference_revisions": "~8",
+    "drupal/paragraphs": "~8",
+    "drupal/adminimal_theme": "~8",
     "drupal/redirect": "dev-8.x-1.x"
   },
   "minimum-stability": "dev",

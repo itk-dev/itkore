@@ -18,6 +18,7 @@ dependencies:
   - field_ui
   - file
   - filter
+  - help
   - image
   - link
   - locale
@@ -44,6 +45,8 @@ dependencies:
   - redirect
   - token
   - toolbar_visibility
+  - paragraphs
+  - youtube
 
 #ITKore modules
   - itkore_base
@@ -57,8 +60,7 @@ dependencies:
 #ITK modules
   - itk_cookie_message
   - itk_instagram_hashtag
-  - itk_paragraph
 
 themes:
   - itkore
-  - seven
+  - adminimal_theme
