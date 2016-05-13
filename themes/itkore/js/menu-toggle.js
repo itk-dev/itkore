@@ -11,7 +11,7 @@
   var hamburger_menu = $('.hamburger-menu');
   var html = $('html');
   var body = $('body');
-  var overlay = $('.overlay');
+  var overlay = $('.hamburger-menu--overlay');
 
   $('.js-menu-toggle').click(function() {
     if(hamburger_button.hasClass("open")){
