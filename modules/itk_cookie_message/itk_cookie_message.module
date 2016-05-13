@@ -20,15 +20,15 @@ function itk_cookie_message_page_bottom(array &$page) {
   $settings = itk_cookie_message_get_settings();
 
   $template = <<<EOF
-<div id="js-cookieterms" class="cookieterms">
-  <div class="cookieterms--inner">
-    <span class="cookieterms--text">{{ text }}.
+<div id="js-cookieterms" class="cookies">
+  <div class="cookies--inner">
+    <span class="cookies--text">{{ text }}.
     {% if not (read_more_url is empty or read_more_text is empty) %}
     <a href="{{ read_more_url }}">{{ read_more_text }}</a>.
     {% endif %}
     </span>
-    <span class="cookieterms--agree">
-      <span id="js-cookieterms--agree" class="cookieterms--button">{{ accept_button_text }}</span>
+    <span class="cookies--agree">
+      <span id="js-cookieterms--agree" class="cookieterms--button button">{{ accept_button_text }}</span>
     </span>
   </div>
 </div>
