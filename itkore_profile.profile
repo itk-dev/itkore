@@ -12,7 +12,7 @@ function itkore_profile_form_install_configure_form_alter(&$form, FormStateInter
 }
 
 /**
- * Submission handler to sync the contact.form.feedback recipient.
+ * Submission handler to setup site.
  */
 function itkore_profile_form_install_configure_submit($form, FormStateInterface $form_state) {
 // Set config variables
