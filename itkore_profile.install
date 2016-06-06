@@ -34,8 +34,8 @@ function itkore_profile_install() {
   // Set login block on user reset page
   $loginBlockConfig = \Drupal::configFactory()->getEditable('block.block.adminimal_theme_login');
   $loginBlockConfig->set('visibility.request_path.id', 'request_path');
-  $loginBlockConfig->set('visibility.request_path.pages', '/user/reset/*');
+  $loginBlockConfig->set('visibility.request_path.pages', '/user/reset/*\r\n/user/register\r\n/user/password');
   $loginBlockConfig->set('visibility.request_path.negate', TRUE);
-  $loginBlockConfig->set('visibility.request_path.context_mapping', '');
+  $loginBlockConfig->set('visibility.request_path.context_mapping', []);
   $loginBlockConfig->save();
 }
