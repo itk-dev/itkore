@@ -58,7 +58,6 @@ To support the build som basic drupal contrib and custom ITK modules are added.
 * Ctools
 * Imce
 * Pathauto
-* Pathauto menu link parents hack
 * Redirect
 * Token
 * Paragraphs
