@@ -17,6 +17,9 @@ function itkore_profile_install() {
   // Set toolbar visibility.
   \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore', 'itkore')->save(TRUE);
 
+  // Set theme default logo to FALSE to force use of sitename.
+  \Drupal::configFactory()->getEditable('system.theme.global')->set('logo.use_default', FALSE)->save(TRUE);
+
   // Set frontpage.
   \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/front')->save(TRUE);
   \Drupal::getContainer()->get('itkore_base.itkore_config')->setMultiple(array(
@@ -27,4 +30,12 @@ function itkore_profile_install() {
       'itkore_frontpage.frontpage_link' => 'https://www.aakb.dk/bibliotek/itk',
     )
   );
+
+  // Set login block on user reset page
+  $loginBlockConfig = \Drupal::configFactory()->getEditable('block.block.adminimal_theme_login');
+  $loginBlockConfig->set('visibility.request_path.id', 'request_path');
+  $loginBlockConfig->set('visibility.request_path.pages', '/user/reset/*');
+  $loginBlockConfig->set('visibility.request_path.negate', TRUE);
+  $loginBlockConfig->set('visibility.request_path.context_mapping', '');
+  $loginBlockConfig->save();
 }
