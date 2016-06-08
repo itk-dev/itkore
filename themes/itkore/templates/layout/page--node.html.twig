@@ -62,6 +62,7 @@
  * @ingroup themeable
  */
 #}
+
 <header>
   <a href="/" class="logo js-logo" title="ITKore">
     {% if logo %}
@@ -89,15 +90,10 @@
     </nav>
   </div>
 </header>
-
+das
 
 <main role="main" class="content">
-  <figure class="content--image-wrapper">
-    <img src="{{ front_image }}">
-  </figure>
-  <div class="content--inner">
-    {{ page.content }}
-  </div>
+  {{ page.content }}
 </main>
 
 {% include '@itkore/layout/_footer.html.twig' %}

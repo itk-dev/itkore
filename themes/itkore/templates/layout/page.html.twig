@@ -62,7 +62,6 @@
  * @ingroup themeable
  */
 #}
-
 <header>
   <a href="/" class="logo js-logo" title="ITKore">
     {% if logo %}
@@ -93,12 +92,10 @@
 
 
 <main role="main" class="content">
-  <div class="content-inner">
+  <figure class="content--image-wrapper"><img src="/profiles/itkore_profile/examples/content-default.jpg"></figure>
+  <div class="content--inner">
     {{ page.content }}
   </div>
 </main>
 
 {% include '@itkore/layout/_footer.html.twig' %}
-
-{# Tabs positioned fixed. #}
-{{ tabs }}
