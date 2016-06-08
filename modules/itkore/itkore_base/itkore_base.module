@@ -39,7 +39,7 @@ function itkore_base_preprocess_page(&$variables) {
     $top_image_id = $config->get('itkore_frontpage.frontpage_image');
     $file = ($top_image_id) ? File::load($top_image_id) : FALSE;
 
-    $variables['front_image'] = ($file) ? $file->url() : 'https://unsplash.it/2000/1000/?random';
+    $variables['front_image'] = ($file) ? $file->url() : $file = '/' . drupal_get_path('module', 'itkore_base') . '/images/header-default.jpg';
     $variables['footer_text'] = check_markup($config->get('itkore_footer.footer_text'), 'filtered_html');
     $variables['footer_twitter'] = $config->get('itkore_footer.footer_twitter');
     $variables['footer_instagram'] = $config->get('itkore_footer.footer_instagram');
