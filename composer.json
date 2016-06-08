@@ -12,7 +12,7 @@
     "drupal/paragraphs": "~8",
     "drupal/adminimal_theme": "~8",
     "drupal/redirect": "dev-8.x-1.x",
-    "drupal/drush_language": "~8"
+    "drupal/drush_language": "dev-8.x-1.x"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -23,7 +23,7 @@
     },
     {
       "type": "git",
-      "url": "https://github.com/dawehner/drush_language.git"
+      "url": "https://github.com/dawehner/drush_language"
     }
   ]
 }
