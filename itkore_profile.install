@@ -24,7 +24,7 @@ function itkore_profile_install() {
   \Drupal::configFactory()->getEditable('system.theme.global')->set('logo.use_default', FALSE)->save(TRUE);
 
   // Set admin theme on node editing
-  \Drupal::configFactory()->getEditable('node.settings')->set('use_admin_theme', FALSE)->save(TRUE);
+  \Drupal::configFactory()->getEditable('node.settings')->set('use_admin_theme', TRUE)->save(TRUE);
 
   // Set site email.
   \Drupal::configFactory()->getEditable('system.site')->set('mail', 'itkdesign@mkb.aarhus.dk')->save(TRUE);
