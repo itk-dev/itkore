@@ -63,7 +63,11 @@
  */
 #}
 <header>
-  <a href="/" class="logo js-logo" title="ITKore"><img src="{{ base_path ~ directory }}/logo-alt.png"></a>
+  <a href="/" class="logo js-logo" title="ITKore">
+    {% if logo %}
+      <img src="{{ logo }}">
+    {% endif %}
+  </a>
   <nav class="nav js-nav">
     <div class="nav--links">
       {{ page.nav_menu }}
@@ -85,6 +89,7 @@
     </nav>
   </div>
 </header>
+
 
 <main role="main" class="content">
   <figure class="content--image-wrapper">
