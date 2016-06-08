@@ -11,7 +11,8 @@
     "drupal/entity_reference_revisions": "~8",
     "drupal/paragraphs": "~8",
     "drupal/adminimal_theme": "~8",
-    "drupal/redirect": "dev-8.x-1.x"
+    "drupal/redirect": "dev-8.x-1.x",
+    "drupal/drush_language": "~8"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -19,6 +20,10 @@
     {
       "type": "git",
       "url": "https://github.com/md-systems/redirect"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/dawehner/drush_language.git"
     }
   ]
 }

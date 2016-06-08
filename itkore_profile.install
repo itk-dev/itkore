@@ -1,5 +1,8 @@
 <?php
 
+use \Drupal\node\Entity\Node;
+use \Drupal\file\Entity\File;
+
 /**
  * Implements hook_install().
  *
@@ -20,6 +23,12 @@ function itkore_profile_install() {
   // Set theme default logo to FALSE to force use of sitename.
   \Drupal::configFactory()->getEditable('system.theme.global')->set('logo.use_default', FALSE)->save(TRUE);
 
+  // Set admin theme on node editing
+  \Drupal::configFactory()->getEditable('node.settings')->set('use_admin_theme', FALSE)->save(TRUE);
+
+  // Set site email.
+  \Drupal::configFactory()->getEditable('system.site')->set('mail', 'itkdesign@mkb.aarhus.dk')->save(TRUE);
+
   // Set frontpage.
   \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/front')->save(TRUE);
   \Drupal::getContainer()->get('itkore_base.itkore_config')->setMultiple(array(
@@ -28,6 +37,7 @@ function itkore_profile_install() {
       'itkore_frontpage.frontpage_sub' => 'Du kan læse mere om dine muligheder under menupunktet "Kom igang"',
       'itkore_frontpage.frontpage_button' => 'Kom igang',
       'itkore_frontpage.frontpage_link' => '/node',
+      'itkore_footer.footer_text' => 'Footeren kan redigeres  under ITKore indstillinger',
     )
   );
 
@@ -42,4 +52,170 @@ function itkore_profile_install() {
   $loginBlockConfig->set('visibility.request_path.negate', TRUE);
   $loginBlockConfig->set('visibility.request_path.context_mapping', []);
   $loginBlockConfig->save();
+}
+
+
+function itkore_profile_update_8001() {
+
+  // Create a get started node.
+
+  $content = '<p>Lorem ipsum</p><p>Dolore</p>';
+
+  $root = \Drupal::root();
+  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/default-content-image.jpg';
+  $uri  = file_unmanaged_copy($file, 'public://default-content-image.jpg', FILE_EXISTS_REPLACE);
+  $file = File::Create([
+    'uid' => 1,
+    'filename' => 'default-content-image.jpg',
+    'uri' => $uri,
+    'status' => 1,
+  ]);
+  $file->save();
+
+  $node = Node::create(array(
+    'title' => 'Kom igang',
+    'nid' => NULL,
+    'type' => 'page',
+    'uid' => 1,
+    'status' => TRUE,
+    'promote' => 1,
+    'created' => REQUEST_TIME,
+    'langcode' => 'da',
+    'body' => $content,
+    'field_main_image' => $file->id(),
+    'field_related_page_image' => $file->id(),
+  ));
+
+  $node->save();
+}
+
+function itkore_profile_update_8002() {
+
+  // Create a get started node.
+
+  $content = '<p>Lorem ipsum</p><p>Dolore</p>';
+
+  $root = \Drupal::root();
+  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/default-content-image.jpg';
+  $uri  = file_unmanaged_copy($file, 'public://default-content-image.jpg', FILE_EXISTS_REPLACE);
+  $file = File::Create([
+    'uri' => $uri,
+  ]);
+  $file->save();
+
+  $node = Node::create(array(
+    'title' => 'Kom igang',
+    'nid' => NULL,
+    'type' => 'page',
+    'uid' => 1,
+    'status' => TRUE,
+    'promote' => 1,
+    'created' => REQUEST_TIME,
+    'langcode' => 'da',
+    'body' => $content,
+    'field_main_image' => [
+      'target_id' => $file->id(),
+      'alt' => 'Kom igang',
+      'title' => 'Kom igang',
+      'image_style' => 'main_image',
+    ],
+    'field_related_page_image' => [
+      'target_id' => $file->id(),
+      'alt' => 'Kom igang',
+      'title' => 'Kom igang',
+      'image_style' => 'related_page_image',
+    ],
+  ));
+
+  $node->save();
+}
+
+
+function itkore_profile_update_8003() {
+
+  // Create a get started node.
+
+$content = '<p>Lorem ipsum</p><p>Dolore</p>';
+
+  $root = \Drupal::root();
+  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/default-content-image.jpg';
+  $uri  = file_unmanaged_copy($file, 'public://default-content-image.jpg', FILE_EXISTS_REPLACE);
+  $file = File::Create([
+    'uid' => 1,
+    'filename' => 'default-content-image.jpg',
+    'uri' => $uri,
+    'status' => 1,
+  ]);
+  $file->save();
+
+  $node = Node::create(array(
+    'title' => 'Kom igang',
+    'nid' => NULL,
+    'type' => 'page',
+    'uid' => 1,
+    'status' => TRUE,
+    'promote' => 1,
+    'created' => REQUEST_TIME,
+    'langcode' => 'da',
+    'body' => $content,
+    'field_main_image' => [
+      'target_id' => $file->id(),
+      'alt' => 'Kom igang',
+      'title' => 'Kom igang',
+      'image_style' => 'main_image',
+    ],
+    'field_related_page_image' => [
+      'target_id' => $file->id(),
+      'alt' => 'Kom igang',
+      'title' => 'Kom igang',
+      'image_style' => 'related_page_image',
+    ],
+  ));
+
+  $node->save();
+}
+
+
+function itkore_profile_update_8004() {
+
+  // Create a get started node.
+
+  $content = '<p>Lorem ipsum</p><p>Dolore</p>';
+
+  $root = \Drupal::root();
+  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/default-content-image.jpg';
+  $uri  = file_unmanaged_copy($file, 'public://default-content-image.jpg', FILE_EXISTS_REPLACE);
+  $file = File::Create([
+    'uid' => 1,
+    'filename' => 'default-content-image.jpg',
+    'uri' => $uri,
+    'status' => 1,
+  ]);
+  $file->save();
+
+  $node = Node::create(array(
+    'title' => 'Kom igang',
+    'nid' => NULL,
+    'type' => 'page',
+    'uid' => 1,
+    'status' => TRUE,
+    'promote' => 1,
+    'created' => REQUEST_TIME,
+    'langcode' => 'da',
+    'body' => $content,
+    'field_main_image' => [
+      'target_id' => $file->id(),
+      'alt' => 'Kom igang',
+      'title' => 'Kom igang',
+      'image_style' => 'main_image',
+    ],
+    'field_related_page_image' => [
+      'target_id' => $file->id(),
+      'alt' => 'Kom igang',
+      'title' => 'Kom igang',
+      'image_style' => 'related_page_image',
+    ],
+  ));
+
+  $node->save();
 }
