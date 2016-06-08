@@ -62,11 +62,11 @@ function itkore_profile_update_8001() {
   $content = '<p>Lorem ipsum</p><p>Dolore</p>';
 
   $root = \Drupal::root();
-  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/default-content-image.jpg';
-  $uri  = file_unmanaged_copy($file, 'public://default-content-image.jpg', FILE_EXISTS_REPLACE);
+  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/content-default.jpg';
+  $uri  = file_unmanaged_copy($file, 'public://content-default.jpg', FILE_EXISTS_REPLACE);
   $file = File::Create([
     'uid' => 1,
-    'filename' => 'default-content-image.jpg',
+    'filename' => 'content-default.jpg',
     'uri' => $uri,
     'status' => 1,
   ]);
@@ -96,8 +96,8 @@ function itkore_profile_update_8002() {
   $content = '<p>Lorem ipsum</p><p>Dolore</p>';
 
   $root = \Drupal::root();
-  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/default-content-image.jpg';
-  $uri  = file_unmanaged_copy($file, 'public://default-content-image.jpg', FILE_EXISTS_REPLACE);
+  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/content-default.jpg';
+  $uri  = file_unmanaged_copy($file, 'public://content-default.jpg', FILE_EXISTS_REPLACE);
   $file = File::Create([
     'uri' => $uri,
   ]);
@@ -138,11 +138,11 @@ function itkore_profile_update_8003() {
 $content = '<p>Lorem ipsum</p><p>Dolore</p>';
 
   $root = \Drupal::root();
-  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/default-content-image.jpg';
-  $uri  = file_unmanaged_copy($file, 'public://default-content-image.jpg', FILE_EXISTS_REPLACE);
+  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/content-default.jpg';
+  $uri  = file_unmanaged_copy($file, 'public://content-default.jpg', FILE_EXISTS_REPLACE);
   $file = File::Create([
     'uid' => 1,
-    'filename' => 'default-content-image.jpg',
+    'filename' => 'content-default.jpg',
     'uri' => $uri,
     'status' => 1,
   ]);
@@ -183,11 +183,11 @@ function itkore_profile_update_8004() {
   $content = '<p>Lorem ipsum</p><p>Dolore</p>';
 
   $root = \Drupal::root();
-  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/default-content-image.jpg';
-  $uri  = file_unmanaged_copy($file, 'public://default-content-image.jpg', FILE_EXISTS_REPLACE);
+  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/content-default.jpg';
+  $uri  = file_unmanaged_copy($file, 'public://content-default.jpg', FILE_EXISTS_REPLACE);
   $file = File::Create([
     'uid' => 1,
-    'filename' => 'default-content-image.jpg',
+    'filename' => 'content-default.jpg',
     'uri' => $uri,
     'status' => 1,
   ]);

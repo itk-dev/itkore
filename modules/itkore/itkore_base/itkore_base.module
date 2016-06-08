@@ -7,7 +7,6 @@ use Drupal\Core\Config;
 * Implements hook_preprocess_html().
 */
 function itkore_base_page_attachments(array &$page) {
-  //$variables['html']['#attached']['library'][] = 'itkore_base/itkore_base_styles';
   $page['#attached']['library'][] = 'itkore_base/itkore_base_styles';
 }
 
