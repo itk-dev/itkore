@@ -55,8 +55,72 @@ function itkore_profile_install() {
   $loginBlockConfig->save();
 
 
+  // Create nodes
+  $content = '<p>Lorem ipsum</p><p>Dolore</p>';
 
-  // -- Create nodes --
+  $root = \Drupal::root();
+  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/content-default.jpg';
+  $uri  = file_unmanaged_copy($file, 'public://content-default.jpg', FILE_EXISTS_REPLACE);
+  $file = File::Create([
+    'uid' => 1,
+    'filename' => 'content-default.jpg',
+    'uri' => $uri,
+    'status' => 1,
+  ]);
+  $file->save();
+
+  $node = Node::create(array(
+    'title' => 'Kom igang',
+    'nid' => NULL,
+    'type' => 'page',
+    'uid' => 1,
+    'status' => TRUE,
+    'promote' => 1,
+    'created' => REQUEST_TIME,
+    'body' => [
+      'value' => $content,
+      'format' => 'filtered_html'
+    ],
+    'field_main_image' => [
+      'target_id' => $file->id(),
+      'alt' => 'Kom igang',
+      'title' => 'Kom igang',
+      'image_style' => 'main_image',
+    ],
+    'field_related_page_image' => [
+      'target_id' => $file->id(),
+      'alt' => 'Kom igang',
+      'title' => 'Kom igang',
+      'image_style' => 'related_page_image',
+    ],
+  ));
+
+  $node->save();
+
+
+  // Setup menu items (https://wunderkraut.se/blogg/create-menu-items-programmatically-drupal-8)
+  // The name of our menu
+  $menu_name = 'main';
+
+  // Here we are creating the first level and pointing
+  // it to /first_level
+  $menu_item = MenuLinkContent::create([
+    'title' => t('Getting started'),
+    'link' => ['uri' => 'internal:/node/1'],
+    'menu_name' => $menu_name,
+    'expanded' => TRUE,
+  ]);
+
+  // Save the menu link.
+  $menu_item->save();
+
+}
+
+
+function itkore_profile_update_8001() {
+
+  // Create a get started node.
+
   $content = '<p>Lorem ipsum</p><p>Dolore</p>';
 
   $root = \Drupal::root();
@@ -98,21 +162,4 @@ function itkore_profile_install() {
   ));
 
   $node->save();
-
-
-  // Setup menu items (https://wunderkraut.se/blogg/create-menu-items-programmatically-drupal-8)
-  // The name of our menu.
-  $menu_name = 'main';
-
-  // Here we are creating an item and pointing it to node 1
-    $menu_item = MenuLinkContent::create([
-    'title' => t('Getting started'),
-    'link' => ['uri' => 'internal:/node/1'],
-    'menu_name' => $menu_name,
-    'expanded' => TRUE,
-  ]);
-
-  // Save the menu link.
-  $menu_item->save();
-
 }
