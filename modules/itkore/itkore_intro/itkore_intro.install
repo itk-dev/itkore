@@ -25,11 +25,11 @@ function itkore_intro_install() {
   ]);
   $file->save();
 
-  $file = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/icon-default.jpg';
-  $uri  = file_unmanaged_copy($file, 'public://icon-default.jpg', FILE_EXISTS_REPLACE);
+  $pencil_icon = $root . '/' . drupal_get_path('profile', 'itkore_profile') . '/examples/icon-default.png';
+  $uri  = file_unmanaged_copy($pencil_icon, 'public://icon-default.png', FILE_EXISTS_REPLACE);
   $pencil_icon = File::Create([
     'uid' => 1,
-    'filename' => 'icon-default.jpg',
+    'filename' => 'icon-default.png',
     'uri' => $uri,
     'status' => 1,
   ]);
