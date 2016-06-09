@@ -116,7 +116,7 @@ function itkore_intro_install() {
   $menu_item_getting_started->save();
 
   $menu_item_create_page = MenuLinkContent::create([
-    'title' => t('Opret side'),
+    'title' => t('Create page'),
     'link' => ['uri' => 'internal:/node/2'],
     'parent' => $menu_item_getting_started->getPluginId(),
     'expanded' => TRUE,

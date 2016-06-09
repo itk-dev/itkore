@@ -1,9 +1,5 @@
 <?php
 
-use \Drupal\node\Entity\Node;
-use \Drupal\file\Entity\File;
-use Drupal\menu_link_content\Entity\MenuLinkContent;
-
 /**
  * Implements hook_install().
  *
@@ -37,7 +33,7 @@ function itkore_profile_install() {
       'itkore_frontpage.frontpage_lead' => 'Kom igang med at lægge indhold ind ved at følge vores vejledning',
       'itkore_frontpage.frontpage_sub' => 'Fortsæt ved at klikke på linket nedenunder',
       'itkore_frontpage.frontpage_button' => 'Kom igang',
-      'itkore_frontpage.frontpage_link' => '/node',
+      'itkore_frontpage.frontpage_link' => '/kom-igang',
       'itkore_footer.footer_text' => 'Footeren kan redigeres  under ITKore indstillinger',
     )
   );
@@ -53,4 +49,7 @@ function itkore_profile_install() {
   $loginBlockConfig->set('visibility.request_path.negate', TRUE);
   $loginBlockConfig->set('visibility.request_path.context_mapping', []);
   $loginBlockConfig->save();
+
+  // Set date format.
+  \Drupal::configFactory()->getEditable('core.date_format.medium')->set('pattern', 'j. F Y')->save(TRUE);
 }
