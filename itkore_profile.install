@@ -2,6 +2,7 @@
 
 use \Drupal\node\Entity\Node;
 use \Drupal\file\Entity\File;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
 
 /**
  * Implements hook_install().
@@ -52,13 +53,10 @@ function itkore_profile_install() {
   $loginBlockConfig->set('visibility.request_path.negate', TRUE);
   $loginBlockConfig->set('visibility.request_path.context_mapping', []);
   $loginBlockConfig->save();
-}
 
 
-function itkore_profile_update_8001() {
 
-  // Create a get started node.
-
+  // -- Create nodes --
   $content = '<p>Lorem ipsum</p><p>Dolore</p>';
 
   $root = \Drupal::root();
@@ -81,7 +79,10 @@ function itkore_profile_update_8001() {
     'promote' => 1,
     'created' => REQUEST_TIME,
     'langcode' => 'da',
-    'body' => $content,
+    'body' => [
+      'value' => $content,
+      'format' => 'filtered_html'
+    ],
     'field_main_image' => [
       'target_id' => $file->id(),
       'alt' => 'Kom igang',
@@ -97,4 +98,21 @@ function itkore_profile_update_8001() {
   ));
 
   $node->save();
+
+
+  // Setup menu items (https://wunderkraut.se/blogg/create-menu-items-programmatically-drupal-8)
+  // The name of our menu.
+  $menu_name = 'main';
+
+  // Here we are creating an item and pointing it to node 1
+    $menu_item = MenuLinkContent::create([
+    'title' => t('Getting started'),
+    'link' => ['uri' => 'internal:/node/1'],
+    'menu_name' => $menu_name,
+    'expanded' => TRUE,
+  ]);
+
+  // Save the menu link.
+  $menu_item->save();
+
 }

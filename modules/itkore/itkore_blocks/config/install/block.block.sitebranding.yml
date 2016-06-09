@@ -4,10 +4,12 @@ dependencies:
     - system
   theme:
     - itkore
+_core:
+  default_config_hash: SkjH6vFyt28foFgCV-232debx06NeuePyLqeEVawowM
 id: sitebranding
 theme: itkore
 region: nav_menu
-weight: null
+weight: -3
 provider: null
 plugin: system_branding_block
 settings:

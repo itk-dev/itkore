@@ -4,10 +4,12 @@ dependencies:
   config:
     - field.field.node.overview_page.body
     - field.field.node.overview_page.field_instagram
+    - field.field.node.overview_page.field_lead
     - field.field.node.overview_page.field_main_image
     - field.field.node.overview_page.field_pages
     - field.field.node.overview_page.field_related_page_image
     - field.field.node.overview_page.field_related_page_teaser
+    - image.style.thumbnail
     - node.type.overview_page
   module:
     - image
@@ -15,6 +17,8 @@ dependencies:
     - itk_instagram_hashtag
     - path
     - text
+_core:
+  default_config_hash: SWRpNgEMSmbuztLDC3j3W2hsagYlqhKmUFUoc8ACtEE
 id: node.overview_page.default
 targetEntityType: node
 bundle: overview_page
@@ -22,7 +26,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 7
+    weight: 8
     settings:
       rows: 9
       summary_rows: 3
@@ -30,25 +34,32 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
   field_instagram:
-    weight: 26
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: field_instagram_hashtag_default_widget
+  field_lead:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_main_image:
-    weight: 8
+    weight: 9
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings:
       imce:
-        enabled: 1
+        enabled: true
     type: image_image
   field_pages:
-    weight: 11
+    weight: 12
     settings:
       match_operator: CONTAINS
       size: 60
@@ -56,16 +67,16 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_related_page_image:
-    weight: 10
+    weight: 11
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings:
       imce:
-        enabled: 1
+        enabled: true
     type: image_image
   field_related_page_teaser:
-    weight: 9
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -73,25 +84,25 @@ content:
     type: string_textfield
   langcode:
     type: language_select
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 5
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 6
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -102,7 +113,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60

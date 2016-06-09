@@ -4,16 +4,20 @@ dependencies:
   config:
     - field.field.node.overview_page.body
     - field.field.node.overview_page.field_instagram
+    - field.field.node.overview_page.field_lead
     - field.field.node.overview_page.field_main_image
     - field.field.node.overview_page.field_pages
     - field.field.node.overview_page.field_related_page_image
     - field.field.node.overview_page.field_related_page_teaser
+    - image.style.main_image
     - node.type.overview_page
   module:
     - image
     - itk_instagram_hashtag
     - text
     - user
+_core:
+  default_config_hash: YnatIuEIjakAHQhfMljn1KNggIKZhLeruGLZqfMijPE
 id: node.overview_page.default
 targetEntityType: node
 bundle: overview_page
@@ -22,15 +26,22 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
   field_instagram:
     type: field_instagram_hashtag_default_formatter
-    weight: 3
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
+  field_lead:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   field_main_image:
     weight: 0
     label: hidden
@@ -40,7 +51,7 @@ content:
     third_party_settings: {  }
     type: image
   field_pages:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       view_mode: teaser

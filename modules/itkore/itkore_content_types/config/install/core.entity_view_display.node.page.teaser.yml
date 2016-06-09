@@ -5,6 +5,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.body
     - field.field.node.page.field_instagram
+    - field.field.node.page.field_lead
     - field.field.node.page.field_main_image
     - field.field.node.page.field_pages
     - field.field.node.page.field_related_page_image
@@ -15,7 +16,7 @@ dependencies:
     - image
     - user
 _core:
-  default_config_hash: ta0aMnYwpu-HCPNKrKh05s7t0efFgwKHSAXCBE1VAP0
+  default_config_hash: lzKxzgBjfvXxDxy-cWmKRCDp0Ke_pmhzvZJBfgIKYc8
 id: node.page.teaser
 targetEntityType: node
 bundle: page
@@ -39,6 +40,7 @@ content:
 hidden:
   body: true
   field_instagram: true
+  field_lead: true
   field_main_image: true
   field_pages: true
   langcode: true

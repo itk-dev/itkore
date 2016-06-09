@@ -6,16 +6,20 @@ dependencies:
     - field.field.node.event.body
     - field.field.node.event.field_endtime
     - field.field.node.event.field_instagram
+    - field.field.node.event.field_lead
     - field.field.node.event.field_location
     - field.field.node.event.field_main_image
     - field.field.node.event.field_pages
     - field.field.node.event.field_related_page_image
     - field.field.node.event.field_related_page_teaser
     - field.field.node.event.field_starttime
+    - image.style.related_page_image
     - node.type.event
   module:
     - image
     - user
+_core:
+  default_config_hash: FBSgoBNg-yV-jwBkVrvGmaHu1Jmqzug-6jLxBPo-vuI
 id: node.event.teaser
 targetEntityType: node
 bundle: event
@@ -40,6 +44,7 @@ hidden:
   body: true
   field_endtime: true
   field_instagram: true
+  field_lead: true
   field_location: true
   field_main_image: true
   field_pages: true

@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.node.page.body
     - field.field.node.page.field_instagram
+    - field.field.node.page.field_lead
     - field.field.node.page.field_main_image
     - field.field.node.page.field_pages
     - field.field.node.page.field_related_page_image
@@ -16,7 +17,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: hJF57Qn7dzO79CuGikIspUJH5CaypzllzaKqkD8KDpM
+  default_config_hash: NI92F9l9twIrVhtplHWHx6L1mXFZU9taPzjSsi4yNtg
 id: node.page.default
 targetEntityType: node
 bundle: page
@@ -25,7 +26,7 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
   field_instagram:
@@ -34,6 +35,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: field_instagram_hashtag_default_formatter
+  field_lead:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   field_main_image:
     weight: 0
     label: hidden

@@ -5,14 +5,18 @@ dependencies:
     - core.entity_view_mode.node.related_pages
     - field.field.node.overview_page.body
     - field.field.node.overview_page.field_instagram
+    - field.field.node.overview_page.field_lead
     - field.field.node.overview_page.field_main_image
     - field.field.node.overview_page.field_pages
     - field.field.node.overview_page.field_related_page_image
     - field.field.node.overview_page.field_related_page_teaser
+    - image.style.related_page_image
     - node.type.overview_page
   module:
     - image
     - user
+_core:
+  default_config_hash: TnVcVeYgOOlDp3XqPa0_4AWqHkP9wavvbluXTN4dZK4
 id: node.overview_page.related_pages
 targetEntityType: node
 bundle: overview_page
@@ -36,6 +40,7 @@ content:
 hidden:
   body: true
   field_instagram: true
+  field_lead: true
   field_main_image: true
   field_pages: true
   langcode: true

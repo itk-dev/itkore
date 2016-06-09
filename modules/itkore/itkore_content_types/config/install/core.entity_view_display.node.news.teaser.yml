@@ -5,14 +5,18 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.news.body
     - field.field.node.news.field_instagram
+    - field.field.node.news.field_lead
     - field.field.node.news.field_main_image
     - field.field.node.news.field_pages
     - field.field.node.news.field_related_page_image
     - field.field.node.news.field_related_page_teaser
+    - image.style.related_page_image
     - node.type.news
   module:
     - image
     - user
+_core:
+  default_config_hash: J39y_GSun2G4z02c4o-2ukdnHqOWa4cXZl42emkcRco
 id: node.news.teaser
 targetEntityType: node
 bundle: news
@@ -36,6 +40,7 @@ content:
 hidden:
   body: true
   field_instagram: true
+  field_lead: true
   field_main_image: true
   field_pages: true
   langcode: true
