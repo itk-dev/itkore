@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.event.field_location
     - field.field.node.event.field_main_image
     - field.field.node.event.field_pages
+    - field.field.node.event.field_paragraphs
     - field.field.node.event.field_related_page_image
     - field.field.node.event.field_related_page_teaser
     - field.field.node.event.field_starttime
@@ -14,12 +15,42 @@ dependencies:
     - node.type.event
   module:
     - datetime
+    - field_group
     - image
     - imce
+    - paragraphs
     - path
     - text
+third_party_settings:
+  field_group:
+    group_teaser:
+      children:
+        - field_related_page_teaser
+        - field_related_page_image
+      parent_name: ''
+      weight: 8
+      label: 'Teaser display'
+      format_type: details
+      format_settings:
+        open: false
+        required_fields: true
+        classes: ''
+        id: ''
+    group_flexible_content:
+      children:
+        - field_paragraphs
+      parent_name: ''
+      weight: 9
+      label: 'Flexible content'
+      format_type: details
+      format_settings:
+        label: 'Flexible content'
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
 _core:
-  default_config_hash: DYvyQnnuhx4PKRMgUlKcnzfvJ8dxSOVL26Nf_n_DN6M
+  default_config_hash: AermzaI2JSan4g-N902UZnv6maUGaihlqInwVFO4eFQ
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -27,7 +58,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 10
+    weight: 3
     settings:
       rows: 9
       summary_rows: 3
@@ -35,11 +66,11 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 4
+    weight: 13
     settings: {  }
     third_party_settings: {  }
   field_endtime:
-    weight: 8
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -51,7 +82,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_location:
-    weight: 9
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -59,7 +90,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_main_image:
-    weight: 11
+    weight: 2
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -68,15 +99,25 @@ content:
         enabled: true
     type: image_image
   field_pages:
-    weight: 14
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_paragraphs:
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
   field_related_page_image:
-    weight: 13
+    weight: 11
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -85,38 +126,38 @@ content:
         enabled: true
     type: image_image
   field_related_page_teaser:
-    weight: 12
+    weight: 10
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_starttime:
-    weight: 7
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
   langcode:
     type: language_select
-    weight: 2
+    weight: 14
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 16
+    weight: 15
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 10
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 11
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -127,7 +168,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 12
     settings:
       match_operator: CONTAINS
       size: 60

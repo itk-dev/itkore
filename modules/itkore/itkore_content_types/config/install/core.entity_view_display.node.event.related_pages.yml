@@ -1,5 +1,3 @@
-uuid: 17418751-6cad-4c10-aa5e-6585c498fae3
-langcode: da
 status: true
 dependencies:
   config:
@@ -10,6 +8,7 @@ dependencies:
     - field.field.node.event.field_location
     - field.field.node.event.field_main_image
     - field.field.node.event.field_pages
+    - field.field.node.event.field_paragraphs
     - field.field.node.event.field_related_page_image
     - field.field.node.event.field_related_page_teaser
     - field.field.node.event.field_starttime
@@ -19,7 +18,7 @@ dependencies:
     - image
     - user
 _core:
-  default_config_hash: J-oXUwOLcQiJxfdnvxKtwLGn09q6jMuULKVOXv0zy5c
+  default_config_hash: qxvBHTq4rmcL8GDxb_kH4rAVZFmUeVSiilZ7faBZVJw
 id: node.event.related_pages
 targetEntityType: node
 bundle: event
@@ -47,6 +46,7 @@ hidden:
   field_location: true
   field_main_image: true
   field_pages: true
+  field_paragraphs: true
   field_starttime: true
   langcode: true
   links: true

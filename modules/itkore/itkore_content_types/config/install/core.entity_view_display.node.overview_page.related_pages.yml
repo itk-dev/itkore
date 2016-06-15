@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.overview_page.field_lead
     - field.field.node.overview_page.field_main_image
     - field.field.node.overview_page.field_pages
+    - field.field.node.overview_page.field_paragraphs
     - field.field.node.overview_page.field_related_page_image
     - field.field.node.overview_page.field_related_page_teaser
     - image.style.related_page_image
@@ -14,7 +15,7 @@ dependencies:
     - image
     - user
 _core:
-  default_config_hash: cY5bhEAkG6T5f6XJd5PNaddVmRdw_2Lo4uBrsi5yRbY
+  default_config_hash: ER7mWJcVyM-FhEdgL6vFWaiTo6DY-D4Ue2aSsTMj98Q
 id: node.overview_page.related_pages
 targetEntityType: node
 bundle: overview_page
@@ -40,5 +41,6 @@ hidden:
   field_lead: true
   field_main_image: true
   field_pages: true
+  field_paragraphs: true
   langcode: true
   links: true

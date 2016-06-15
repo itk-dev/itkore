@@ -5,16 +5,18 @@ dependencies:
     - field.field.node.news.field_lead
     - field.field.node.news.field_main_image
     - field.field.node.news.field_pages
+    - field.field.node.news.field_paragraphs
     - field.field.node.news.field_related_page_image
     - field.field.node.news.field_related_page_teaser
     - image.style.main_image
     - node.type.news
   module:
+    - entity_reference_revisions
     - image
     - text
     - user
 _core:
-  default_config_hash: CqUVsh9QhiYhDKRunMbXIqxf8ZOOFyvSALeRCCZ9mgk
+  default_config_hash: Q53lcBYIEu-HQR5mlU7gwuXNzlVn-odSBz1GXJNm1RM
 id: node.news.default
 targetEntityType: node
 bundle: news
@@ -49,6 +51,14 @@ content:
       view_mode: teaser
       link: false
     third_party_settings: {  }
+  field_paragraphs:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
 hidden:
   field_related_page_image: true
   field_related_page_teaser: true

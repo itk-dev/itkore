@@ -5,16 +5,18 @@ dependencies:
     - field.field.node.page.field_lead
     - field.field.node.page.field_main_image
     - field.field.node.page.field_pages
+    - field.field.node.page.field_paragraphs
     - field.field.node.page.field_related_page_image
     - field.field.node.page.field_related_page_teaser
     - image.style.main_image
     - node.type.page
   module:
+    - entity_reference_revisions
     - image
     - text
     - user
 _core:
-  default_config_hash: n9xKXqaBYL81ywTjdSIGtxzjZOjjQ1mCfWXie9ZAQBs
+  default_config_hash: 6Mfdu_fwSr37D9RDjT6WKiUNGaz_hODGWjNHYPcZLrc
 id: node.page.default
 targetEntityType: node
 bundle: page
@@ -49,6 +51,14 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
+  field_paragraphs:
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
 hidden:
   field_related_page_image: true
   field_related_page_teaser: true

@@ -5,17 +5,47 @@ dependencies:
     - field.field.node.news.field_lead
     - field.field.node.news.field_main_image
     - field.field.node.news.field_pages
+    - field.field.node.news.field_paragraphs
     - field.field.node.news.field_related_page_image
     - field.field.node.news.field_related_page_teaser
     - image.style.thumbnail
     - node.type.news
   module:
+    - field_group
     - image
     - imce
+    - paragraphs
     - path
     - text
+third_party_settings:
+  field_group:
+    group_flexible_content:
+      children:
+        - field_paragraphs
+      parent_name: ''
+      weight: 6
+      label: 'Fleksibelt indhold'
+      format_type: details
+      format_settings:
+        open: false
+        required_fields: true
+        classes: ''
+        id: ''
+    group_teaser:
+      children:
+        - field_related_page_teaser
+        - field_related_page_image
+      parent_name: ''
+      weight: 5
+      label: 'Teaser display'
+      format_type: details
+      format_settings:
+        open: false
+        required_fields: true
+        classes: ''
+        id: ''
 _core:
-  default_config_hash: b_aK5tNrX9wV1Zvl-oFr5Tj2ILG4z9Vu6dT5Q4vjboE
+  default_config_hash: Mvedpg1JORgRsX50Mb-hijaFLPpCuC4mqkzgRCpFHLE
 id: node.news.default
 targetEntityType: node
 bundle: news
@@ -23,7 +53,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 8
+    weight: 3
     settings:
       rows: 9
       summary_rows: 3
@@ -31,7 +61,7 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 4
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   field_lead:
@@ -42,7 +72,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_main_image:
-    weight: 9
+    weight: 2
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -51,15 +81,25 @@ content:
         enabled: true
     type: image_image
   field_pages:
-    weight: 12
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_paragraphs:
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
   field_related_page_image:
-    weight: 11
+    weight: 7
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -68,7 +108,7 @@ content:
         enabled: true
     type: image_image
   field_related_page_teaser:
-    weight: 10
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -76,25 +116,25 @@ content:
     type: string_textfield
   langcode:
     type: language_select
-    weight: 2
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
+    weight: 12
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 7
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 8
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -105,7 +145,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60

@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.event.field_location
     - field.field.node.event.field_main_image
     - field.field.node.event.field_pages
+    - field.field.node.event.field_paragraphs
     - field.field.node.event.field_related_page_image
     - field.field.node.event.field_related_page_teaser
     - field.field.node.event.field_starttime
@@ -17,7 +18,7 @@ dependencies:
     - image
     - user
 _core:
-  default_config_hash: _TzZi5Tz2XN2dj98QafcZGmFaJIIECdx1ioKDVoGO5Y
+  default_config_hash: ISUQnJSkaT-v7IcMI7Xpx1xszZs_DalGGQDCQL7nzYk
 id: node.event.teaser
 targetEntityType: node
 bundle: event
@@ -45,6 +46,7 @@ hidden:
   field_location: true
   field_main_image: true
   field_pages: true
+  field_paragraphs: true
   field_starttime: true
   langcode: true
   links: true

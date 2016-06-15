@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.news.field_lead
     - field.field.node.news.field_main_image
     - field.field.node.news.field_pages
+    - field.field.node.news.field_paragraphs
     - field.field.node.news.field_related_page_image
     - field.field.node.news.field_related_page_teaser
     - image.style.news_teaser_image
@@ -14,7 +15,7 @@ dependencies:
     - image
     - user
 _core:
-  default_config_hash: p0D04Dx0FFaBWNcIWizePq1jfhkCawq5J8Vw8CTPRWw
+  default_config_hash: VrPQTzhIJBHIj7n0JcTvveim4UNlCJjrXMjehf1bSZI
 id: node.news.news_teaser
 targetEntityType: node
 bundle: news
@@ -40,5 +41,6 @@ hidden:
   field_lead: true
   field_main_image: true
   field_pages: true
+  field_paragraphs: true
   langcode: true
   links: true
