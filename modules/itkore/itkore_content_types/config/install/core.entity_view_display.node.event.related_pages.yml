@@ -1,11 +1,11 @@
-langcode: en
+uuid: 17418751-6cad-4c10-aa5e-6585c498fae3
+langcode: da
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.related_pages
     - field.field.node.event.body
     - field.field.node.event.field_endtime
-    - field.field.node.event.field_instagram
     - field.field.node.event.field_lead
     - field.field.node.event.field_location
     - field.field.node.event.field_main_image
@@ -19,7 +19,7 @@ dependencies:
     - image
     - user
 _core:
-  default_config_hash: 9RJ_3gZRaEgo_8aivLKYThfDujOlvosfBMUzsvCuLOw
+  default_config_hash: J-oXUwOLcQiJxfdnvxKtwLGn09q6jMuULKVOXv0zy5c
 id: node.event.related_pages
 targetEntityType: node
 bundle: event
@@ -43,7 +43,6 @@ content:
 hidden:
   body: true
   field_endtime: true
-  field_instagram: true
   field_lead: true
   field_location: true
   field_main_image: true

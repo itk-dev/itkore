@@ -59,7 +59,6 @@ dependencies:
 
 #ITK modules
   - itk_cookie_message
-  - itk_instagram_hashtag
 
 themes:
   - itkore

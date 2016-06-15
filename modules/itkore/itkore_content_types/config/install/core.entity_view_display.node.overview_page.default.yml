@@ -1,9 +1,7 @@
-langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.overview_page.body
-    - field.field.node.overview_page.field_instagram
     - field.field.node.overview_page.field_lead
     - field.field.node.overview_page.field_main_image
     - field.field.node.overview_page.field_pages
@@ -13,11 +11,10 @@ dependencies:
     - node.type.overview_page
   module:
     - image
-    - itk_instagram_hashtag
     - text
     - user
 _core:
-  default_config_hash: YnatIuEIjakAHQhfMljn1KNggIKZhLeruGLZqfMijPE
+  default_config_hash: q95cUMRb7PTXk3IzUwT4QYYhIUFd2B32LCcktrAx_Xg
 id: node.overview_page.default
 targetEntityType: node
 bundle: overview_page
@@ -27,12 +24,6 @@ content:
     label: hidden
     type: text_default
     weight: 2
-    settings: {  }
-    third_party_settings: {  }
-  field_instagram:
-    type: field_instagram_hashtag_default_formatter
-    weight: 4
-    label: hidden
     settings: {  }
     third_party_settings: {  }
   field_lead:

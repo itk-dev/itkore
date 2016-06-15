@@ -1,9 +1,7 @@
-langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.news.body
-    - field.field.node.news.field_instagram
     - field.field.node.news.field_lead
     - field.field.node.news.field_main_image
     - field.field.node.news.field_pages
@@ -14,11 +12,10 @@ dependencies:
   module:
     - image
     - imce
-    - itk_instagram_hashtag
     - path
     - text
 _core:
-  default_config_hash: XEOC1h19z2pcNbcc7g62Oh4lQpmpKDzO83ikpLrmbZU
+  default_config_hash: b_aK5tNrX9wV1Zvl-oFr5Tj2ILG4z9Vu6dT5Q4vjboE
 id: node.news.default
 targetEntityType: node
 bundle: news
@@ -37,11 +34,6 @@ content:
     weight: 4
     settings: {  }
     third_party_settings: {  }
-  field_instagram:
-    weight: 13
-    settings: {  }
-    third_party_settings: {  }
-    type: field_instagram_hashtag_default_widget
   field_lead:
     weight: 1
     settings:

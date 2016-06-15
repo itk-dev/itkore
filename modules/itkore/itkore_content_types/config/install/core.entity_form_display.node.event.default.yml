@@ -1,10 +1,8 @@
-langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.event.body
     - field.field.node.event.field_endtime
-    - field.field.node.event.field_instagram
     - field.field.node.event.field_lead
     - field.field.node.event.field_location
     - field.field.node.event.field_main_image
@@ -18,11 +16,10 @@ dependencies:
     - datetime
     - image
     - imce
-    - itk_instagram_hashtag
     - path
     - text
 _core:
-  default_config_hash: _TmvxP1xMnvsspfpVPNHBOLM1bBn-d-YdTBhnsWMukI
+  default_config_hash: DYvyQnnuhx4PKRMgUlKcnzfvJ8dxSOVL26Nf_n_DN6M
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -46,11 +43,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
-  field_instagram:
-    weight: 15
-    settings: {  }
-    third_party_settings: {  }
-    type: field_instagram_hashtag_default_widget
   field_lead:
     weight: 1
     settings:

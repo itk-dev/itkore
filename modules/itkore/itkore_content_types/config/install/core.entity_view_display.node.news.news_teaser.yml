@@ -1,10 +1,8 @@
-langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.news_teaser
     - field.field.node.news.body
-    - field.field.node.news.field_instagram
     - field.field.node.news.field_lead
     - field.field.node.news.field_main_image
     - field.field.node.news.field_pages
@@ -16,7 +14,7 @@ dependencies:
     - image
     - user
 _core:
-  default_config_hash: FxCvWNj-GySIJB4aL7_1f38Ch1Zj9omIh6En7IkfVjs
+  default_config_hash: p0D04Dx0FFaBWNcIWizePq1jfhkCawq5J8Vw8CTPRWw
 id: node.news.news_teaser
 targetEntityType: node
 bundle: news
@@ -39,7 +37,6 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
-  field_instagram: true
   field_lead: true
   field_main_image: true
   field_pages: true

@@ -1,11 +1,9 @@
-langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.body
     - field.field.node.event.field_endtime
-    - field.field.node.event.field_instagram
     - field.field.node.event.field_lead
     - field.field.node.event.field_location
     - field.field.node.event.field_main_image
@@ -19,7 +17,7 @@ dependencies:
     - image
     - user
 _core:
-  default_config_hash: FBSgoBNg-yV-jwBkVrvGmaHu1Jmqzug-6jLxBPo-vuI
+  default_config_hash: _TzZi5Tz2XN2dj98QafcZGmFaJIIECdx1ioKDVoGO5Y
 id: node.event.teaser
 targetEntityType: node
 bundle: event
@@ -43,7 +41,6 @@ content:
 hidden:
   body: true
   field_endtime: true
-  field_instagram: true
   field_lead: true
   field_location: true
   field_main_image: true

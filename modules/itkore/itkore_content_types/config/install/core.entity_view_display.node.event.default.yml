@@ -1,10 +1,8 @@
-langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.event.body
     - field.field.node.event.field_endtime
-    - field.field.node.event.field_instagram
     - field.field.node.event.field_lead
     - field.field.node.event.field_location
     - field.field.node.event.field_main_image
@@ -17,11 +15,10 @@ dependencies:
   module:
     - datetime
     - image
-    - itk_instagram_hashtag
     - text
     - user
 _core:
-  default_config_hash: mgSmjK3UvUpmdaQRz_DEVVJPbX9-F-rlBJQHcGn-jP8
+  default_config_hash: cA3kNOoUtcmn-7oueOSOgmJ0WCuE0smxOG2GxVqYnaY
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -41,12 +38,6 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
-  field_instagram:
-    weight: 7
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: field_instagram_hashtag_default_formatter
   field_lead:
     weight: 1
     label: hidden
