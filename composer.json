@@ -11,6 +11,7 @@
     "drupal/entity_reference_revisions": "~8",
     "drupal/paragraphs": "~8",
     "drupal/adminimal_theme": "~8",
+    "drupal/metatag": "~8",
     "drupal/redirect": "dev-8.x-1.x",
     "drupal/drush_language": "dev-8.x-1.x"
   },

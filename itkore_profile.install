@@ -38,6 +38,11 @@ function itkore_profile_install() {
     )
   );
 
+  // Set metatag settings
+  \Drupal::configFactory()->getEditable('metatag.metatag_defaults.global')->set('tags.title', '[current-page:title]')->save(TRUE);
+  \Drupal::configFactory()->getEditable('metatag.metatag_defaults.node')->set('tags.title', '[node:title]')->save(TRUE);
+  \Drupal::configFactory()->getEditable('metatag.metatag_defaults.front')->set('tags.title', '[site:name]')->save(TRUE);
+
   // Set login block on user reset page
   $loginBlockConfig = \Drupal::configFactory()->getEditable('block.block.adminimal_theme_login');
   $loginBlockConfig->set('visibility.request_path.id', 'request_path');

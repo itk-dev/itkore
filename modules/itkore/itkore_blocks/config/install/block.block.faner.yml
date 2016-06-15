@@ -1,12 +1,13 @@
-langcode: en
 status: true
 dependencies:
+  module:
+    - node
   theme:
-    - seven
+    - itkore
 id: faner
-theme: seven
+theme: itkore
 region: content
-weight: -3
+weight: -5
 provider: null
 plugin: local_tasks_block
 settings:
@@ -16,4 +17,14 @@ settings:
   label_display: '0'
   primary: true
   secondary: true
-visibility: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      event: event
+      news: news
+      overview_page: overview_page
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

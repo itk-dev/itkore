@@ -1,4 +1,3 @@
-langcode: da
 status: true
 dependencies:
   theme:

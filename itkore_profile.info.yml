@@ -41,11 +41,12 @@ dependencies:
   - ctools
   - field_group
   - imce
+  - metatag
+  - paragraphs
   - pathauto
   - redirect
   - token
   - toolbar_visibility
-  - paragraphs
   - youtube
 
 #ITKore modules
