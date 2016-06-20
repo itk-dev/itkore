@@ -1,0 +1,40 @@
+{
+  "name": "itk/itkore",
+  "description": "ITKore install profile",
+  "require": {
+    "composer/installers": "~1.0",
+    "drupal/token": "~8",
+    "drupal/imce": "~8",
+    "drupal/ctools": "~8",
+    "drupal/pathauto": "~8",
+    "drupal/field_group": "~8",
+    "drupal/youtube": "~8",
+    "drupal/entity_reference_revisions": "~8",
+    "drupal/paragraphs": "~8",
+    "drupal/adminimal_theme": "~8",
+    "drupal/metatag": "~8",
+    "drupal/redirect": "dev-8.x-1.x",
+    "drupal/drush_language": "dev-8.x-1.x"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "installer-paths": {
+      "profiles/itkore_profile/modules/contrib/{$name}/": ["type:drupal-module"]
+    }
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/md-systems/redirect"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/dawehner/drush_language"
+    },
+    {
+      "type": "composer",
+      "url": "https://packagist.drupal-composer.org"
+    }
+  ]
+}
