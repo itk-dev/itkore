@@ -1,0 +1,39 @@
+machine:
+  php:
+    version: 5.6.17
+  node:
+    version: 4.2.6
+  environment:
+    # This is where we build our complete Drupal site
+    DRUPAL_SITE_PATH: /tmp/drupal
+
+dependencies:
+  post:
+    # Increase memory limit to 512M. This is required by ding2.
+    - echo "memory_limit = 512M" > ~/.phpenv/versions/$(phpenv global)/etc/conf.d/memory.ini
+    # Disable mail sending. Sendmail is not working on Circle.
+    - echo "sendmail_path = /bin/true" > ~/.phpenv/versions/$(phpenv global)/etc/conf.d/sendmail.ini
+    # Clean up existing global composer installation. It contains dependencies
+    # which do not match the PHP version we use. This prevents installation of
+    # other packages.
+    - rm -rf ~/.composer/vendor
+
+test:
+  override:
+    - composer install
+    # Install theme dependencies
+    #- (cd themes/ddbasic && npm install)
+    # Process theme files.
+    # If there are any changes then fail the build. The result of processing
+    # should be committed along with the source changes.
+    #- (cd themes/ddbasic && node_modules/.bin/gulp uglify sass)
+    #- git diff --exit-code
+
+  post:
+    # Clean up after site install.
+    # sudo is required here. The files are not writeable.
+    #- sudo rm -rf $DRUPAL_SITE_PATH/sites/default/settings.php $DRUPAL_SITE_PATH/sites/default/files
+    # Remove node_modules folder. This is not needed in the final artifact.
+    #- rm -rf $DRUPAL_SITE_PATH/profiles/ding2/themes/ddbasic/node_modules
+    # Wrap the site into an archieve and expose it as an artifact.
+    #- tar -zcvf $CIRCLE_ARTIFACTS/ding2-$CIRCLE_SHA1.tar.gz -C $DRUPAL_SITE_PATH .
