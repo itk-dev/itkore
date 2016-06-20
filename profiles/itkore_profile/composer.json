@@ -14,7 +14,8 @@
     "drupal/adminimal_theme": "~8",
     "drupal/metatag": "~8",
     "drupal/redirect": "dev-8.x-1.x",
-    "drupal/drush_language": "dev-8.x-1.x"
+    "drupal/drush_language": "dev-8.x-1.x",
+    "drupal/toolbar_visibility": "dev-8.x-1.x"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -24,6 +25,19 @@
     }
   },
   "repositories": [
+  {
+    "type": "package",
+    "package": {
+        "name": "drupal/toolbar_visibility",
+        "type": "drupal-module",
+        "version": "dev-8.x-1.x",
+        "source": {
+          "url": "https://git.drupal.org/project/toolbar_visibility.git",
+          "type": "git",
+          "reference": "8.x-1.x"
+        }
+      }
+    },
     {
       "type": "git",
       "url": "https://github.com/md-systems/redirect"

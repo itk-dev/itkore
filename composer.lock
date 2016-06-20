@@ -936,6 +936,17 @@
             "time": "2016-01-21 08:02:24"
         },
         {
+            "name": "drupal/toolbar_visibility",
+            "version": "dev-8.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/toolbar_visibility.git",
+                "reference": "8.x-1.x"
+            },
+            "type": "drupal-module",
+            "time": "2015-08-26 07:06:20"
+        },
+        {
             "name": "drupal/youtube",
             "version": "8.1.0-beta3",
             "source": {
@@ -4664,7 +4675,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/redirect": 20,
-        "drupal/drush_language": 20
+        "drupal/drush_language": 20,
+        "drupal/toolbar_visibility": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
