@@ -2,6 +2,7 @@
   "name": "itk/itkore",
   "description": "ITKore install profile",
   "require": {
+    "composer/installers": "~1.0",
     "drupal/token": "~8",
     "drupal/imce": "~8",
     "drupal/ctools": "~8",
