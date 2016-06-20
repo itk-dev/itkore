@@ -1,11 +1,6 @@
 {
   "name": "itk/itkore",
   "description": "ITKore install profile",
-  "extra": {
-    "installer-paths": {
-      "profiles/itkore_profile/modules/contrib/{$name}/": ["type:drupal-module"]
-    }
-  },
   "require": {
     "composer/installers": "~1.0",
     "drupal/token": "~8",
@@ -23,6 +18,11 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
+  "extra": {
+    "installer-paths": {
+      "profiles/itkore_profile/modules/contrib/{$name}/": ["type:drupal-module"]
+    }
+  },
   "repositories": [
     {
       "type": "git",
@@ -31,6 +31,10 @@
     {
       "type": "git",
       "url": "https://github.com/dawehner/drush_language"
+    },
+    {
+      "type": "composer",
+      "url": "https://packagist.drupal-composer.org"
     }
   ]
 }
