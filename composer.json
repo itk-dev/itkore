@@ -29,7 +29,7 @@
   ],
   "extra": {
     "installer-paths": {
-      "profiles/itkore_profile/modules/contrib/{$name}/": ["type:drupal-module"],
+      "profiles/itkore_profile/modules/contrib/{$name}/": ["type:drupal-module"]
     }
   }
 }
