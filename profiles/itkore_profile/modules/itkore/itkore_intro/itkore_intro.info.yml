@@ -1,5 +1,0 @@
-name: ITKore intro
-description: 'Adds intro content to ITKore'
-type: module
-core: 8.x
-package: ITKore

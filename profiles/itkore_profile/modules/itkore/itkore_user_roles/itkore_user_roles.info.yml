@@ -1,5 +1,0 @@
-name: ITKore user roles
-description: 'Holds itkore roles'
-type: module
-core: 8.x
-package: ITKore

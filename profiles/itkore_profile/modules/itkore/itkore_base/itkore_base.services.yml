@@ -1,4 +1,0 @@
-services:
-  itkore_base.itkore_config:
-    class: Drupal\itkore_base\State\BaseConfig
-    arguments: ['@serialization.json', '@database']

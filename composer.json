@@ -24,7 +24,7 @@
         "merge-plugin": {
             "include": [
                 "core/composer.json",
-                "profiles/itkore_profile/composer.json"
+                "profiles/itkore/composer.json"
             ],
             "recurse": false,
             "replace": false,
