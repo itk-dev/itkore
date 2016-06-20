@@ -14,7 +14,6 @@
     "drupal/adminimal_theme": "~8",
     "drupal/metatag": "~8",
     "drupal/redirect": "dev-8.x-1.x",
-    "drupal/drush_language": "dev-8.x-1.x",
     "drupal/toolbar_visibility": "dev-8.x-1.x"
   },
   "minimum-stability": "dev",
