@@ -28,3 +28,6 @@ filter:
         - '*.panelizer.inc'
         - '*.strongarm.inc'
         - '*.views_default.inc'
+        # Core
+        - core/*
+        - vendor/*
