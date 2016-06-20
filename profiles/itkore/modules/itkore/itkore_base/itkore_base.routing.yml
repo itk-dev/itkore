@@ -1,0 +1,8 @@
+# --- Administration pages routing --- #
+itkore_base.settings:
+  path: '/admin/site-setup'
+  defaults:
+    _form: '\Drupal\itkore_base\Form\ItkoreSettingsForm'
+    _title: 'Settings'
+  requirements:
+    _permission: 'access itkore settings'

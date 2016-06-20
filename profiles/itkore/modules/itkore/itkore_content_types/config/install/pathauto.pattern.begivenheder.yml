@@ -1,0 +1,20 @@
+status: true
+dependencies:
+  module:
+    - node
+id: begivenheder
+label: Begivenheder
+type: 'canonical_entities:node'
+pattern: 'begivenheder/[node:title]'
+selection_criteria:
+  c70a5e0b-f229-4c58-9555-59e9a98aa2cd:
+    id: node_type
+    bundles:
+      event: event
+    negate: false
+    context_mapping:
+      node: node
+    uuid: c70a5e0b-f229-4c58-9555-59e9a98aa2cd
+selection_logic: and
+weight: -5
+relationships: {  }

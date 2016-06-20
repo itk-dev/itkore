@@ -1,0 +1,7 @@
+status: true
+dependencies: {  }
+name: Location
+vid: location
+description: 'Possible locations'
+hierarchy: 0
+weight: 0

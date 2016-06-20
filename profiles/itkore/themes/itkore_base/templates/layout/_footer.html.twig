@@ -1,0 +1,20 @@
+{% if footer_text or footer_twitter or footer_instagram or footer_linkedin %}
+  <footer class="footer">
+    <div class="footer--content">
+      <div class="footer--mail">
+        {{ footer_text }}
+      </div>
+      <div class="footer--social">
+        {% if footer_twitter %}
+          <a href="{{ footer_twitter }}"><figure class="footer--icons"><img src="/themes/custom/itkore/images/twitter.png"></figure></a>
+        {% endif %}
+        {% if footer_instagram %}
+          <a href="{{ footer_instagram }}"><figure class="footer--icons"><img src="/themes/custom/itkore/images/instagram.png"></figure></a>
+        {% endif %}
+        {% if footer_linkedin %}
+          <a href="{{ footer_linkedin }}"><figure class="footer--icons"><img src="/themes/custom/itkore/images/linkedin.png"></figure></a>
+        {% endif %}
+      </div>
+    </div>
+  </footer>
+{% endif %}

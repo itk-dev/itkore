@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies: {  }
+id: editor
+label: Editor
+weight: 2
+is_admin: null
+permissions:
+  - 'access contextual links'
+  - 'access files overview'
+  - 'use text format filtered_html'
+  - 'translate interface'
+  - 'create itkore_event content'
+  - 'delete any itkore_event content'
+  - 'delete own itkore_event content'
+  - 'delete itkore_event revisions'
+  - 'edit any itkore_event content'
+  - 'edit own itkore_event content'
+  - 'create itkore_resource content'
+  - 'delete any itkore_resource content'
+  - 'delete own itkore_resource content'
+  - 'delete itkore_resource revisions'
+  - 'edit any itkore_resource content'
+  - 'edit own itkore_resource content'
+  - 'access content overview'
+  - 'administer nodes'
+  - 'bypass node access'
+  - 'access in-place editing'
+  - 'administer menu'
+  - 'access site reports'
+  - 'view the administration theme'
+  - 'access toolbar'
+  - 'administer users'
+  - 'access user profiles'

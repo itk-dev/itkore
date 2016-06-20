@@ -1,0 +1,12 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/styles.css: { media: screen }
+
+global-js:
+  version: VERSION
+  js:
+    js/header-scrolling.js: {}
+    js/menu-toggle.js: {}
+    js/itk-cookie-message.js: {}

@@ -1,0 +1,9 @@
+name: ITkore Base
+type: module
+description: 'Provides administration interface for setting config values.'
+package: ITKore
+core: 8.x
+# These modules are required by the tests, must be available at bootstrap time
+dependencies:
+  - system
+  - file

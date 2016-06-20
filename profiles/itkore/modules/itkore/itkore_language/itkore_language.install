@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the itkore_language module.
+ */
+
+
+/**
+ * Implements hook_install().
+ */
+function itkore_language_install() {
+  module_load_include('fetch.inc', 'locale');
+  $config = \Drupal::config('locale.settings');
+  $options = array(
+    'customized' => 0,
+    'overwrite_options' => array(
+      'not_customized' => $config->get('translation.overwrite_not_customized'),
+      'customized' => $config->get('translation.overwrite_customized'),
+    ),
+    'finish_feedback' => TRUE,
+    'use_remote' => 'remote_and_local',
+  );
+
+  // Download and import translations for the newly added language.
+  $batch = locale_translation_batch_update_build(array(), array('da'), $options);
+  batch_set($batch);
+}

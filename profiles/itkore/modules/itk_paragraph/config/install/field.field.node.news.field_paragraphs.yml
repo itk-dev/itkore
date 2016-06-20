@@ -1,0 +1,43 @@
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.news
+  module:
+    - entity_reference_revisions
+id: node.news.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: news
+label: Paragraphs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cfia_text_left: cfia_text_left
+      cfia_iframe: cfia_iframe
+      cfia_internal_link: cfia_internal_link
+      cfia_title_paragraph: cfia_title_paragraph
+      cfia_youtube: cfia_youtube
+    target_bundles_drag_drop:
+      cfia_text_left:
+        weight: -11
+        enabled: false
+      cfia_iframe:
+        weight: -10
+        enabled: false
+      cfia_internal_link:
+        weight: -9
+        enabled: false
+      cfia_title_paragraph:
+        weight: -8
+        enabled: false
+      cfia_youtube:
+        weight: -7
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,7 @@
+name: ITKore fields
+description: 'Holds ITKore field storage definitions'
+type: module
+core: 8.x
+package: ITKore
+dependencies:
+  - taxonomy
