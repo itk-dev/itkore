@@ -26,5 +26,10 @@
       "type": "git",
       "url": "https://github.com/dawehner/drush_language"
     }
-  ]
+  ],
+  "extra": {
+    "installer-paths": {
+      "profiles/itkore_profile/modules/contrib/{$name}/": ["type:drupal-module"],
+    }
+  }
 }
