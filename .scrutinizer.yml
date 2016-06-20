@@ -1,0 +1,33 @@
+tools:
+  php_code_sniffer:
+    config:
+      standard: Drupal
+    extensions:
+      - module
+      - inc
+      - install
+      - test
+      - profile
+      - theme
+  js_hint:
+    use_native_config: true
+
+build_failure_conditions:
+  # No new issues allowed.
+  - 'issues.new.exists'
+
+filter:
+    excluded_paths:
+        # Generated Features code
+        - '*.features.*'
+        - '*.feeds_importer_default.inc'
+        - '*.field_group.inc'
+        - '*.layouts.inc'
+        - '*.pages_default.inc'
+        - '*.panels_default.inc'
+        - '*.panelizer.inc'
+        - '*.strongarm.inc'
+        - '*.views_default.inc'
+        # Core
+        - core/*
+        - vendor/*

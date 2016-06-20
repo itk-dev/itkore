@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * Implements hook_install().
+ *
+ * Performs actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function itkore_install() {
+  // Disable the user pictures on nodes.
+  \Drupal::configFactory()->getEditable('system.theme.global')->set('features.node_user_picture', FALSE)->save(TRUE);
+
+  // Allow visitor account creation, but with administrative approval.
+  \Drupal::configFactory()->getEditable('user.settings')->set('register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)->save(TRUE);
+
+  // Set toolbar visibility.
+  \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore_base', 'itkore_base')->save(TRUE);
+
+  // Set theme default logo to FALSE to force use of sitename.
+  \Drupal::configFactory()->getEditable('system.theme.global')->set('logo.use_default', FALSE)->save(TRUE);
+
+  // Set admin theme on node editing
+  \Drupal::configFactory()->getEditable('node.settings')->set('use_admin_theme', TRUE)->save(TRUE);
+
+  // Set site email.
+  \Drupal::configFactory()->getEditable('system.site')->set('mail', 'itkdesign@mkb.aarhus.dk')->save(TRUE);
+
+  // Set frontpage.
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/front')->save(TRUE);
+  \Drupal::getContainer()->get('itkore_base.itkore_config')->setMultiple(array(
+      'itkore_frontpage.frontpage_title' => 'Velkommen til dit nye site',
+      'itkore_frontpage.frontpage_lead' => 'Kom igang med at lægge indhold ind ved at følge vores vejledning',
+      'itkore_frontpage.frontpage_sub' => 'Fortsæt ved at klikke på linket nedenunder',
+      'itkore_frontpage.frontpage_button' => 'Kom igang',
+      'itkore_frontpage.frontpage_link' => '/kom-igang',
+      'itkore_footer.footer_text' => 'Footeren kan redigeres  under ITKore indstillinger',
+    )
+  );
+
+  // Set metatag settings
+  \Drupal::configFactory()->getEditable('metatag.metatag_defaults.global')->set('tags.title', '[current-page:title]')->save(TRUE);
+  \Drupal::configFactory()->getEditable('metatag.metatag_defaults.node')->set('tags.title', '[node:title]')->save(TRUE);
+  \Drupal::configFactory()->getEditable('metatag.metatag_defaults.front')->set('tags.title', '[site:name]')->save(TRUE);
+
+  // Set login block on user reset page
+  $loginBlockConfig = \Drupal::configFactory()->getEditable('block.block.adminimal_theme_login');
+  $loginBlockConfig->set('visibility.request_path.id', 'request_path');
+  $loginBlockConfig->set('visibility.request_path.pages',
+'/user/reset/*
+/user/register
+/user/password'
+  );
+  $loginBlockConfig->set('visibility.request_path.negate', TRUE);
+  $loginBlockConfig->set('visibility.request_path.context_mapping', []);
+  $loginBlockConfig->save();
+
+  // Set date format.
+  \Drupal::configFactory()->getEditable('core.date_format.medium')->set('pattern', 'j. F Y')->save(TRUE);
+}
