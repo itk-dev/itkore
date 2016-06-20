@@ -6,9 +6,10 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var ngAnnotate = require('gulp-ng-annotate');
 var rename = require('gulp-rename');
 var compass = require('gulp-compass');
+var stylelint = require('gulp-stylelint');
+
 
 /**
  * Setting up browsersync.
@@ -25,7 +26,7 @@ browserSync.init({
 
 // We only want to process our own non-processed JavaScript files.
 var jsPath = ['./js/*.js', '!./js/*.min.*'];
-var sassPath = './sass/**/*.scss';
+var sassPath = './scss/**/*.scss';
 var twigPath = './templates/**/*.twig';
 var buildDir = './js';
 
@@ -39,18 +40,24 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter(stylish));
 });
 
+
+gulp.task('stylelint', function lintCssTask() {
+  return gulp
+    .src(sassPath)
+    .pipe(stylelint({
+      reporters: [
+        {formatter: 'string', console: true}
+      ]
+    }));
+});
+
 /**
  * Process SCSS using libsass
  */
 gulp.task('sass', function () {
   gulp.src(sassPath)
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      // outputStyle: 'compressed',
-      includePaths: [
-        '/usr/lib/node_modules/compass-mixins/lib'
-      ]
-    }).on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./css'))
     .pipe(browserSync.stream());
@@ -63,6 +70,7 @@ gulp.task('sass', function () {
 gulp.task('watch', function() {
   gulp.watch(jsPath, ['jshint']);
   gulp.watch(sassPath, ['sass']);
+  gulp.watch(sassPath, ['stylelint']);
   gulp.watch(twigPath).on('change', browserSync.reload);
   gulp.watch(jsPath).on('change',browserSync.reload);
 });
@@ -104,11 +112,6 @@ gulp.task('assetsJs', function () {
  */
 gulp.task('compass', function() {
   gulp.src(sassPath)
-    .pipe(compass({
-      css: 'css',
-      sass: 'scss',
-      image: 'img'
-    }))
     .pipe(minifycss())
     .pipe(gulp.dest('html/css'));
 });

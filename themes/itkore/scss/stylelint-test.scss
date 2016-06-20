@@ -1,0 +1,25 @@
+/*
+ *
+ * This file is only used for testing stylelint while we don't have the scss files in the repo
+ *
+*/
+
+$test-color-one: '#fff';
+
+.sl-test--color-no-hex {
+  background-color: $test-color-one;
+  color: $test-color-one;
+}
+
+.sl-test--color-named {
+  background-color: $test-color-one;
+  color: $test-color-one;
+}
+
+.sl-test--number-leading-zero {
+  opacity: .5;
+}
+
+.sl-test--string-quotes {
+  background-image: url("foobar.png");
+}
