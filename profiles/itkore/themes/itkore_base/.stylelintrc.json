@@ -13,9 +13,8 @@
     "message": "For consistency use double quotes around strings"
   }],
     "declaration-block-trailing-semicolon": ["always", {
-    "message": "Missing semicolon after last property in declaration block"
   }],
-    "declaration-block-no-duplicate-properties": true
+    "declaration-block-no-duplicate-properties": true,
+    "no-duplicate-selectors": true
   }
 }
-
