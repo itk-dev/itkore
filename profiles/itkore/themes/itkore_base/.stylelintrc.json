@@ -11,6 +11,9 @@
     }],
     "string-quotes": ["double", {
       "message": "For consistency use double quotes around strings"
+    }],
+    "declaration-block-trailing-semicolon": ["always", {
+      "message": "Missing semicolon after last property in declaration block"
     }]
   }
 }
