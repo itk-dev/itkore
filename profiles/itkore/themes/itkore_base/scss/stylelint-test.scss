@@ -23,3 +23,8 @@ $test-color-one: '#fff';
 .sl-test--string-quotes {
   background-image: url("foobar.png");
 }
+
+.sl-test--declaration-block-trailing-semicolon {
+  border: 1px solid $test-color-one;
+  color: $test-color-one;
+}
