@@ -3,11 +3,11 @@ dependencies:
   module:
     - system
   theme:
-    - itkore
+    - itkore_base
 _core:
   default_config_hash: SkjH6vFyt28foFgCV-232debx06NeuePyLqeEVawowM
 id: sitebranding
-theme: itkore
+theme: itkore_base
 region: nav_menu
 weight: -3
 provider: null

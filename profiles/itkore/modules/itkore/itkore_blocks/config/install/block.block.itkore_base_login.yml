@@ -3,9 +3,9 @@ dependencies:
   module:
     - user
   theme:
-    - itkore
+    - itkore_base
 id: itkore_login
-theme: itkore
+theme: itkore_base
 region: '-1'
 weight: 0
 provider: null

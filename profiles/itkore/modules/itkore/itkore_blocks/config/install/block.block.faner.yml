@@ -3,9 +3,9 @@ dependencies:
   module:
     - node
   theme:
-    - itkore
+    - itkore_base
 id: faner
-theme: itkore
+theme: itkore_base
 region: content
 weight: -5
 provider: null
