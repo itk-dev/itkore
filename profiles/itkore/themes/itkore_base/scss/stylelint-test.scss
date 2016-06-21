@@ -28,3 +28,10 @@ $test-color-one: "#fff";
   border: 1px solid $test-color-one;
   color: $test-color-one;
 }
+
+.sl-test--declaration-block-no-duplicate-properties {
+  opacity: 1;
+}
+
+.sl-test--no-duplicate-selectors {
+}
