@@ -1,22 +1,21 @@
 {
   "rules": {
-      "color-no-hex": [true, {
-      "message": "Don't use hex value for colors, instead use the predefined colors found in _vars.scss"
-    }],
-      "color-named": ["never", {
-      "message": "Don't use named colors, instead use the predefined colors found in _vars.scss"
-    }],
-      "number-leading-zero": ["never", {
-      "message": "For consistency and to save a character don't use leading zeros on values less than 1"
-    }],
+    "color-no-hex": [true, {
+    "message": "Don't use hex value for colors, instead use the predefined colors found in _vars.scss"
+  }],
+    "color-named": ["never", {
+    "message": "Don't use named colors, instead use the predefined colors found in _vars.scss"
+  }],
+    "number-leading-zero": ["never", {
+    "message": "For consistency and to save a character don't use leading zeros on values less than 1"
+  }],
     "string-quotes": ["double", {
-      "message": "For consistency use double quotes around strings"
-    }],
+    "message": "For consistency use double quotes around strings"
+  }],
     "declaration-block-trailing-semicolon": ["always", {
-      "message": "Missing semicolon after last property in declaration block"
-    }]
+    "message": "Missing semicolon after last property in declaration block"
+  }],
+    "declaration-block-no-duplicate-properties": true
   }
 }
-
-
 
