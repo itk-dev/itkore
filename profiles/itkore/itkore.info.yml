@@ -61,5 +61,5 @@ dependencies:
   - itk_cookie_message
 
 themes:
-  - itkore
+  - itkore_base
   - adminimal_theme
