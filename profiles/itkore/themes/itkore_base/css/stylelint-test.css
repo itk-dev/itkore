@@ -1,0 +1,24 @@
+/*
+ *
+ * This file is only used for testing stylelint while we don't have the scss files in the repo
+ *
+*/
+.sl-test--color-no-hex {
+  background-color: "#fff";
+  color: "#fff"; }
+
+.sl-test--color-named {
+  background-color: "#fff";
+  color: "#fff"; }
+
+.sl-test--number-leading-zero {
+  opacity: .5; }
+
+.sl-test--string-quotes {
+  background-image: url("foobar.png"); }
+
+.sl-test--declaration-block-trailing-semicolon {
+  border: 1px solid "#fff";
+  color: "#fff"; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3R5bGVsaW50LXRlc3QuY3NzIiwic291cmNlcyI6WyJzdHlsZWxpbnQtdGVzdC5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qXG4gKlxuICogVGhpcyBmaWxlIGlzIG9ubHkgdXNlZCBmb3IgdGVzdGluZyBzdHlsZWxpbnQgd2hpbGUgd2UgZG9uJ3QgaGF2ZSB0aGUgc2NzcyBmaWxlcyBpbiB0aGUgcmVwb1xuICpcbiovXG5cbiR0ZXN0LWNvbG9yLW9uZTogXCIjZmZmXCI7XG5cbi5zbC10ZXN0LS1jb2xvci1uby1oZXgge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkdGVzdC1jb2xvci1vbmU7XG4gIGNvbG9yOiAkdGVzdC1jb2xvci1vbmU7XG59XG5cbi5zbC10ZXN0LS1jb2xvci1uYW1lZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICR0ZXN0LWNvbG9yLW9uZTtcbiAgY29sb3I6ICR0ZXN0LWNvbG9yLW9uZTtcbn1cblxuLnNsLXRlc3QtLW51bWJlci1sZWFkaW5nLXplcm8ge1xuICBvcGFjaXR5OiAuNTtcbn1cblxuLnNsLXRlc3QtLXN0cmluZy1xdW90ZXMge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCJmb29iYXIucG5nXCIpO1xufVxuXG4uc2wtdGVzdC0tZGVjbGFyYXRpb24tYmxvY2stdHJhaWxpbmctc2VtaWNvbG9uIHtcbiAgYm9yZGVyOiAxcHggc29saWQgJHRlc3QtY29sb3Itb25lO1xuICBjb2xvcjogJHRlc3QtY29sb3Itb25lO1xufSJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7RUFJRTtBQUlGLEFBQUEsc0JBQXNCLENBQUM7RUFDckIsZ0JBQWdCLEVBSEQsTUFBTTtFQUlyQixLQUFLLEVBSlUsTUFBTSxHQUt0Qjs7QUFFRCxBQUFBLHFCQUFxQixDQUFDO0VBQ3BCLGdCQUFnQixFQVJELE1BQU07RUFTckIsS0FBSyxFQVRVLE1BQU0sR0FVdEI7O0FBRUQsQUFBQSw2QkFBNkIsQ0FBQztFQUM1QixPQUFPLEVBQUUsRUFBRyxHQUNiOztBQUVELEFBQUEsdUJBQXVCLENBQUM7RUFDdEIsZ0JBQWdCLEVBQUUsaUJBQUcsR0FDdEI7O0FBRUQsQUFBQSw4Q0FBOEMsQ0FBQztFQUM3QyxNQUFNLEVBQUUsR0FBRyxDQUFDLEtBQUssQ0FyQkYsTUFBTTtFQXNCckIsS0FBSyxFQXRCVSxNQUFNLEdBdUJ0QiIsIm5hbWVzIjpbXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0= */
