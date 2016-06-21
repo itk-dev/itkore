@@ -5,9 +5,9 @@ dependencies:
   module:
     - system
   theme:
-    - itkore
+    - itkore_base
 id: itkore_tools
-theme: itkore
+theme: itkore_base
 region: '-1'
 weight: 0
 provider: null

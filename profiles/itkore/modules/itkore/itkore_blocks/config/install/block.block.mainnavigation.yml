@@ -5,9 +5,9 @@ dependencies:
   module:
     - system
   theme:
-    - itkore
+    - itkore_base
 id: mainnavigation
-theme: itkore
+theme: itkore_base
 region: nav_menu
 weight: -2
 provider: null
