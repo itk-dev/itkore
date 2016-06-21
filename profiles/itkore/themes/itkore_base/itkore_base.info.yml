@@ -4,8 +4,8 @@ description: 'The Itkore theme.'
 package: Itkore
 
 libraries:
-  - itkore/global-styling
-  - itkore/global-js
+  - itkore_base/global-styling
+  - itkore_base/global-js
 
 stylesheets-remove:
   - normalize.css

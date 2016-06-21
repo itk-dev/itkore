@@ -5,3 +5,6 @@ core: 8.x
 package: ITKore
 dependencies:
   - taxonomy
+  - node
+  - entity_reference_revisions
+  - paragraphs

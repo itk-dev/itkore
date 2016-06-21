@@ -6,9 +6,9 @@ dependencies:
     - system
     - views
   theme:
-    - itkore
+    - itkore_base
 id: views_block__itkore_frontpage_news_block_1
-theme: itkore
+theme: itkore_base
 region: content
 weight: 2
 provider: null

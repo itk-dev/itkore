@@ -39,6 +39,7 @@ dependencies:
 
 #Contrib modules
   - ctools
+  - entity_reference_revisions
   - field_group
   - imce
   - metatag
@@ -49,16 +50,18 @@ dependencies:
   - toolbar_visibility
   - youtube
 
+#ITK modules
+  - itk_cookie_message
+  - itk_paragraph
+
 #ITKore modules
   - itkore_base
+  - itkore_content_types
   - itkore_fields
   - itkore_language
   - itkore_text_filters
   - itkore_user_roles
   - itkore_user_theme
-
-#ITK modules
-  - itk_cookie_message
 
 themes:
   - itkore_base
