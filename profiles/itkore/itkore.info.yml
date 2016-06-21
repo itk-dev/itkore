@@ -55,7 +55,7 @@ dependencies:
   - itk_paragraph
 
 #ITKore modules
-  - itkore_base
+  - itkore_admin
   - itkore_content_types
   - itkore_fields
   - itkore_language
