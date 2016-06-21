@@ -1,0 +1,61 @@
+/**
+ *
+ * ITK messages
+ *
+ * A component for displaying messages
+ *
+ */
+
+
+/* Variables
+   ========================================================================== */
+
+$message-error-color:            $error-color;
+
+
+/* Styles
+   ========================================================================== */
+
+.itk-message {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top: 9em;
+  max-width: 1024px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+
+  & + p {
+    margin-top: 1em;
+  }
+}
+
+.itk-message--inner {
+  border-radius: .75em;
+
+  padding: 1em;
+
+  background-color: $message-color;
+  border: 1px solid darken($message-color, 25%);
+  color: darken($message-color, 50%);
+
+  &.is-info {
+    background-color: $message-info-color;
+    border: 1px solid darken($message-info-color, 25%);
+    color: darken($message-info-color, 50%);
+  }
+
+  &.is-warning {
+    background-color: $message-warning-color;
+    border: 1px solid darken($message-warning-color, 25%);
+    color: darken($message-warning-color, 50%);
+  }
+
+  &.is-error {
+    background-color: $message-error-color;
+    border: 1px solid darken($message-error-color, 25%);
+    color: darken($message-error-color, 50%);
+  }
+}

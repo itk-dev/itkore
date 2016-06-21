@@ -66,7 +66,6 @@ gulp.task('sass', function () {
 /**
  * Watch files for changes and run tasks.
  */
-
 gulp.task('watch', function() {
   gulp.watch(jsPath, ['jshint']);
   gulp.watch(sassPath, ['sass']);
@@ -79,7 +78,6 @@ gulp.task('watch', function() {
 /**
  * Watch javascript files for changes.
  */
-
 gulp.task('js-watch', function() {
   gulp.watch(jsPath, ['jshint']);
 });
