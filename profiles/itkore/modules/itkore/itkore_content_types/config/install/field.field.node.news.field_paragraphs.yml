@@ -19,25 +19,25 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      cfia_text_left: cfia_text_left
-      cfia_iframe: cfia_iframe
-      cfia_internal_link: cfia_internal_link
-      cfia_title_paragraph: cfia_title_paragraph
-      cfia_youtube: cfia_youtube
+      itk_text_left: itk_text_left
+      itk_iframe: itk_iframe
+      itk_internal_link: itk_internal_link
+      itk_title_paragraph: itk_title_paragraph
+      itk_youtube: itk_youtube
     target_bundles_drag_drop:
-      cfia_text_left:
+      itk_text_left:
         weight: -11
         enabled: false
-      cfia_iframe:
+      itk_iframe:
         weight: -10
         enabled: false
-      cfia_internal_link:
+      itk_internal_link:
         weight: -9
         enabled: false
-      cfia_title_paragraph:
+      itk_title_paragraph:
         weight: -8
         enabled: false
-      cfia_youtube:
+      itk_youtube:
         weight: -7
         enabled: false
 field_type: entity_reference_revisions

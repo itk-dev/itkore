@@ -1,8 +1,11 @@
 name: Itkore orange
 type: theme
-description: 'The Itkore theme ith orange colors.'
+description: 'The Itkore theme with orange colors.'
 package: Itkore
 base theme: itkore_base
+
+stylesheets-remove:
+  - profiles/itkore/themes/itkore_base/css/styles.css
 
 libraries:
   - itkore_orange/global-styling
