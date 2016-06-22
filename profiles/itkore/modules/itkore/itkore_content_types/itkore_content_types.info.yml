@@ -5,7 +5,6 @@ core: 8.x
 package: ITKore
 dependencies:
   - itkore_fields
-  - itk_instagram_hashtag
   - datetime
   - image
   - imce

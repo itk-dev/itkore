@@ -1,0 +1,30 @@
+uuid: e7ec08ac-d2c2-4cb9-b0c8-c1ce439042c8
+langcode: da
+status: true
+dependencies:
+  config:
+    - views.view.itkore_frontpage_news
+  module:
+    - system
+    - views
+  theme:
+    - itkore_blue
+id: views_block__itkore_blue_frontpage_news_block_1
+theme: itkore_blue
+region: content
+weight: -3
+provider: null
+plugin: 'views_block:itkore_frontpage_news-block_1'
+settings:
+  id: 'views_block:itkore_frontpage_news-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
