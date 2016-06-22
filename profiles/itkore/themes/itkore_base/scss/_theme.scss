@@ -1,0 +1,34 @@
+/* Colors
+   ================================================================================================================== */
+
+/* stylelint-disable */
+
+$black:            #000;
+$white:            #fff;
+
+$gray-lightest:    lighten($black, 95%);
+$gray-lighter:     lighten($black, 90%);
+$gray-light:       lighten($black, 70%);
+$gray:             lighten($black, 60%);
+$gray-dark:        lighten($black, 50%);
+$gray-darker:      lighten($black, 40%);
+$gray-darkest:     lighten($black, 12%);
+
+$theme-color:             $gray-dark;
+$theme-color-secondary:   $gray-light;
+
+$link-color:       $theme-color;
+$link-color-hover: darken($link-color, 25%);
+
+$message-color:                  #f1f1f1;
+$message-info-color:             #dff2bf;
+$message-warning-color:          #feefb3;
+$error-color:                    #ffbaba;
+/* stylelint-enable */
+
+
+/* Typography
+   ================================================================================================================== */
+
+$font-family:      "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font:             1em/1.5 $font-family;

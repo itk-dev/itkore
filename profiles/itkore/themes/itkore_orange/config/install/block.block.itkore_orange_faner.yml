@@ -1,0 +1,32 @@
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - itkore_orange
+_core:
+  default_config_hash: KQNJyVkWu-eV7EuEBISNNasnwTy3UY2M8VKML1W1cSM
+id: itkore_orange_faner
+theme: itkore_orange
+region: content
+weight: -3
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Faner
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      event: event
+      news: news
+      overview_page: overview_page
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

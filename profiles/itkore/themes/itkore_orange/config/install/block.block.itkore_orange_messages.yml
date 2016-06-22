@@ -3,11 +3,13 @@ dependencies:
   module:
     - system
   theme:
-    - itkore_base
-id: itkore_base_messages
-theme: itkore_base
+    - itkore_orange
+_core:
+  default_config_hash: 20RmvGPY4UHWTvHkJ9Iu-iNl9I2ThGe2CsfvHNhwjG4
+id: itkore_orange_messages
+theme: itkore_orange
 region: '-1'
-weight: 0
+weight: -2
 provider: null
 plugin: system_messages_block
 settings:

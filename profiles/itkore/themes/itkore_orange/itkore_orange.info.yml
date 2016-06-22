@@ -1,14 +1,11 @@
-name: Itkore base
+name: Itkore orange
 type: theme
-description: 'The Itkore base theme.'
+description: 'The Itkore theme ith orange colors.'
 package: Itkore
+base theme: itkore_base
 
 libraries:
-  - itkore_base/global-styling
-  - itkore_base/global-js
-
-stylesheets-remove:
-  - normalize.css
+  - itkore_orange/global-styling
 
 regions:
   hamburger: 'Hamburger menu'

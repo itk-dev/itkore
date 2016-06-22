@@ -1,0 +1,23 @@
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - itkore_orange
+_core:
+  default_config_hash: aoCX6f76IAz0Ys48lAqE8VryrgKPCuPW1Hj7EnN5Q4Q
+id: itkore_orange_sitebranding
+theme: itkore_orange
+region: nav_menu
+weight: -3
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

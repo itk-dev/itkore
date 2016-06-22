@@ -1,0 +1,18 @@
+status: true
+dependencies:
+  theme:
+    - itkore_base
+id: itkore_base_faner
+theme: itkore_base
+region: content
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Faner
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

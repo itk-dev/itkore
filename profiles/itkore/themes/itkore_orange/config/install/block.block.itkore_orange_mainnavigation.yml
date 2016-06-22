@@ -5,11 +5,11 @@ dependencies:
   module:
     - system
   theme:
-    - itkore_base
-id: mainnavigation
-theme: itkore_base
+    - itkore_orange
+id: itkore_orange_mainnavigation
+theme: itkore_orange
 region: nav_menu
-weight: -2
+weight: -3
 provider: null
 plugin: 'system_menu_block:main'
 settings:

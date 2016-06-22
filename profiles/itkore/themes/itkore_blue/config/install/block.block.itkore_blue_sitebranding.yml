@@ -3,13 +3,13 @@ dependencies:
   module:
     - system
   theme:
-    - itkore_base
+    - itkore_blue
 _core:
-  default_config_hash: SkjH6vFyt28foFgCV-232debx06NeuePyLqeEVawowM
-id: sitebranding
-theme: itkore_base
+  default_config_hash: aoCX6f76IAz0Ys48lAqE8VryrgKPCuPW1Hj7EnN5Q4Q
+id: itkore_blue_sitebranding
+theme: itkore_blue
 region: nav_menu
-weight: -3
+weight: -4
 provider: null
 plugin: system_branding_block
 settings:

@@ -3,9 +3,11 @@ dependencies:
   module:
     - node
   theme:
-    - itkore_base
-id: faner
-theme: itkore_base
+    - itkore_blue
+_core:
+  default_config_hash: KQNJyVkWu-eV7EuEBISNNasnwTy3UY2M8VKML1W1cSM
+id: itkore_blue_faner
+theme: itkore_blue
 region: content
 weight: -5
 provider: null

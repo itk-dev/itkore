@@ -1,14 +1,11 @@
-name: Itkore base
+name: Itkore blue
 type: theme
-description: 'The Itkore base theme.'
+description: 'The Itkore theme ith blue colors.'
 package: Itkore
+base theme: itkore_base
 
 libraries:
-  - itkore_base/global-styling
-  - itkore_base/global-js
-
-stylesheets-remove:
-  - normalize.css
+  - itkore_blue/global-styling
 
 regions:
   hamburger: 'Hamburger menu'

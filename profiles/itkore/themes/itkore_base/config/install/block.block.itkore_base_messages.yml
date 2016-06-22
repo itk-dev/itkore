@@ -1,24 +1,22 @@
 status: false
 dependencies:
-  config:
-    - system.menu.tools
   module:
     - system
   theme:
     - itkore_base
-id: itkore_base_tools
+_core:
+  default_config_hash: 20RmvGPY4UHWTvHkJ9Iu-iNl9I2ThGe2CsfvHNhwjG4
+id: itkore_base_messages
 theme: itkore_base
 region: '-1'
 weight: 0
 provider: null
-plugin: 'system_menu_block:tools'
+plugin: system_messages_block
 settings:
-  id: 'system_menu_block:tools'
-  label: Tools
+  id: system_messages_block
+  label: 'Status messages'
   provider: system
-  label_display: visible
-  level: 1
-  depth: 0
+  label_display: '0'
   cache:
     max_age: -1
 visibility: {  }

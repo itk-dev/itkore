@@ -1,0 +1,24 @@
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - itkore_blue
+_core:
+  default_config_hash: cY5byf-nlNopikOH-zJlXkmpvUAYJG9plyHo--w02Ls
+id: itkore_blue_mainnavigation_2
+theme: itkore_blue
+region: hamburger
+weight: -4
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 3
+visibility: {  }

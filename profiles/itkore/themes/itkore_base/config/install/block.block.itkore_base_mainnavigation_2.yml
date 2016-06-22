@@ -6,7 +6,7 @@ dependencies:
     - system
   theme:
     - itkore_base
-id: mainnavigation_2
+id: itkore_base_mainnavigation_2
 theme: itkore_base
 region: hamburger
 weight: -4

@@ -62,6 +62,7 @@ dependencies:
   - itkore_text_filters
   - itkore_user_roles
   - itkore_user_theme
+  - itkore_views
 
 themes:
   - itkore_base

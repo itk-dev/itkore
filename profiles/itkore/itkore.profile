@@ -20,8 +20,6 @@ function itkore_form_install_configure_submit($form, FormStateInterface $form_st
   \Drupal::service('config.factory')->getEditable('system.theme')->set('default', 'itkore_base')->save();
 
   // Setup content
-  \Drupal::service('module_installer')->install(['itkore_blocks']);
   \Drupal::service('module_installer')->install(['itkore_content_types']);
   \Drupal::service('module_installer')->install(['itk_paragraph']);
-  \Drupal::service('module_installer')->install(['itkore_views']);
 }
