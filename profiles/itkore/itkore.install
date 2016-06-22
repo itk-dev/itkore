@@ -39,7 +39,7 @@ function itkore_install() {
   );
 
   // Set imce settings.
-  \Drupal::configFactory()->getEditable('imce.settings')->set('roles_profiles.editor.public.', 'member')->save(TRUE);
+  \Drupal::configFactory()->getEditable('imce.settings')->set('roles_profiles.editor.public', 'custom_profile')->save(TRUE);
 
   // Set metatag settings
   \Drupal::configFactory()->getEditable('metatag.metatag_defaults.global')->set('tags.title', '[current-page:title]')->save(TRUE);

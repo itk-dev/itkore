@@ -1,11 +1,9 @@
-uuid: ef673220-7979-4b20-8512-665c75073503
-langcode: en
 status: true
 dependencies: {  }
 _core:
   default_config_hash: 8J9aFZdUzbHV6w1y727kflHq31ev3U3wy7U-zSWDkeE
-id: member
-label: 'Member profile'
+id: custom_profile
+label: 'Custom profile'
 description: 'Configuration for site members'
 conf:
   extensions: 'jpg png gif pdf doc docx txt zip xls xlsx'
