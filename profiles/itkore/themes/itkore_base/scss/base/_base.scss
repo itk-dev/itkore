@@ -16,10 +16,10 @@ html {
   height: 100%;
 }
 
+// http: //galengidman.com/2014/03/25/responsive-flexible-height-sticky-footers-in-css/
 body {
-  position: relative; // For absolute positioned hamburger menu to have 100 height.
+  position: relative;
 
-  // 'http://galengidman.com/2014/03/25/responsive-flexible-height-sticky-footers-in-css/'
   display: table;
   height: 100%;
   margin: 0;
