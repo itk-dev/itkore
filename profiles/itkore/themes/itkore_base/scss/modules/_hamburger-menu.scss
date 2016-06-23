@@ -6,20 +6,18 @@
 
 
 .hamburger-menu {
-  position: fixed;
-  top: 0;
-  right: -30em;
+  background-color: $white;
   bottom: 0;
   margin-right: 0;
   max-width: 90%;
-  width: 30em;
-  z-index: z($z-index-elements, hamburger-menu);
   overflow: hidden;
-
-  background-color: $white;
-
+  position: fixed;
+  right: -30em;
+  top: 0;
   transition: right .3s;
   transition-timing-function: ease-in-out;
+  width: 30em;
+  z-index: z($z-index-elements, hamburger-menu);
 
   &.is-open {
     right: 0;
@@ -31,10 +29,9 @@
   }
 
   &--links {
-    padding-top: 5em;
-    padding-right: 2em;
     padding-left: 2em;
-
+    padding-right: 2em;
+    padding-top: 5em;
     text-align: center;
 
     a {
@@ -63,12 +60,11 @@
 
   // Nesting since we use the same template.
   & .nav--link {
-    display: list-item;
-    margin-bottom: .25em;
-
     color: $gray-darker;
+    display: list-item;
     font-size: 1.2em;
     list-style: none;
+    margin-bottom: .25em;
     text-decoration: none;
 
     &.is-active {

@@ -1,18 +1,15 @@
 .cookies {
-  position: fixed;
+  background: $white;
+  border-top: 1px solid $gray-light;
   bottom: 0;
   left: 0;
-  z-index: 99;
-
-  border-top: 1px solid $gray-light;
+  position: fixed;
   width: 100%;
-
-  background: $white;
+  z-index: 99;
 }
 
 .cookies--inner {
   padding: 1em;
-
   text-align: center;
 
   @include breakpoint($breakpoint-lap) {
@@ -22,8 +19,8 @@
 
 .cookies--text {
   display: inline-block;
-  margin-right: .5em;
   margin-bottom: .5em;
+  margin-right: .5em;
 }
 
 .cookies .button {
