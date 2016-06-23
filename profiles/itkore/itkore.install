@@ -16,6 +16,8 @@ function itkore_install() {
 
   // Set toolbar visibility.
   \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore_base', 'itkore_base')->save(TRUE);
+  \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore_blue', 'itkore_blue')->save(TRUE);
+  \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore_orange', 'itkore_orange')->save(TRUE);
 
   // Set theme default logo to FALSE to force use of sitename.
   \Drupal::configFactory()->getEditable('system.theme.global')->set('logo.use_default', FALSE)->save(TRUE);
