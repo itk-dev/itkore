@@ -14,6 +14,6 @@
     @return $z-index;
   }
 
-  @warn "There is no item "#{$element}" in this list. choose one of: #{$list}";
+  @warn "There is no item \"#{$element}\" in this list. choose one of: #{$list}";
   @return null;
 }
