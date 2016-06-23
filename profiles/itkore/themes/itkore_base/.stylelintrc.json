@@ -16,6 +16,7 @@
     "declaration-block-no-duplicate-properties": true,
     "no-duplicate-selectors": true,
     "declaration-colon-space-after": "always",
-    "declaration-block-properties-order": "alphabetical"
+    "declaration-block-properties-order": "alphabetical",
+    "no-duplicate-selectors": true
   }
 }
