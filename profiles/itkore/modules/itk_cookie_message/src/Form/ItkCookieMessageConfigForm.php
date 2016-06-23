@@ -32,9 +32,6 @@ class ItkCookieMessageConfigForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('itk_cookie_message.settings');
-    $settings = $config->get();
-
     $settings = itk_cookie_message_get_settings();
 
     $form['tabs'] = array(
@@ -44,9 +41,8 @@ class ItkCookieMessageConfigForm extends ConfigFormBase {
 
     $form['general'] = array(
       '#type' => 'details',
-      '#group' => 'tabs',
-      // '#weight' => 99,
       '#title' => $this->t('General settings'),
+      '#group' => 'tabs',
     );
 
     $key = 'cookie_name';
@@ -60,11 +56,11 @@ class ItkCookieMessageConfigForm extends ConfigFormBase {
     $key = 'cookie_lifetime';
     $form['general'][$this->getKey($key)] = array(
       '#type' => 'select',
+      '#title' => $this->t('Cookie lifetime'),
       '#options' => array(
         1 * 30 * 24 * 60 * 60 => $this->t('One month'),
         1 * 365 * 24 * 60 * 60 => $this->t('One year'),
       ),
-      '#title' => $this->t('Cookie lifetime'),
       '#default_value' => $settings[$key],
     );
 
@@ -72,45 +68,43 @@ class ItkCookieMessageConfigForm extends ConfigFormBase {
 
     foreach ($languages as $language) {
       $language_id = $language->getId();
-      $settings = $config->get($language_id);
-
       $settings = itk_cookie_message_get_settings($language);
 
       $form[$language_id] = array(
         '#type' => 'details',
-        '#group' => 'tabs',
         '#title' => $this->t($language->getName()),
+        '#group' => 'tabs',
       );
 
       $key = 'text';
       $form[$language_id][$this->getKey($key, $language)] = array(
         '#type' => 'textfield',
+        '#title' => $this->t('Message'),
+        '#description' => $this->t('Message to display in the dialog show to the users.'),
         '#required' => TRUE,
         '#default_value' => $settings[$key],
-        '#title' => $this->t('Text'),
-        '#description' => $this->t('The maximum time a page can be cached. This is used as the value for max-age in Cache-Control headers.'),
       );
 
       $key = 'read_more_url';
       $form[$language_id][$this->getKey($key, $language)] = array(
         '#type' => 'textfield',
-        '#default_value' => $settings[$key],
         '#title' => $this->t('Read more url'),
+        '#default_value' => $settings[$key],
       );
 
       $key = 'read_more_text';
       $form[$language_id][$this->getKey($key, $language)] = array(
         '#type' => 'textfield',
-        '#default_value' => $settings[$key],
         '#title' => $this->t('Read more text'),
+        '#default_value' => $settings[$key],
       );
 
       $key = 'accept_button_text';
       $form[$language_id][$this->getKey($key, $language)] = array(
         '#type' => 'textfield',
+        '#title' => $this->t('Accept button text'),
         '#required' => TRUE,
         '#default_value' => $settings[$key],
-        '#title' => $this->t('Accept button text'),
       );
     }
 
@@ -122,8 +116,8 @@ class ItkCookieMessageConfigForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->config('itk_cookie_message.settings')
-            ->set('cookie_name', $form_state->getValue($this->getKey('cookie_name')))
-            ->set('cookie_lifetime', $form_state->getValue($this->getKey('cookie_lifetime')));
+      ->set('cookie_name', $form_state->getValue($this->getKey('cookie_name')))
+      ->set('cookie_lifetime', $form_state->getValue($this->getKey('cookie_lifetime')));
 
     $languages = \Drupal::languageManager()->getLanguages();
     foreach ($languages as $language) {
@@ -156,5 +150,4 @@ class ItkCookieMessageConfigForm extends ConfigFormBase {
   private function getKey($key, LanguageInterface $language = NULL) {
     return 'itk_cookie_message' . ($language ? '_' . $language->getId() : '') . '_' . $key;
   }
-
 }
