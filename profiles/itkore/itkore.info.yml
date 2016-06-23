@@ -9,7 +9,6 @@ dependencies:
   - ckeditor
   - config
   - config_translation
-  - contextual
   - datetime
   - dblog
   - editor
@@ -26,7 +25,6 @@ dependencies:
   - menu_ui
   - node
   - path
-  - quickedit
   - system
   - text
   - toolbar

@@ -34,7 +34,6 @@ function itkore_base_preprocess_node_event(&$variables) {
   $variables['eventdate'] = \Drupal::service('date.formatter')->format(date('U', $startDateTime->getTimestamp()), 'custom', 'l j. F Y');
   $variables['eventstarttime'] = \Drupal::service('date.formatter')->format(date('U', $startDateTime->getTimestamp()), 'custom', 'G:i');
   $variables['eventendtime'] = \Drupal::service('date.formatter')->format(date('U', $endDateTime->getTimestamp()), 'custom', 'G:i');
-  print '1';
 }
 
 

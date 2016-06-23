@@ -4,6 +4,9 @@ description: 'The Itkore theme ith blue colors.'
 package: Itkore
 base theme: itkore_base
 
+stylesheets-remove:
+  - profiles/itkore/themes/itkore_base/css/styles.css
+
 libraries:
   - itkore_blue/global-styling
 

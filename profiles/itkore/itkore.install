@@ -16,6 +16,8 @@ function itkore_install() {
 
   // Set toolbar visibility.
   \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore_base', 'itkore_base')->save(TRUE);
+  \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore_blue', 'itkore_blue')->save(TRUE);
+  \Drupal::configFactory()->getEditable('toolbar_visibility.default_config')->set('toolbar_visibility_theme.itkore_orange', 'itkore_orange')->save(TRUE);
 
   // Set theme default logo to FALSE to force use of sitename.
   \Drupal::configFactory()->getEditable('system.theme.global')->set('logo.use_default', FALSE)->save(TRUE);
@@ -37,6 +39,9 @@ function itkore_install() {
       'itkore_footer.footer_text' => 'Footeren kan redigeres  under ITKore indstillinger',
     )
   );
+
+  // Set imce settings.
+  \Drupal::configFactory()->getEditable('imce.settings')->set('roles_profiles.editor.public', 'custom_profile')->save(TRUE);
 
   // Set metatag settings
   \Drupal::configFactory()->getEditable('metatag.metatag_defaults.global')->set('tags.title', '[current-page:title]')->save(TRUE);
