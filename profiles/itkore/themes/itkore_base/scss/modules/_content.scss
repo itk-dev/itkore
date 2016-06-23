@@ -7,13 +7,11 @@
 
 &.is-page .content {
   &--inner {
-    position: relative;
-    z-index: z($z-index-elements, content);
-
+    background-color: rgba(255, 255, 255, 1);
     margin-top: -7em;
     padding-top: 3em;
-
-    background-color: rgba(255, 255, 255, 1);
+    position: relative;
+    z-index: z($z-index-elements, content);
 
     @include breakpoint($breakpoint-tablet) {
       margin-top: -8em;
@@ -26,8 +24,8 @@
     }
 
     @include breakpoint($breakpoint-bigscreen) {
-      padding-right: $layout-padding;
       padding-left: $layout-padding;
+      padding-right: $layout-padding;
       padding-top: 5em;
     }
   }
@@ -35,9 +33,9 @@
 
 .content {
   &--inner {
-    margin-right: auto;
     margin-bottom: 3em;
     margin-left: auto;
+    margin-right: auto;
     max-width: $breakpoint-desk;
     min-height: 20em;
 
@@ -48,8 +46,8 @@
     }
 
     &.is-front {
-      max-width: 100%;
       margin-bottom: 0;
+      max-width: 100%;
       min-height: 30em;
       padding: 2em 0;
 
@@ -75,12 +73,12 @@
   &--lead,
   &--meta,
   &--text {
-    margin-right: $layout-padding;
     margin-left: $layout-padding;
+    margin-right: $layout-padding;
 
     @include breakpoint($breakpoint-bigscreen) {
-      margin-right: 0;
       margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -98,31 +96,27 @@
   }
 
   &--header {
-    margin-top: .5em;
-    margin-right: 0;
-    margin-left: -.075em; // Compensate for font whitespace
-
     color: $gray-darker;
     font-size: 2.5em;
+    margin-left: -.075em; /* Compensate for font whitespace */
+    margin-right: 0;
+    margin-top: .5em;
   }
 
   &--meta {
-    margin-top: -.5em;
-    margin-bottom: 1em;
-    padding-bottom: 1em;
-
     font-weight: 300;
+    margin-bottom: 1em;
+    margin-top: -.5em;
+    padding-bottom: 1em;
   }
 
   &--image-wrapper {
+    margin-bottom: 2.5em;
     position: relative;
 
-    margin-bottom: 2.5em;
-
     @include breakpoint($breakpoint-desk) {
-      overflow: hidden;
-
       height: 500px;
+      overflow: hidden;
     }
 
     @include breakpoint($breakpoint-bigscreen) {
@@ -141,8 +135,8 @@
     margin-bottom: 1em;
 
     @include breakpoint($breakpoint-tablet) {
-      margin-right: 3em;
       margin-left: 3em;
+      margin-right: 3em;
     }
 
     @include breakpoint($breakpoint-desk) {
@@ -155,12 +149,12 @@
   }
 
   fieldset {
-    margin-right: $layout-padding;
     margin-left: $layout-padding;
+    margin-right: $layout-padding;
 
     @include breakpoint($breakpoint-desk) {
-      margin-right: 0;
       margin-left: 0;
+      margin-right: 0;
     }
   }
 }

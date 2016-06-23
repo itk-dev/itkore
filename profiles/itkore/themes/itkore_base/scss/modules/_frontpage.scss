@@ -6,11 +6,10 @@
 
 
 .frontpage--header {
-  margin-top: 2em;
-
   color: $gray-darker;
   font-size: 1.75em;
   font-weight: 600;
+  margin-top: 2em;
   text-align: center;
 
   @include breakpoint($breakpoint-tablet) {

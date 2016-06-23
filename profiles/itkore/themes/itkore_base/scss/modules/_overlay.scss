@@ -9,20 +9,19 @@ $overlay-animation-duration: .3s;
 $overlay-opacity:            .85;
 
 .overlay {
+  bottom: 0;
+  height: 100%;
+  opacity: $overlay-opacity;
   position: absolute;
   top: 0;
-  bottom: 0;
-  opacity: $overlay-opacity;
+  visibility: hidden;
+  width: 100%;
   z-index: z($z-index-elements, overlay);
 
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-
   &.is-visible {
-    visibility: visible;
-    transition: background $overlay-animation-duration;
-    cursor: pointer;
     background-color: $black;
+    cursor: pointer;
+    transition: background $overlay-animation-duration;
+    visibility: visible;
   }
 }
