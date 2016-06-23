@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * @TODO: Missing description.
+ */
 
 use \Drupal\node\Entity\Node;
 use \Drupal\file\Entity\File;
@@ -8,6 +12,9 @@ use \Drupal\menu_link_content\Entity\MenuLinkContent;
  * Implements hook_install().
  *
  * Adds intro nodes to site.
+ *
+ * @TODO: Could this node/entity created using helper function (alot of code is
+ *        the same).
  *
  * @see system_install()
  */
@@ -104,8 +111,7 @@ function itkore_intro_install() {
   // Setup menu items (https://wunderkraut.se/blogg/create-menu-items-programmatically-drupal-8)
   // The name of our menu
   $menu_name = 'main';
-
-
+  
   $menu_item_getting_started = MenuLinkContent::create([
     'title' => t('Getting started'),
     'link' => ['uri' => 'internal:/node/1'],

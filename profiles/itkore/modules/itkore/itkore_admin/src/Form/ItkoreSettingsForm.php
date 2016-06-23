@@ -10,11 +10,10 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
 
-
 /**
- * Class ContentEntityExampleSettingsForm.
+ * Class ItkoreSettingsForm
+ *
  * @package Drupal\itkore_admin\Form
- * @ingroup itkore_booking
  */
 class ItkoreSettingsForm extends FormBase {
 
@@ -39,46 +38,45 @@ class ItkoreSettingsForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->getBaseConfig();
-    // ----------- Frontpage ----------- //
 
-    // Add frontpage wrapper.
+    // Add front page wrapper.
     $form['frontpage_wrapper'] = array(
-      '#title' => $this->t('Frontpage settings'),
+      '#title' => $this->t('Front page settings'),
       '#type' => 'details',
       '#weight' => '1',
       '#open' => TRUE,
     );
 
     $form['frontpage_wrapper']['frontpage_title'] = array(
-      '#title' => $this->t('Frontpage title'),
+      '#title' => $this->t('Title'),
       '#type' => 'textfield',
       '#default_value' => $config->get('itkore_frontpage.frontpage_title'),
       '#weight' => '1',
     );
 
     $form['frontpage_wrapper']['frontpage_lead'] = array(
-      '#title' => $this->t('Frontpage lead text'),
+      '#title' => $this->t('Lead text'),
       '#type' => 'textfield',
       '#default_value' => $config->get('itkore_frontpage.frontpage_lead'),
       '#weight' => '2',
     );
 
     $form['frontpage_wrapper']['frontpage_sub'] = array(
-      '#title' => $this->t('Frontpage sub text'),
+      '#title' => $this->t('Sub text'),
       '#type' => 'textfield',
       '#default_value' => $config->get('itkore_frontpage.frontpage_sub'),
       '#weight' => '3',
     );
 
-    $form['frontpage_wrapper']['frontpage_button'] = array(
-      '#title' => $this->t('Frontpage button text'),
+    $form['frontpage_wrapper']['front page_button'] = array(
+      '#title' => $this->t('Button text'),
       '#type' => 'textfield',
       '#default_value' => $config->get('itkore_frontpage.frontpage_button'),
       '#weight' => '4',
     );
 
     $form['frontpage_wrapper']['frontpage_link'] = array(
-      '#title' => $this->t('Frontpage button link'),
+      '#title' => $this->t('Button link'),
       '#type' => 'textfield',
       '#default_value' => $config->get('itkore_frontpage.frontpage_link'),
       '#weight' => '5',
@@ -95,17 +93,14 @@ class ItkoreSettingsForm extends FormBase {
     }
 
     $form['frontpage_wrapper']['frontpage_image'] = array(
-      '#title' => $this->t('Frontpage image'),
+      '#title' => $this->t('Image'),
       '#type' => 'managed_file',
       '#default_value' => ($fids[0]) ? $fids : '',
       '#upload_location' => 'public://',
       '#weight' => '3',
       '#open' => TRUE,
-      '#description' => t('The image used at the top of the frontpage.'),
+      '#description' => t('The image used at the top of the front page.'),
     );
-
-
-    // ----------- Footer ----------- //
 
     // Add footer wrapper.
     $form['footer_wrapper'] = array(
@@ -116,7 +111,7 @@ class ItkoreSettingsForm extends FormBase {
     );
 
     $form['footer_wrapper']['footer_text'] = array(
-      '#title' => $this->t('Footer text'),
+      '#title' => $this->t('Text'),
       '#type' => 'text_format',
       '#format' => 'filtered_html',
       '#default_value' => $config->get('itkore_footer.footer_text'),
@@ -176,7 +171,7 @@ class ItkoreSettingsForm extends FormBase {
 
         // Remove old file.
         if ($old_fid) {
-          removeFile($old_fid);
+          $this->removeFile($old_fid);
         }
 
         // Add file to file_usage table.
@@ -186,10 +181,11 @@ class ItkoreSettingsForm extends FormBase {
     else {
       // If old file exists but no file set in form, remove old file.
       if ($old_fid) {
-        removeFile($old_fid);
+        $this->removeFile($old_fid);
       }
     }
 
+    // Set the rest of the configuration values.
     $this->getBaseConfig()->setMultiple(array(
       'itkore_frontpage.frontpage_title' => $form_state->getValue('frontpage_title'),
       'itkore_frontpage.frontpage_lead' => $form_state->getValue('frontpage_lead'),
@@ -200,20 +196,20 @@ class ItkoreSettingsForm extends FormBase {
       'itkore_footer.footer_twitter' => $form_state->getValue('footer_twitter'),
       'itkore_footer.footer_instagram' => $form_state->getValue('footer_instagram'),
       'itkore_footer.footer_linkedin' => $form_state->getValue('footer_linkedin'),
-      'itkore_frontpage.frontpage_image' => $file ? $file->id() : NULL
-      )
-    );
+      'itkore_frontpage.frontpage_image' => $file ? $file->id() : NULL,
+    ));
+  }
+
+  /**
+   * Deletes a a file from file usage table.
+   *
+   * @param int $fid
+   *   The file id of the file to delete.
+   */
+  private function removeFile($fid) {
+    // Load and delete old file.
+    $file = File::load($fid);
+    \Drupal::service('file.usage')->delete($file, 'itkore_admin', 'user', '1', '1');
   }
 }
 
-/**
- * Deletes a a file from file usage table.
- *
- * @param int $fid
- *   The file id of the file to delete.
- */
-function removeFile($fid) {
-  // Load and delete old file.
-  $file = File::load($fid);
-  \Drupal::service('file.usage')->delete($file, 'itkore_admin', 'user', '1', '1');
-}
