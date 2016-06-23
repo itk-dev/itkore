@@ -1,5 +1,0 @@
-name: Language drush
-type: module
-core: 8.x
-dependencies:
-  - language
