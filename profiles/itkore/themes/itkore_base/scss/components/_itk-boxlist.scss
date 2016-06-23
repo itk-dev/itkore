@@ -23,8 +23,8 @@ $boxlist-padding: 1em;
   }
 
   &--item {
-    @include flexbox;
-    @include flex-flow(row nowrap);
+    display: flex;
+    flex-flow: row nowrap;
   }
 
   &--item + &--item {
@@ -55,13 +55,13 @@ $boxlist-padding: 1em;
   }
 
   header {
-    @include order(2);
+    flex-basis: auto;
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    order: 2;
 
     padding-top: 0;
-
-    @include flex-basis(auto);
-    @include flex-grow(1);
-    @include flex-shrink(1);
 
     @include breakpoint(600px) {
       padding-right: $boxlist-padding;
@@ -75,8 +75,8 @@ $boxlist-padding: 1em;
   }
 
   figure {
-    @include order(1);
-    @include flex-shrink(0);
+    flex-shrink: 1;
+    order: 1;
 
     margin-right: 1em;
     max-width: 6em;
@@ -93,7 +93,7 @@ $boxlist-padding: 1em;
   &--link,
   &--link:link,
   &--link:visited {
-    @include order(4);
+    order: 4;
 
     display: block;
     margin-right: auto;
@@ -125,9 +125,9 @@ $boxlist-padding: 1em;
 }
 
 .itk-boxlist-gallery {
-  @include flexbox;
-  @include flex-flow(row wrap);
-  @include justify-content(center);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 
   margin-top: 3em;
   margin-right: $layout-padding;
@@ -143,16 +143,16 @@ $boxlist-padding: 1em;
   }
 
   &--item {
-    @include flexbox;
-    @include flex-flow(column);
-    @include flex-basis(40%);
+    display: flex;
+    flex-basis: 40%;
+    flex-flow: column;
 
     margin-right: 1em;
     margin-bottom: 4em;
     margin-left: $boxlist-padding;
 
     @include breakpoint($breakpoint-tablet) {
-      @include flex-basis(45%);
+      flex-basis: 45%;
     }
 
 
@@ -162,11 +162,11 @@ $boxlist-padding: 1em;
     }
 
     @include breakpoint($breakpoint-desk) {
-      @include flex-basis(30%);
+      flex-basis: 30%;
     }
 
     header {
-      @include order(2);
+      order: 2;
 
       font-size: .75em;
       text-align: center;
@@ -189,7 +189,7 @@ $boxlist-padding: 1em;
     }
 
     figure {
-      @include order(1);
+      order: 1;
 
       display: block;
       margin-top: 1.25em;
@@ -204,7 +204,7 @@ $boxlist-padding: 1em;
     }
 
     p {
-      @include order(3);
+      order: 3;
 
       min-height: 3em;
       margin-top: .75em;
@@ -217,7 +217,7 @@ $boxlist-padding: 1em;
   &--link,
   &--link:link,
   &--link:visited {
-    @include order(4);
+    order: 4;
 
     display: block;
     margin-right: auto;

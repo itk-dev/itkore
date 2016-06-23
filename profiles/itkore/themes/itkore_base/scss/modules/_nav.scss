@@ -48,30 +48,30 @@
   transition: top .35s, right .35s, padding .35s;
 
   @include breakpoint($breakpoint-desk) {
-    background-color: rgba(0,0,0, .75);
+    display: flex;
+    flex-direction: column;
 
     position: fixed;
     top: 0;
     right: 0;
 
-    @include flexbox;
-    @include flex-direction(column);
+    background-color: rgba(0,0,0, .75);
   }
 
   &--links {
     display: none; // Hiding navigation on smaller screens
 
     @include breakpoint($breakpoint-desk) {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      flex-direction: row;
+      justify-content: flex-end;
+
       margin-right: 6em;
 
       font-weight: 300;
       text-align: right;
-
-      @include flexbox;
-      @include flex-grow(1);
-      @include align-items(center);
-      @include flex-direction(row);
-      @include justify-content(flex-end);
 
       a {
         @include strip-link-styles($white, none);
@@ -82,6 +82,10 @@
   // Drupals markup dictates that .nav--link has to be inside .nav
   .nav--link {
     @include breakpoint($breakpoint-desk) {
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+
       padding-right: 1.2em;
       padding-left: 1.2em;
 
@@ -90,10 +94,6 @@
       text-decoration: none;
 
       transition: top .35s, right .35s, border 1s, padding .35s, background-color .25s;
-
-      @include flexbox;
-      @include align-items(center);
-      @include align-self(stretch);
 
       &.is-active,
       &.is-active:hover {
