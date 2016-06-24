@@ -134,7 +134,7 @@ function itkore_intro_install() {
  */
 function _itkore_intro_file_create($file_name, $file_path) {
   $file = $file_path . '/' . $file_name;
-  $uri  = file_unmanaged_copy($file, 'public://' . $file_name, FILE_EXISTS_REPLACE);
+  $uri  = file_unmanaged_copy($file, 'public://images/' . $file_name, FILE_EXISTS_REPLACE);
   $file = File::Create([
     'uid' => 1,
     'filename' => $file_name,

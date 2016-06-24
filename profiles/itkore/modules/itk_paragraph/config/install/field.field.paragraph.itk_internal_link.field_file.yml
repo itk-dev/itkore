@@ -16,7 +16,7 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_directory: uploaded_files
+  file_directory: uploads
   file_extensions: 'txt pdf jpeg jpg png rar zip'
   max_filesize: ''
   description_field: false

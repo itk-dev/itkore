@@ -1,6 +1,7 @@
-langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: rXKBqnypBO4bhaiOmML7aaT6ulaNw66glpGgLwS4vw8
 id: editor
 label: Editor
 weight: 2
@@ -32,3 +33,8 @@ permissions:
   - 'access toolbar'
   - 'administer users'
   - 'access user profiles'
+  - 'access itkore settings'
+  - 'create url aliases'
+  - 'administer themes'
+  - 'access administration pages'
+  - 'change own username'
