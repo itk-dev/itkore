@@ -56,11 +56,11 @@ dependencies:
   - itkore_admin
   - itkore_content_types
   - itkore_fields
-  - itkore_language
   - itkore_text_filters
   - itkore_user_roles
   - itkore_user_theme
   - itkore_views
+  - itkore_font
 
 themes:
   - itkore_base
