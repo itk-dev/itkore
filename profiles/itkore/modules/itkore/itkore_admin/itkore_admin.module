@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * @TODO: Missing description.
+ * Expose itkore config variables to theme.
  */
 
 use Drupal\file\Entity\File;

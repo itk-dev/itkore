@@ -19,7 +19,7 @@ html {
 // http: //galengidman.com/2014/03/25/responsive-flexible-height-sticky-footers-in-css/
 body {
   background-color: $white;
-  color: $gray-darkest;
+  color: $gray-darker;
   display: table;
   font: $font;
   height: 100%;
@@ -73,7 +73,7 @@ fieldset + fieldset {
 }
 
 legend {
-  color: $gray-dark;
+  color: $gray-darker;
   font-size: 1.25em;
   font-weight: 600;
   padding-left: .5em;
