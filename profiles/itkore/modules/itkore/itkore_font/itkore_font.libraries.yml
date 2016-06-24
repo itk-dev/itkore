@@ -1,0 +1,21 @@
+itkore_font_roboto:
+  license:
+    name: SIL Open Font License, 1.1
+    url: http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+  css:
+    theme:
+      css/roboto.css: {}
+itkore_font_source_sans_pro:
+  license:
+    name: SIL Open Font License, 1.1
+    url: http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+  css:
+    theme:
+      css/source_sans_pro.css: {}
+itkore_font_titillium_web:
+  license:
+    name: SIL Open Font License, 1.1
+    url: http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+  css:
+    theme:
+      css/titillium_web.css: {}
