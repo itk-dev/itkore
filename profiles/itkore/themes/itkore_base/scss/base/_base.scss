@@ -16,25 +16,23 @@ html {
   height: 100%;
 }
 
+// http: //galengidman.com/2014/03/25/responsive-flexible-height-sticky-footers-in-css/
 body {
-  position: relative; // For absolute positioned hamburger menu to have 100 height.
-
-  // 'http://galengidman.com/2014/03/25/responsive-flexible-height-sticky-footers-in-css/'
+  background-color: $white;
+  color: $gray-darkest;
   display: table;
+  font: $font;
   height: 100%;
   margin: 0;
+  position: relative;
   width: 100%;
-
-  background-color: $white;
-
-  color: $gray-darkest;
 }
 
 html,
 body {
   &.is-locked {
-    position: fixed;
     overflow: hidden;
+    position: fixed;
   }
 }
 
@@ -44,16 +42,11 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0;
-  margin-bottom: .5em;
-
   font-weight: normal;
-
-  /* This fixes huge spaces when a heading wraps onto two lines */
-  line-height: 1.2;
-
-  /* Voodoo to enable ligatures and kerning */
-  text-rendering: optimizeLegibility;
+  line-height: 1.2; /* This fixes huge spaces when a heading wraps onto two lines */
+  margin-bottom: .5em;
+  margin-top: 0;
+  text-rendering: optimizeLegibility; /* Voodoo to enable ligatures and kerning */
 }
 
 
@@ -80,12 +73,11 @@ fieldset + fieldset {
 }
 
 legend {
-  padding-right: .5em;
-  padding-left: .5em;
-
   color: $gray-dark;
   font-size: 1.25em;
   font-weight: 600;
+  padding-left: .5em;
+  padding-right: .5em;
 }
 
 
@@ -117,8 +109,8 @@ a {
    ================================================================================================================== */
 
 p {
-  margin-top: 0;
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 
@@ -129,6 +121,6 @@ img {
   display: inline;
   height: auto;
   max-width: 100%;
-  width: 100%;
   vertical-align: bottom;
+  width: 100%;
 }

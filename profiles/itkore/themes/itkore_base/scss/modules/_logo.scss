@@ -13,17 +13,15 @@
 .is-frontpage .logo.is-sticky {
   @include strip-link-styles($white);
 
+  background-repeat: no-repeat;
+  height: 3em;
+  left: $layout-padding;
+  max-width: 75%;
   overflow: hidden;
   position: absolute;
   top: 1.3em;
-  left: $layout-padding;
-  z-index: z($z-index-elements, logo);
-
-  height: 3em;
-  max-width: 75%;
   width: auto;
-
-  background-repeat: no-repeat;
+  z-index: z($z-index-elements, logo);
 
   @include breakpoint($breakpoint-desk) {
     position: fixed;

@@ -1,14 +1,13 @@
 <?php
 /**
  * @file
- * Contains Drupal\itkore_admin\Form\ItkoreSettingsForm.
+ * Contains Drupal\itkore_font\Form\ItkoreSettingsForm.
  */
 
 namespace Drupal\itkore_font\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\PhpStorage\PhpStorageFactory;
 
 
 /**

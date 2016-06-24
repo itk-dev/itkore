@@ -7,9 +7,11 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-var compass = require('gulp-compass');
 var stylelint = require('gulp-stylelint');
 
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var cssnano = require('cssnano');
 
 /**
  * Setting up browsersync.
@@ -55,9 +57,15 @@ gulp.task('stylelint', function lintCssTask() {
  * Process SCSS using libsass
  */
 gulp.task('sass', function () {
+  var processors = [
+    autoprefixer({browsers: ['last 2 versions']}),
+    cssnano
+  ];
+
   gulp.src(sassPath)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(processors))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./css'))
     .pipe(browserSync.stream());

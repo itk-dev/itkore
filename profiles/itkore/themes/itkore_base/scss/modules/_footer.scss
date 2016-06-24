@@ -5,33 +5,29 @@
  */
 
 $top-and-button-margin: 2em;
-$left-and-right-padding: 1em;
+$left-and-right-padding: $layout-padding;
 
 .footer {
-  position: absolute;
+  background-color: $black;
   bottom: 0;
-
+  position: absolute;
   width: 100%;
 
-  background-color: $black;
-
   &--content {
+    display: flex;
+    flex-flow: row wrap;
     margin-left: auto;
     margin-right: auto;
     max-width: $breakpoint-desk;
-    padding-top: $top-and-button-margin;
-    padding-right: $left-and-right-padding;
     padding-left: $left-and-right-padding;
-
-    @include flexbox;
-    @include flex-flow(row wrap);
+    padding-right: $left-and-right-padding;
+    padding-top: $top-and-button-margin;
   }
 
   &--mail {
+    flex-basis: 100%;
     margin-bottom: $top-and-button-margin;
     text-align: center;
-
-    @include flex-basis(100%);
 
     a {
       color: $white;
@@ -39,26 +35,24 @@ $left-and-right-padding: 1em;
   }
 
   &--social {
+    align-items: center;
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-around;
     margin-bottom: $top-and-button-margin;
-
-    @include flexbox;
-    @include flex-basis(100%);
-    @include align-items(center);
-    @include justify-content(space-around);
   }
 
   &--icons {
-    width: 1.8em;
     margin-left: $left-and-right-padding;
+    width: 1.8em;
   }
 
   &--aarhus {
+    align-items: center;
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-around;
     margin-bottom: $top-and-button-margin;
-
-    @include flexbox;
-    @include flex-basis(100%);
-    @include align-items(center);
-    @include justify-content(space-around);
   }
 
   &--logo {
@@ -67,38 +61,36 @@ $left-and-right-padding: 1em;
 
   @include breakpoint($breakpoint-tablet) {
     &--mail {
+      flex-basis: 50%;
       order: 2;
       text-align: left;
-
-      @include flex-basis(50%);
     }
 
     &--social,
     &--icons {
-      @include flex-basis(25%);
+      flex-basis: 25%;
     }
 
     &--social {
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
       order: 3;
-      @include flexbox;
-      @include align-items(center);
-      @include justify-content(flex-end);
     }
 
     &--aarhus {
+      flex-basis: 25%;
+      justify-content: flex-start;
       order: 1;
-      @include flex-basis(25%);
-      @include justify-content(flex-start);
     }
   }
 
   @include breakpoint($breakpoint-desk) {
     &--mail {
-      text-align: center;
+      align-self: center;
+      flex-basis: 50%;
       order: 2;
-
-      @include flex-basis(50%);
-      @include align-self(center);
+      text-align: center;
     }
 
     &--social {
@@ -106,11 +98,10 @@ $left-and-right-padding: 1em;
     }
 
     &--aarhus {
-      order: 1;
+      flex-basis: 25%;
+      justify-content: flex-start;
       margin-top: 0;
-
-      @include justify-content(flex-start);
-      @include flex-basis(25%);
+      order: 1;
     }
   }
 }

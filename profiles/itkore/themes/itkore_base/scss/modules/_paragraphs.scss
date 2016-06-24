@@ -29,8 +29,8 @@ $internal-link-image-width: 112px;
 
 .paragraphs {
   &--wrapper {
-    margin-right: 1.8em;
     margin-left: 1.8em;
+    margin-right: 1.8em;
   }
 
   &--text-left,
@@ -39,8 +39,8 @@ $internal-link-image-width: 112px;
   &--youtube,
   &--iframe,
   &--title-only {
-    margin-top: $paragraph-margin-top;
     margin-bottom: $paragraph-margin-top;
+    margin-top: $paragraph-margin-top;
   }
 
   // Paragraph Title
@@ -51,40 +51,38 @@ $internal-link-image-width: 112px;
 
   // Text Left
   &--text-inner{
-    @include flexbox;
-    @include justify-content(space-between);
-    @include flex-wrap(no-wrap);
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: space-between;
   }
 
   &--text-left {
 
     figure {
-      margin-top: .25em;
+      flex-basis: 5em;
+      flex-grow: 1;
       margin-left: 1em;
+      margin-top: .25em;
       min-width: 5em;
-
-      @include flex-basis(5em);
-      @include flex-grow(1);
-      @include order(2);
+      order: 2;
 
       @include breakpoint($breakpoint-lap) {
-        @include flex-basis($image-width-lap);
-
-        min-width: $image-width-lap;
+        flex-basis: $image-width-lap;
         max-width: $image-width-lap;
+        min-width: $image-width-lap;
       }
 
       @include breakpoint($breakpoint-desk) {
-        @include flex-basis($image-width-desk);
-        min-width: $image-width-desk;
+        flex-basis: $image-width-desk;
         max-width: $image-width-desk;
+        min-width: $image-width-desk;
       }
     }
   }
 
   &--text-left-wrapper {
-    @include order(1);
-    @include flex-shrink(1);
+    flex-shrink: 1;
+    order: 1;
 
     .paragraphs--text > p:last-child {
       margin-bottom: 0;
@@ -95,30 +93,26 @@ $internal-link-image-width: 112px;
   // Internal Link
 
   &--internal-link {
-    @include flexbox;
-    @include justify-content(space-between);
-    @include flex-wrap(no-wrap);
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: space-between;
 
     .figure {
+      flex-basis: 5em;
+      flex-grow: 0;
       margin-right: 1em;
-      min-width: $internal-link-image-width / 2;
       max-width: $internal-link-image-width / 2;
-
-      @include flex-basis(5em);
-      @include flex-grow(0);
-      @include order(1);
+      min-width: $internal-link-image-width / 2;
+      order: 1;
 
       @include breakpoint($breakpoint-lap) {
-        min-width: $internal-link-image-width;
         max-width: $internal-link-image-width;
+        min-width: $internal-link-image-width;
       }
     }
 
     a:first-child {
-
-        @include strip-link-styles();
-
-
+      @include strip-link-styles();
     }
 
     .paragraphs--text > p:last-child {
@@ -131,9 +125,9 @@ $internal-link-image-width: 112px;
   }
 
   &--internal-link-wrapper {
-    @include order(2);
-    @include flex-grow(1);
-    @include flex-shrink(1);
+    flex-grow: 1;
+    flex-shrink: 1;
+    order: 2;
   }
 
   // Title only

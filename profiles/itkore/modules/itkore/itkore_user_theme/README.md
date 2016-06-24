@@ -1,2 +1,3 @@
 # Itkore_user theme
-Remember to set permission for anomymous users to view admin theme
+Enables anonymous and authenticated to use the admin theme to allow them to 
+login using the admin theme.

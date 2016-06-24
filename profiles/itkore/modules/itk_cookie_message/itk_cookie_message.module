@@ -18,7 +18,6 @@ function itk_cookie_message_page_bottom(array &$page) {
   }
 
   $settings = itk_cookie_message_get_settings();
-
   $template = <<<EOF
 <div id="js-cookieterms" class="cookies">
   <div class="cookies--inner">
@@ -35,10 +34,10 @@ function itk_cookie_message_page_bottom(array &$page) {
 EOF;
 
   $values = array(
-    'text' => trim(trim($settings['text'], '.')),
+    'text' => trim($settings['text'], ".\t\n\r\0\x0B"),
     'read_more_url' => trim($settings['read_more_url']),
-    'read_more_text' => trim(trim($settings['read_more_text'], '.')),
-    'accept_button_text' => trim(trim($settings['accept_button_text'], '.')),
+    'read_more_text' => trim($settings['read_more_text'], ".\t\n\r\0\x0B"),
+    'accept_button_text' => trim($settings['accept_button_text'], ".\t\n\r\0\x0B"),
   );
 
   $twig = \Drupal::service('twig');
@@ -81,27 +80,20 @@ function itk_cookie_message_get_settings(\Drupal\Core\Language\LanguageInterface
     $localized_settings = array();
   }
 
-  // Add default values.
-  foreach (array(
+  // Merge default values into global settings.
+  $global_settings += array(
     'cookie_name' => 'accept_cookies',
     'cookie_lifetime' => 365 * 24 * 60 * 60,
     'template' => '',
-  ) as $key => $value) {
-    if (!isset($global_settings[$key])) {
-      $global_settings[$key] = $value;
-    }
-  }
+  );
 
-  foreach (array(
+  // Merge default values into localized settings.
+  $localized_settings += array(
     'text' => t('This site uses cookies', array(), array('langcode' => $language->getId())),
     'read_more_url' => '',
     'read_more_text' => t('Read more', array(), array('langcode' => $language->getId())),
     'accept_button_text' => t('Accept cookies', array(), array('langcode' => $language->getId())),
-  ) as $key => $value) {
-    if (!isset($localized_settings[$key])) {
-      $localized_settings[$key] = $value;
-    }
-  }
+  );
 
   return array_merge($global_settings, $localized_settings);
 }
