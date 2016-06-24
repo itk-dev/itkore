@@ -35,14 +35,15 @@ var buildDir = './js';
 /**
  * Run Javascript through JSHint.
  */
-
 gulp.task('jshint', function() {
   return gulp.src(jsPath)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
 
-
+/**
+ * Run style lint.
+ */
 gulp.task('stylelint', function lintCssTask() {
   return gulp
     .src(sassPath)
@@ -82,7 +83,6 @@ gulp.task('watch', function() {
   gulp.watch(jsPath).on('change',browserSync.reload);
 });
 
-
 /**
  * Watch javascript files for changes.
  */
@@ -112,7 +112,6 @@ gulp.task('assetsJs', function () {
     .pipe(gulp.dest(buildDir))
 });
 
-
 /**
  * Use compass
  */
@@ -121,7 +120,6 @@ gulp.task('compass', function() {
     .pipe(minifycss())
     .pipe(gulp.dest('html/css'));
 });
-
 
 // Tasks to compile sass and watch js file.
 gulp.task('default', ['sass', 'watch']);

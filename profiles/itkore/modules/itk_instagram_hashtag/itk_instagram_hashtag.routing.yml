@@ -1,9 +1,0 @@
-itk_instagram_hashtag.settings:
-  path: '/admin/itk_instagram_hashtag/settings'
-  defaults:
-    _form: '\Drupal\itk_instagram_hashtag\Form\InstagramHashtagSettingsForm'
-    _title: 'Instagram Hashtag Settings'
-  requirements:
-    _permission: 'administer itk_instagram_hashtag settings'
-  options:
-    _admin_route: TRUE

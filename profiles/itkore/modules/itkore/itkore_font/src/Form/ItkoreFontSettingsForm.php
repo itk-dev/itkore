@@ -9,7 +9,6 @@ namespace Drupal\itkore_font\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
-
 /**
  * Class ContentEntityExampleSettingsForm.
  * @package Drupal\itkore_admin\Form
@@ -44,7 +43,7 @@ class ItkoreFontSettingsForm extends ConfigFormBase {
       '#title' => $this->t('Font'),
       '#default_value' => $config->get('itkore_font'),
       '#options' => array(
-        0 => $this->t('Default'),
+        '_none_' => $this->t('Default'),
         'roboto' => $this->t('Roboto'),
         'source_sans_pro' => $this->t('Source Sans Pro'),
         'titillium_web' => $this->t('Titillium Web'),
@@ -54,7 +53,6 @@ class ItkoreFontSettingsForm extends ConfigFormBase {
     return parent::buildForm($form, $form_state);
   }
 
-
   /**
    * {@inheritdoc}
    */
@@ -63,6 +61,8 @@ class ItkoreFontSettingsForm extends ConfigFormBase {
       ->set('itkore_font', $form_state->getValue('font_settings'))
       ->save();
 
+    // Flush all to ensure that the font selection works around the whole
+    // system. Simply clearing the theme cache do not work.
     drupal_flush_all_caches();
 
     parent::submitForm($form, $form_state);

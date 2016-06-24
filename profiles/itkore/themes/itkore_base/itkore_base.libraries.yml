@@ -7,5 +7,5 @@ global-styling:
 global-js:
   version: VERSION
   js:
-    js/header-scrolling.js: {}
-    js/menu-toggle.js: {}
+    js/itkore_base_header_scrolling.js: {}
+    js/itkore_base_menu_toggle.js: {}

@@ -1,20 +1,21 @@
 /**
- *
- * Header changes when the users scrolls
- *
+ * @file
+ * Header changes when the users scrolls.
  */
-
 (function($) {
   'use strict';
 
+  /**
+   * Add class to head to make it sticky when the user is scrolling the page.
+   */
   function headerScrolling() {
     var scroll = $(window).scrollTop();
     var threshold = 50;
 
-    // Header elements
-    var logo      = $('.js-logo');
-    var nav       = $('.js-nav');
-    var menu      = $('.js-menu-toggle');
+    // Header elements.
+    var logo = $('.js-logo');
+    var nav = $('.js-nav');
+    var menu = $('.js-menu-toggle');
 
     // When the user scrolls and reaches the threshold.
     if (scroll >= threshold) {
@@ -33,5 +34,4 @@
 
   // Run function when the user scrolls.
   $(window).on('scroll', headerScrolling);
-
 })(jQuery);

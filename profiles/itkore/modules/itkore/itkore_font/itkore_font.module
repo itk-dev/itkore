@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Used to add a library based on selected font.
@@ -11,18 +10,24 @@ use Drupal\Core\Config;
 * Implements hook_page_attachments().
 */
 function itkore_font_page_attachments(array &$page) {
-  $config = \drupal::config('itkore_font.settings');
+  $config = \Drupal::config('itkore_font.settings');
   $font = $config->get('itkore_font');
 
   switch ($font) {
     case 'roboto':
       $page['#attached']['library'][] = 'itkore_font/itkore_font_roboto';
       break;
+
     case 'source_sans_pro':
       $page['#attached']['library'][] = 'itkore_font/itkore_font_source_sans_pro';
       break;
+
     case 'titillium_web':
       $page['#attached']['library'][] = 'itkore_font/itkore_font_titillium_web';
+      break;
+
+    default:
+      // Falls back to the font defined in the CSS for IRKore base theme.
       break;
   }
 }
