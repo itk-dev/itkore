@@ -11,7 +11,6 @@ var stylelint = require('gulp-stylelint');
 
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
 
 /**
  * Setting up browsersync.
@@ -58,13 +57,12 @@ gulp.task('stylelint', function lintCssTask() {
  */
 gulp.task('sass', function () {
   var processors = [
-    autoprefixer({browsers: ['last 2 versions']}),
-    cssnano
+    autoprefixer({browsers: ['last 2 versions']})
   ];
 
   gulp.src(sassPath)
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(postcss(processors))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./css'))
