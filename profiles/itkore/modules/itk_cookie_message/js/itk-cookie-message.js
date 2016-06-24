@@ -3,6 +3,8 @@
  * Enables the display of the EU cookie dialog.
  */
 (function($) {
+  "use strict";
+  
   var settings = drupalSettings.itk_cookie_message;
   var cookieName = settings.cookie_name;
 

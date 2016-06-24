@@ -1,5 +1,0 @@
-itk_instagram_hashtag.settings:
-  title: Instagram Hashtag
-  description: 'Control settings for Instagram Hashtag.'
-  route_name: itk_instagram_hashtag.settings
-  parent: user.admin_index
