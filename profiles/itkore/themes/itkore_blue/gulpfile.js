@@ -11,7 +11,6 @@ var stylelint = require('gulp-stylelint');
 
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
 
 /**
  * Setting up browsersync.
@@ -35,14 +34,15 @@ var buildDir = './js';
 /**
  * Run Javascript through JSHint.
  */
-
 gulp.task('jshint', function() {
   return gulp.src(jsPath)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
 
-
+/**
+ * Run style lint.
+ */
 gulp.task('stylelint', function lintCssTask() {
   return gulp
     .src(sassPath)
@@ -58,13 +58,12 @@ gulp.task('stylelint', function lintCssTask() {
  */
 gulp.task('sass', function () {
   var processors = [
-    autoprefixer({browsers: ['last 2 versions']}),
-    cssnano
+    autoprefixer({browsers: ['last 2 versions']})
   ];
 
   gulp.src(sassPath)
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(postcss(processors))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./css'))
@@ -81,7 +80,6 @@ gulp.task('watch', function() {
   gulp.watch(twigPath).on('change', browserSync.reload);
   gulp.watch(jsPath).on('change',browserSync.reload);
 });
-
 
 /**
  * Watch javascript files for changes.
@@ -112,7 +110,6 @@ gulp.task('assetsJs', function () {
     .pipe(gulp.dest(buildDir))
 });
 
-
 /**
  * Use compass
  */
@@ -121,7 +118,6 @@ gulp.task('compass', function() {
     .pipe(minifycss())
     .pipe(gulp.dest('html/css'));
 });
-
 
 // Tasks to compile sass and watch js file.
 gulp.task('default', ['sass', 'watch']);

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * @TODO: Missing description.
+ * Add default intro content.
  */
 
 use \Drupal\node\Entity\Node;
@@ -13,37 +13,20 @@ use \Drupal\menu_link_content\Entity\MenuLinkContent;
  *
  * Adds intro nodes to site.
  *
- * @TODO: Could this node/entity created using helper function (alot of code is
- *        the same).
- *
  * @see system_install()
  */
 function itkore_intro_install() {
   // Create nodes
-  $content = '<p>Se emnerne i listen nedenunder.</p>';
-  $root = \Drupal::root();
-  $file = $root . '/' . drupal_get_path('profile', 'itkore') . '/examples/content-default.jpg';
-  $uri  = file_unmanaged_copy($file, 'public://content-default.jpg', FILE_EXISTS_REPLACE);
-  $file = File::Create([
-    'uid' => 1,
-    'filename' => 'content-default.jpg',
-    'uri' => $uri,
-    'status' => 1,
-  ]);
-  $file->save();
 
-  $pencil_icon = $root . '/' . drupal_get_path('profile', 'itkore') . '/examples/icon-default.png';
-  $uri  = file_unmanaged_copy($pencil_icon, 'public://icon-default.png', FILE_EXISTS_REPLACE);
-  $pencil_icon = File::Create([
-    'uid' => 1,
-    'filename' => 'icon-default.png',
-    'uri' => $uri,
-    'status' => 1,
-  ]);
-  $pencil_icon->save();
+  $title = 'Kom igang';
+  $content = '<p>Se emnerne i listen nedenunder.</p>';
+
+  $root = \Drupal::root();
+  $file_path = $root . '/' . drupal_get_path('profile', 'itkore') . '/examples';
+  $file =_itkore_intro_file_create('content-default.jpg', $file_path);
 
   $node = Node::create(array(
-    'title' => 'Kom igang',
+    'title' => $title,
     'nid' => NULL,
     'type' => 'page',
     'uid' => 1,
@@ -61,22 +44,28 @@ function itkore_intro_install() {
     ],
     'field_main_image' => [
       'target_id' => $file->id(),
-      'alt' => 'Kom igang',
-      'title' => 'Kom igang',
+      'alt' => $title,
+      'title' => $title,
       'image_style' => 'main_image',
     ],
     'field_related_page_image' => [
       'target_id' => $file->id(),
-      'alt' => 'Kom igang',
-      'title' => 'Kom igang',
+      'alt' => $title,
+      'title' => $title,
       'image_style' => 'related_page_image',
     ],
   ));
   $node->save();
 
+
+
+  $title = 'Opret side';
   $content = '<p>Følg vejledningen for at oprette nye sider i systemet.</p>';
+
+  $pencil_icon = _itkore_intro_file_create('icon-default.png', $file_path);
+
   $node = Node::create(array(
-    'title' => 'Opret side',
+    'title' => $title,
     'nid' => NULL,
     'type' => 'page',
     'uid' => 1,
@@ -94,14 +83,14 @@ function itkore_intro_install() {
     ],
     'field_main_image' => [
       'target_id' => $file->id(),
-      'alt' => 'Opret side',
-      'title' => 'Opret side',
+      'alt' => $title,
+      'title' => $title,
       'image_style' => 'main_image',
     ],
     'field_related_page_image' => [
       'target_id' => $pencil_icon->id(),
-      'alt' => 'Opret side',
-      'title' => 'Opret side',
+      'alt' => $title,
+      'title' => $title,
       'image_style' => 'related_page_image',
     ],
   ));
@@ -130,4 +119,29 @@ function itkore_intro_install() {
 
   // Save the menu link.
   $menu_item_create_page->save();
+}
+
+/**
+ * Save a file to the database and the files default folder.
+ *
+ * @param $file_name
+ *   The name of the file.
+ * @param $file_path
+ *   The location of the file.
+ *
+ * @return \Drupal\Core\Entity\EntityInterface|string|static
+ *   A file object.
+ */
+function _itkore_intro_file_create($file_name, $file_path) {
+  $file = $file_path . '/' . $file_name;
+  $uri  = file_unmanaged_copy($file, 'public://' . $file_name, FILE_EXISTS_REPLACE);
+  $file = File::Create([
+    'uid' => 1,
+    'filename' => $file_name,
+    'uri' => $uri,
+    'status' => 1,
+  ]);
+  $file->save();
+
+  return $file;
 }

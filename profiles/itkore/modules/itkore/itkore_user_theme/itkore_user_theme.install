@@ -7,16 +7,13 @@
 /**
  * Implements hook_install().
  *
- * @TODO: Why do they get the 'access content' permission in this module?
  */
 function itkore_user_theme_install() {
   user_role_grant_permissions('anonymous', array(
-    'access content',
     'view the administration theme',
   ));
 
   user_role_grant_permissions('authenticated', array(
-    'access content',
     'view the administration theme',
   ));
 }
