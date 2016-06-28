@@ -14,6 +14,7 @@
     "drupal/adminimal_theme": "~8",
     "drupal/metatag": "~8",
     "drupal/redirect": "dev-8.x-1.x",
+    "drupal/role_delegation": "~8",
     "drupal/toolbar_visibility": "dev-8.x-1.x"
   },
   "minimum-stability": "dev",
