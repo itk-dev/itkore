@@ -1,0 +1,26 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: http://itkore.vm
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      drush:
+        alias: 'local'
+      drupal:
+        drupal_root: '/vagrant/htdocs/'
+      region_map:
+        footer: "#footer"
+      text:
+        log_out: "Log ud"
+        log_in: "edit-submit"
+        username_field: "edit-name"
+        password_field: "edit-pass"
