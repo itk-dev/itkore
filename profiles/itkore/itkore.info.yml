@@ -1,6 +1,8 @@
 name: ITKore
 type: profile
 description: 'Install with commonly used features pre-configured.'
+interface translation project: itkore
+interface translation server pattern: profiles/itkore/translations/itkore.%language.po
 version: VERSION
 core: 8.x
 dependencies:
