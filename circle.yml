@@ -22,20 +22,7 @@ dependencies:
     # Install drush.
     - composer global require drush/drush:8.1.* --prefer-source --no-interaction
 
-    - mkdir -p /opt/behat
-    - cd /opt/behat
-    - cat >> $settingsFile <<'EOF'
-{
-  "require": {
-    "drupal/drupal-extension": "~3.0"
-},
-  "config": {
-    "bin-dir": "bin/"
-  }
-}
-EOF
-    - composer install
-    - ln -s /opt/drupalextension/bin/behat /usr/local/bin/behat
+    - (cd profiles/itkore/behat-tests/ && composer install)
 
 test:
   override:
