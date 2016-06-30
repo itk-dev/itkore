@@ -4,6 +4,7 @@ machine:
   node:
     version: 4.2.6
   environment:
+    TESTS: profiles/itkore/behat-tests/
 
 dependencies:
   pre:
@@ -24,7 +25,7 @@ dependencies:
     - composer global require drush/drush:8.1.* --prefer-source --no-interaction
 
     # Install behat
-    - (cd profiles/itkore/behat-tests/ && composer install)
+    - (cd ${TESTS} && composer install)
 
 test:
   override:
@@ -32,7 +33,7 @@ test:
     - composer install
 
     # Install
-    - drush --yes site-install itkore --db-url='mysql://ubuntu:@localhost/drupal --site-name="Test site" --account-name=admin --account-mail=itkdesign@mkb.aarhus.dk --locale=da
+    - drush --yes site-install itkore --db-url='mysql://ubuntu:@localhost/drupal' --site-name="Test site" --account-name=admin --account-mail=itkdesign@mkb.aarhus.dk --locale=da
     - drush config-set system.site langcode da -y
     - drush config-set system.site default_langcode da -y
     - drush config-set language.types negotiation.language_interface.enabled.language-url '' -y
@@ -44,6 +45,6 @@ test:
     ## Needs to disable browser sync.
 
     # Run site install
-    - (cd profiles/itkore/behat-tests/ && bin/behat -f pretty)
+    - (cd ${TESTS} && bin/behat -f pretty)
 
   post:
