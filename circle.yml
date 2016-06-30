@@ -33,7 +33,7 @@ test:
     - composer install
 
     # Install
-    - drush --yes site-install itkore --db-url='mysql://ubuntu:@localhost/drupal' --site-name="Test site" --account-name=admin --account-mail=itkdesign@mkb.aarhus.dk --locale=da
+    - drush --yes site-install itkore --db-url='mysql://ubuntu:@127.0.0.1/drupal' --site-name="Test site" --account-name=admin --account-mail=itkdesign@mkb.aarhus.dk --locale=da
     - drush config-set system.site langcode da -y
     - drush config-set system.site default_langcode da -y
     - drush config-set language.types negotiation.language_interface.enabled.language-url '' -y
