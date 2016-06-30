@@ -12,6 +12,9 @@ dependencies:
     # Disable mail sending. Sendmail is not working on Circle.
     - echo "sendmail_path = /bin/true" > /opt/circleci/php/$(phpenv global)/etc/conf.d/sendmail.ini
 
+    # Disble xdebug
+    - rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
+
     # Clean up existing global composer installation. It contains dependencies
     # which do not match the PHP version we use. This prevents installation of
     # other packages.
