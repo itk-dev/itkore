@@ -33,19 +33,4 @@ function itkore_form_install_configure_submit($form, FormStateInterface $form_st
 
   \Drupal::service('module_installer')
     ->install(['itk_paragraph']);
-
-  // Add danish as default language.
-  _itkore_language_setup();
-}
-
-/**
- * Add default site language.
- *
- * @param string $langcode
- *   The language code. Default 'da'.
- */
-function _itkore_language_setup($langcode = 'da') {
-  // Add the language definition.
-  $language = ConfigurableLanguage::createFromLangcode($langcode);
-  $language->save();
 }

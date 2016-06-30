@@ -1,4 +1,3 @@
-langcode: en
 status: true
 dependencies: {  }
 name: 'Filtered HTML'
@@ -17,6 +16,6 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<a> <em> <strong> <code> <ul> <ol> <li> <h2> <h3> <h4> <p> <br>'
+      allowed_html: '<em> <strong> <code> <ul> <ol> <li> <h2> <h3> <h4> <p> <br> <a href>'
       filter_html_help: true
       filter_html_nofollow: false

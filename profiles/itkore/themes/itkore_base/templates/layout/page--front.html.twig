@@ -63,15 +63,8 @@
  */
 #}
 <header>
-  <a href="/" class="logo js-logo" title="ITKore">
-    {% if logo %}
-      <img src="{{ logo }}">
-    {% endif %}
-  </a>
   <nav class="nav js-nav">
-    <div class="nav--links">
-      {{ page.nav_menu }}
-    </div>
+    {{ page.nav_menu }}
   </nav>
   <div class="nav-toggle js-menu-toggle">
     <span></span>

@@ -48,5 +48,6 @@ function itkore_admin_preprocess_page(&$variables) {
     $variables['footer_twitter'] = $config->get('itkore_footer.footer_twitter');
     $variables['footer_instagram'] = $config->get('itkore_footer.footer_instagram');
     $variables['footer_linkedin'] = $config->get('itkore_footer.footer_linkedin');
+    $variables['footer_facebook'] = $config->get('itkore_footer.footer_facebook');
   }
 }

@@ -1,4 +1,4 @@
-status: false
+status: true
 dependencies:
   config:
     - core.entity_view_mode.node.rss
@@ -22,7 +22,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access content'
+          perm: 'administer content types'
       cache:
         type: tag
         options: {  }
@@ -289,7 +289,6 @@ display:
     display_options:
       path: node
       display_extenders: {  }
-      enabled: false
     display_plugin: page
     display_title: Page
     id: page_1

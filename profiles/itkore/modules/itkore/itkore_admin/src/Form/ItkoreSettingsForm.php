@@ -68,7 +68,7 @@ class ItkoreSettingsForm extends FormBase {
       '#weight' => '3',
     );
 
-    $form['frontpage_wrapper']['front page_button'] = array(
+    $form['frontpage_wrapper']['frontpage_button'] = array(
       '#title' => $this->t('Button text'),
       '#type' => 'textfield',
       '#default_value' => $config->get('itkore_frontpage.frontpage_button'),
@@ -139,6 +139,13 @@ class ItkoreSettingsForm extends FormBase {
       '#weight' => '4',
     );
 
+    $form['footer_wrapper']['footer_facebook'] = array(
+      '#title' => $this->t('Facebook URL'),
+      '#type' => 'textfield',
+      '#default_value' => $config->get('itkore_footer.footer_facebook'),
+      '#weight' => '4',
+    );
+
     $form['submit'] = array(
       '#type' => 'submit',
       '#value' => t('Save changes'),
@@ -196,8 +203,11 @@ class ItkoreSettingsForm extends FormBase {
       'itkore_footer.footer_twitter' => $form_state->getValue('footer_twitter'),
       'itkore_footer.footer_instagram' => $form_state->getValue('footer_instagram'),
       'itkore_footer.footer_linkedin' => $form_state->getValue('footer_linkedin'),
+      'itkore_footer.footer_facebook' => $form_state->getValue('footer_facebook'),
       'itkore_frontpage.frontpage_image' => $file ? $file->id() : NULL,
     ));
+
+    drupal_flush_all_caches();
   }
 
   /**

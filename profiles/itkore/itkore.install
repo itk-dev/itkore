@@ -4,6 +4,8 @@
  * Performs actions to set up the site for this profile.
  */
 
+use \Drupal\node\Entity\Node;
+
 /**
  * Implements hook_install().
  *
@@ -108,5 +110,34 @@ function itkore_install() {
   \Drupal::configFactory()
     ->getEditable('core.date_format.medium')
     ->set('pattern', 'j. F Y')
+    ->save(TRUE);
+
+
+  // Create "Page not found node"
+
+  $title = 'Siden blev ikke fundet';
+  $content = '<h3>Fejlen kan skyldes at:</h3><ul><li>Siden er blevet slettet eller flyttet.</li><li>Du har tastet forkert i adressefeltet.</li><li>Der er en fejl i det link du klikkede på.</li></ul>';
+
+  $node = Node::create(array(
+    'title' => $title,
+    'nid' => NULL,
+    'type' => 'page',
+    'uid' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => REQUEST_TIME,
+    'body' => [
+      'value' => $content,
+      'format' => 'filtered_html'
+    ],
+    'field_lead' => 'Siden du forsøgte at tilgå kunne ikke findes i systemet',
+  ));
+  $node->save();
+
+
+  // Set date format.
+  \Drupal::configFactory()
+    ->getEditable('system.site')
+    ->set('page.404', '/node/' . $node->id())
     ->save(TRUE);
 }

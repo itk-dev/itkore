@@ -5,6 +5,33 @@
  */
 
 use Drupal\Core\Config;
+use Drupal\file\Entity\File;
+
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function itkore_base_preprocess_page(&$variables) {
+  if (\Drupal::moduleHandler()->moduleExists('itkore_admin')) {
+    // Fetch frontpage config settings.
+    $config = \Drupal::getContainer()->get('itkore_admin.itkore_config');
+
+    if (isset($config)) {
+      // Fetch header top file.
+      $top_image_id = $config->get('itkore_frontpage.frontpage_image');
+      $file = ($top_image_id) ? File::load($top_image_id) : FALSE;
+      $variables['default_image'] = ($file) ? $file->url() : drupal_get_path('module', 'itkore_admin') . '/images/header-default.jpg';
+
+      if (isset($variables['node'])) {
+        $main_image = $variables['node']->get('field_main_image')->getValue();
+        if (empty($main_image)) {
+          $variables['node_no_image'] = TRUE;
+        }
+      }
+    }
+  }
+}
+
 
 /**
  * Implements hook_preprocess_node().
@@ -17,27 +44,20 @@ function itkore_base_preprocess_node(&$variables) {
   if (function_exists($function)) {
     $function($variables);
   }
-}
 
-/**
- * Implements hook_preprocess_node__type().
- */
-function itkore_base_preprocess_node_event(&$variables) {
-  // Set timezone UTC to properly create format.
-  $DateTimeZoneUTC = new DateTimeZone('UTC');
+  // Set a default topimage.
+  if (empty($variables['content']['field_main_image']['0']) && \Drupal::moduleHandler()->moduleExists('itkore_admin')) {
+    // Fetch frontpage config settings.
+    $config = \Drupal::getContainer()->get('itkore_admin.itkore_config');
 
-  // Create start and end time php object.
-  // @TODO: Hardcoded date format. Should this be at unix timestamp and format
-  //        set in twig or the format configurable?
-  $startDateTime = DateTime::CreateFromFormat('Y-m-d\TH:i:s', $variables['node']->field_starttime->value, $DateTimeZoneUTC);
-  $endDateTime = DateTime::CreateFromFormat('Y-m-d\TH:i:s', $variables['node']->field_endtime->value, $DateTimeZoneUTC);
-
-  // Set time and date based on object in timestamp format.
-  // @TODO: Hardcoded date format. Should this be at unix timestamp and format
-  //        set in twig or the format configurable?
-  $variables['eventdate'] = \Drupal::service('date.formatter')->format(date('U', $startDateTime->getTimestamp()), 'custom', 'l j. F Y');
-  $variables['eventstarttime'] = \Drupal::service('date.formatter')->format(date('U', $startDateTime->getTimestamp()), 'custom', 'G:i');
-  $variables['eventendtime'] = \Drupal::service('date.formatter')->format(date('U', $endDateTime->getTimestamp()), 'custom', 'G:i');
+    if (isset($config)) {
+      // Fetch header top file.
+      $top_image_id = $config->get('itkore_frontpage.frontpage_image');
+      $file = ($top_image_id) ? File::load($top_image_id) : FALSE;
+      $variables['node_no_image'] = TRUE;
+      $variables['default_image'] = ($file) ? $file->url() : drupal_get_path('module', 'itkore_admin') . '/images/header-default.jpg';
+    }
+  }
 }
 
 /**
