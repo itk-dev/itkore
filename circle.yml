@@ -5,19 +5,7 @@ machine:
     version: 4.2.6
   environment:
     TESTS: profiles/itkore/behat-tests/
-    BEHAT_PARAMS: >
-      {
-        "extensions": {
-          "Behat\\MinkExtension": {
-            "base_url": "http://test.localhost"
-          },
-          "Drupal\\DrupalExtension": {
-            "drupal": {
-              "drupal_root": "/home/ubuntu/itkore"
-            }
-          }
-        }
-      }
+    BEHAT_PARAMS: '{"extensions": {"Behat\\MinkExtension": {"base_url": "http://test.localhost"}, "Drupal\\DrupalExtension": {"drupal": {"drupal_root": "/home/ubuntu/itkore"}}}}'
 
 dependencies:
   pre:
