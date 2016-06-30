@@ -32,6 +32,6 @@ test:
     ## Needs to disable browser sync.
 
     # Run site install
-    - (cd profiles/itkore/behat-tests/ && behat -f pretty)
+    - (cd profiles/itkore/behat-tests/ && bin/behat -f pretty)
 
   post:
