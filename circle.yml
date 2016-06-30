@@ -4,8 +4,6 @@ machine:
   node:
     version: 4.2.6
   environment:
-    # This is where we build our complete Drupal site
-    DRUPAL_SITE_PATH: /tmp/drupal
 
 dependencies:
   pre:
@@ -22,6 +20,7 @@ dependencies:
     # Install drush.
     - composer global require drush/drush:8.1.* --prefer-source --no-interaction
 
+    # Install behat
     - (cd profiles/itkore/behat-tests/ && composer install)
 
 test:
