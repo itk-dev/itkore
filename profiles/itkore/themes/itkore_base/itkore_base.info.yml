@@ -9,6 +9,7 @@ libraries:
 
 stylesheets-remove:
   - normalize.css
+  - itk-admin-links.css
 
 regions:
   hamburger: 'Hamburger menu'

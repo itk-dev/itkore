@@ -7,7 +7,7 @@ function itk_admin_links_theme($existing, $type, $theme, $path) {
   return array(
     'itk_admin_links_block' => array(
       'template' => 'itk-admin-links-block',
-      'variables' => array(),
+      'variables' => ['nid' => NULL],
     ),
   );
 }

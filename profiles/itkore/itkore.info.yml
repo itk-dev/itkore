@@ -54,6 +54,7 @@ dependencies:
 #ITK modules
   - itk_cookie_message
   - itk_paragraph
+  - itk_admin_links
 
 #ITKore modules
   - itkore_admin

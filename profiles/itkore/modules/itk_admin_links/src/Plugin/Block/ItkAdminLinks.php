@@ -17,6 +17,12 @@ class ItkAdminLinks extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $variables = array();
+    if ($node) {
+      $variables['nid'] = $node->id();
+    }
+
     return array(
       '#type' => 'markup',
       '#theme' => 'itk_admin_links_block',
@@ -25,6 +31,10 @@ class ItkAdminLinks extends BlockBase {
           'itk_admin_links/itk_admin_links',
         ),
       ),
+      '#cache' => array(
+        'max-age' => 0,
+      ),
+      '#nid' => $variables['nid'],
     );
   }
 }
