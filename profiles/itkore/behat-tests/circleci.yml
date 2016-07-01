@@ -10,8 +10,6 @@ default:
       goutte: ~
       selenium2: ~
       base_url: http://test.localhost
-    jarnaiz\JUnitFormatter\JUnitFormatterExtension:
-      filename: report.xml
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
