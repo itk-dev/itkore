@@ -4,7 +4,7 @@ machine:
   node:
     version: 4.2.6
   hosts:
-    local.example.com: 127.0.0.1
+    test.localhost: 127.0.0.1
   environment:
     TESTS: profiles/itkore/behat-tests/
 
