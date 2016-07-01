@@ -63,3 +63,4 @@ test:
 general:
   artifacts:
     - "/home/ubuntu/logs/"
+    - "/home/ubuntu/itkore/profiles/itkore/behat-tests"
