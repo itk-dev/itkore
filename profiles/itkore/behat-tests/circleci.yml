@@ -9,7 +9,7 @@ default:
     Behat\MinkExtension:
       goutte: ~
       selenium2: ~
-      base_url: http://itkore.vm
+      base_url: http://test.localhost
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
