@@ -1,0 +1,26 @@
+status: true
+dependencies:
+  module:
+    - itk_admin_links
+    - user
+  theme:
+    - itkore_base
+id: itkadminlinks_base
+theme: itkore_base
+region: content
+weight: -3
+provider: null
+plugin: itk_admin_links
+settings:
+  id: itk_admin_links
+  label: 'ITK Admin links'
+  provider: itk_admin_links
+  label_display: '0'
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      editor: editor
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

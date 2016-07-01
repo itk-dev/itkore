@@ -28,6 +28,7 @@
   &--icon {
     background: url('../images/edit.svg') $theme-color center no-repeat;
     background-size: 2em;
+
     border-radius: 2em;
     bottom: 2em;
     cursor: pointer;
@@ -35,8 +36,16 @@
     height: 3.5em;
     position: fixed;
     right: 2em;
+
+    transition: transform .4s;
+    transition-timing-function: ease-in-out;
+
     width: 3.5em;
     z-index: 81;
+
+    &.is-open {
+      transform: rotate(90deg);
+    }
   }
 
   &--items {
@@ -49,8 +58,10 @@
     
     transition: bottom .4s;
     transition-timing-function: ease-in-out;
+
     display: flex;
     flex-direction: column-reverse;
+
     z-index: 81;
 
     &.is-open {
