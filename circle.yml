@@ -59,8 +59,5 @@ test:
     - (cd ${TESTS} && bin/behat -f pretty -c circleci.yml)
 
   post:
-
-general:
-  artifacts:
-    - "/home/ubuntu/logs/"
-    - "/home/ubuntu/itkore/profiles/itkore/behat-tests"
+    - cp -r /home/ubuntu/itkore/profiles/itkore/behat-tests/failures $CIRCLE_ARTIFACTS/
+    - cp -r /home/ubuntu/logs/ $CIRCLE_ARTIFACTS/
