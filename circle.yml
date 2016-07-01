@@ -60,4 +60,6 @@ test:
 
   post:
     - cp -r /home/ubuntu/itkore/profiles/itkore/behat-tests/failures $CIRCLE_ARTIFACTS/
-    - cp -r /home/ubuntu/logs/ $CIRCLE_ARTIFACTS/
+    - cp -r /home/ubuntu/logs/ $CIRCLE_ARTIFACTS
+    - mkdir -p $CIRCLE_TEST_REPORTS/behat
+    - cp ${TESTS}/report.xml $CIRCLE_TEST_REPORTS/behat
