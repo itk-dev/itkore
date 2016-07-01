@@ -28,7 +28,7 @@ dependencies:
 
     # Apache configuration
     - mkdir -p ~/logs
-    - cp ${TESTS}/httpd.conf.circle /etc/apache2/sites-available/default
+    - sudo cp ${TESTS}/httpd.conf.circle /etc/apache2/sites-available/default
     - sudo a2enmod rewrite
     - sudo service apache2 restart
 
