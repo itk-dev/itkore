@@ -4,35 +4,46 @@ machine:
   node:
     version: 4.2.6
   environment:
-    # This is where we build our complete Drupal site
-    DRUPAL_SITE_PATH: /tmp/drupal
+    TESTS: profiles/itkore/behat-tests/
 
 dependencies:
   pre:
     - echo "memory_limit = 512M" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
-    # Disable mail sending. Sendmail is not working on Circle.
     - echo "sendmail_path = /bin/true" > /opt/circleci/php/$(phpenv global)/etc/conf.d/sendmail.ini
+    - sed -i '/;date.timezone =/c date.timezone = Europe/Copenhagen' /opt/circleci/php/$(phpenv global)/etc/php.ini
+
+    # Disble xdebug
+    - rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
+
     # Clean up existing global composer installation. It contains dependencies
     # which do not match the PHP version we use. This prevents installation of
     # other packages.
     - rm -rf ~/.composer/vendor
 
+    # Install drush.
+    - composer global require drush/drush:8.1.* --prefer-source --no-interaction
+
+    # Install behat
+    - (cd ${TESTS} && composer install)
+
 test:
   override:
+    # Install the site
     - composer install
-    # Install theme dependencies
-    #- (cd themes/ddbasic && npm install)
-    # Process theme files.
-    # If there are any changes then fail the build. The result of processing
-    # should be committed along with the source changes.
-    #- (cd themes/ddbasic && node_modules/.bin/gulp uglify sass)
-    - git diff --exit-code
+
+    # Install
+    - drush --yes site-install itkore --db-url='mysql://ubuntu:@127.0.0.1/drupal' --site-name="Test site" --account-name=admin --account-mail=itkdesign@mkb.aarhus.dk --locale=da
+    - drush config-set system.site langcode da -y
+    - drush config-set system.site default_langcode da -y
+    - drush config-set language.types negotiation.language_interface.enabled.language-url '' -y
+    - drush config-set language.negotiation url.prefixes.da '' -y
+    - drush locale-check
+    - drush locale-update
+
+    # Test that sass was compiled.
+    ## Needs to disable browser sync.
+
+    # Run site install
+    - (cd ${TESTS} && bin/behat -f pretty -c circleci.yml)
 
   post:
-    # Clean up after site install.
-    # sudo is required here. The files are not writeable.
-    #- sudo rm -rf $DRUPAL_SITE_PATH/sites/default/settings.php $DRUPAL_SITE_PATH/sites/default/files
-    # Remove node_modules folder. This is not needed in the final artifact.
-    #- rm -rf $DRUPAL_SITE_PATH/profiles/ding2/themes/ddbasic/node_modules
-    # Wrap the site into an archieve and expose it as an artifact.
-    #- tar -zcvf $CIRCLE_ARTIFACTS/ding2-$CIRCLE_SHA1.tar.gz -C $DRUPAL_SITE_PATH .
