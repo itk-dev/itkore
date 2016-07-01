@@ -97,7 +97,7 @@ gulp.task('buildJs', function () {
     .pipe(uglify())
     .pipe(sourcemaps.write('/maps'))
     .pipe(rename({extname: ".min.js"}))
-    .pipe(gulp.dest(buildDir))
+    .pipe(gulp.dest(buildDir));
 });
 
 /**
@@ -107,7 +107,7 @@ gulp.task('assetsJs', function () {
   gulp.src(jsAssets)
     .pipe(concat('assets.js'))
     .pipe(rename({extname: ".min.js"}))
-    .pipe(gulp.dest(buildDir))
+    .pipe(gulp.dest(buildDir));
 });
 
 /**
