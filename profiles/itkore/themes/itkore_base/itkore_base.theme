@@ -20,7 +20,7 @@ function itkore_base_preprocess_page(&$variables) {
       // Fetch header top file.
       $top_image_id = $config->get('itkore_frontpage.frontpage_image');
       $file = ($top_image_id) ? File::load($top_image_id) : FALSE;
-      $variables['default_image'] = ($file) ? $file->url() : drupal_get_path('module', 'itkore_admin') . '/images/header-default.jpg';
+      $variables['default_image'] = ($file) ? $file->url() : '/' . drupal_get_path('module', 'itkore_admin') . '/images/header-default.jpg';
 
       if (isset($variables['node'])) {
         $main_image = $variables['node']->get('field_main_image')->getValue();
@@ -55,10 +55,11 @@ function itkore_base_preprocess_node(&$variables) {
       $top_image_id = $config->get('itkore_frontpage.frontpage_image');
       $file = ($top_image_id) ? File::load($top_image_id) : FALSE;
       $variables['node_no_image'] = TRUE;
-      $variables['default_image'] = ($file) ? $file->url() : drupal_get_path('module', 'itkore_admin') . '/images/header-default.jpg';
+      $variables['default_image'] = ($file) ? $file->url() : '/' . drupal_get_path('module', 'itkore_admin') . '/images/header-default.jpg';
     }
   }
 }
+
 
 /**
  * Implements hook_preprocess_field().
@@ -73,6 +74,7 @@ function itkore_base_preprocess_field(&$variables) {
   }
 }
 
+
 /**
  * Implements hook_preprocess_field__().
  *
@@ -81,6 +83,7 @@ function itkore_base_preprocess_field(&$variables) {
 function itkore_base_preprocess_field__field_iframe(&$variables) {
   $variables['unformatted_iframe'] = strip_tags($variables['items']['0']['content']['#context']['value'], '<iframe>');
 }
+
 
 /**
  * Implements hook_preprocess_node().

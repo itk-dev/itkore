@@ -123,6 +123,7 @@ function itkore_install() {
     'nid' => NULL,
     'type' => 'page',
     'uid' => 1,
+    'language' => 'da',
     'status' => TRUE,
     'promote' => 0,
     'created' => REQUEST_TIME,
