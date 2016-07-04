@@ -8,6 +8,7 @@
 .hamburger-menu {
   background-color: $white;
   bottom: 0;
+  cursor: auto;
   margin-right: 0;
   max-width: 90%;
   overflow: hidden;
@@ -21,6 +22,24 @@
 
   &.is-open {
     right: 0;
+  }
+
+  &--overlay {
+    bottom: 0;
+    height: 100%;
+    opacity: .85;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 6;
+
+    &.is-visible {
+      background-color: $black;
+      cursor: pointer;
+      transition: background .3s;
+      visibility: visible;
+    }
   }
 
   &--inner {

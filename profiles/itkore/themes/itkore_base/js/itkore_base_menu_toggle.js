@@ -5,13 +5,13 @@
 (function ($) {
   "use strict";
 
-  var hamburger_button = $('.nav-toggle');
-  var hamburger_menu = $('.hamburger-menu');
+  var hamburger_button = $('.js-menu-toggle');
+  var hamburger_menu = $('.js-hamburger-menu');
   var html = $('html');
   var body = $('body');
-  var overlay = $('.hamburger-menu--overlay');
+  var overlay = $('.js-hamburger-menu-overlay');
 
-  $('.js-menu-toggle').click(function() {
+  hamburger_button.click(function() {
     hamburger_button.toggleClass("is-open");
 
     // Toggle hamburger menu.
@@ -24,4 +24,10 @@
     html.toggleClass('is-locked');
     body.toggleClass('is-locked');
   });
+
+  hamburger_menu.click(
+    function(e) {
+      e.stopPropagation();
+    }
+  );
 })(jQuery);
