@@ -39,9 +39,6 @@ function itkore_intro_install() {
     ],
     'field_lead' => 'Her finder du en vejledning til oprettelse af indhold og tips og tricks til systemet',
     'field_related_page_teaser' => 'Kom igang med oprettelse af indhold',
-    'field_pages' => [
-      'target_id' => 2,
-    ],
     'field_main_image' => [
       'target_id' => $file->id(),
       'alt' => $title,
@@ -57,8 +54,8 @@ function itkore_intro_install() {
   ));
   $node->save();
 
-  // Node id for node reference on create page node.
-  $getting_started_nid = $node->id();
+  // Node for node reference on create page node.
+  $getting_started_node = $node;
 
   // Setup menu item for getting started (https://wunderkraut.se/blogg/create-menu-items-programmatically-drupal-8)
   // The name of our menu
@@ -97,7 +94,7 @@ function itkore_intro_install() {
     'field_lead' => 'Vejledning til at oprette almindelige sider i systemet',
     'field_related_page_teaser' => 'Vejledning til at oprette almindelige sider i systemet',
     'field_pages' => [
-      'target_id' => $getting_started_nid,
+      'target_id' => $getting_started_node->id(),
     ],
     'field_main_image' => [
       'target_id' => $file->id(),
@@ -113,6 +110,12 @@ function itkore_intro_install() {
     ],
   ));
   $node->save();
+  $create_page_node = $node;
+
+
+  // Set the reference on getting started to this nid.
+  $getting_started_node->get('field_pages')->appendItem(['target_id' => $create_page_node->id()]);
+  $getting_started_node->save();
 
 
   // Setup menu item (https://wunderkraut.se/blogg/create-menu-items-programmatically-drupal-8)
