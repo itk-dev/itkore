@@ -110,15 +110,6 @@ gulp.task('assetsJs', function () {
     .pipe(gulp.dest(buildDir));
 });
 
-/**
- * Use compass
- */
-gulp.task('compass', function() {
-  gulp.src(sassPath)
-    .pipe(minifycss())
-    .pipe(gulp.dest('html/css'));
-});
-
 // Tasks to compile sass and watch js file.
 gulp.task('default', ['sass', 'watch']);
 gulp.task('build', ['buildJs', 'sass']);

@@ -14,8 +14,6 @@ var help = require('gulp-help');
 var gulpif = require('gulp-if');
 
 // Gulp plugins.
-//var jshint = require('gulp-jshint');
-//var stylish = require('jshint-stylish');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
@@ -69,6 +67,15 @@ var configuration = {
  * ------- TASK's -------
  */
 
+/**
+ * Setup task for sass compilation.
+ *
+ *
+ * @param theme
+ *    Name of the theme to setup the task.
+ * @param config
+ *    Selected theme configuration object.
+ */
 function sassTask(theme, config) {
   var taskName = 'sass_' + theme;
 
@@ -96,6 +103,29 @@ function sassTask(theme, config) {
   return taskName;
 }
 
+/**
+ * Setup stylelint tasks.
+ *
+ * Note: It do not return the taskName, because stylelint task
+ *       is async henc need to return it's results.
+ *
+ * @param taskName
+ *    The name of the task to setup.
+ * @param config
+ *    Selected theme configuration object.
+ */
+function stylelintTask(taskName, config) {
+  gulp.task(taskName, function lintCssTask() {
+    return gulp.src(config.sass.paths)
+      .pipe(stylelint({
+        reporters: [
+          {formatter: 'string', console: true}
+        ]
+      }));
+  });
+}
+
+
  /**
   * Dynamically setup tasks base on the selected theme.
   *
@@ -115,6 +145,12 @@ function setupTasks(themes) {
   }
 
   var sassTaskNames = [];
+  var stylelintTaskNames = [];
+
+  // Ensure themes is an array and if not convert it.
+  if (Object.prototype.toString.call(themes) !== '[object Array]') {
+    themes = [ themes ];
+  }
 
   // Loop over the selected themes.
   for (var i in themes) {
@@ -123,11 +159,16 @@ function setupTasks(themes) {
 
     // SASS tasks.
     sassTaskNames.push(sassTask(theme, config));
+
+    // Stylelint tasks.
+    var taskName = 'stylelint_' + theme;
+    var lint = stylelintTask(taskName, config);
+    stylelintTaskNames.push(taskName);
   }
 
-  // Define sass task.
+  // Define tasks.
   gulp.task('sass', sassTaskNames);
-
+  gulp.task('stylelint', stylelintTaskNames);
 }
 
 /**
