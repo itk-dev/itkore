@@ -4,8 +4,10 @@
 var argv = require('yargs')
   .alias('s', 'sync')
   .alias('t', 'theme')
+  .alias('d', 'domain')
   .default('sync', false)
   .default('theme', ['base'])
+  .default('domain', 'itkore.vm')
   .argv;
 
 // Gulp basic.
@@ -23,8 +25,11 @@ var stylelint = require('gulp-stylelint');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 
+// Browser-sync needs to be a globe variable.
+var browserSync;
+
 /**
- * ------- Configuration -------
+ * Configuration object.
  */
 var configuration = {
   // Base theme.
@@ -64,17 +69,15 @@ var configuration = {
 }
 
 /**
- * ------- TASK's -------
- */
-
-/**
  * Setup task for sass compilation.
- *
  *
  * @param theme
  *    Name of the theme to setup the task.
  * @param config
  *    Selected theme configuration object.
+ *
+ * @return string
+ *    The name of the new task.
  */
 function sassTask(theme, config) {
   var taskName = 'sass_' + theme;
@@ -106,15 +109,19 @@ function sassTask(theme, config) {
 /**
  * Setup stylelint tasks.
  *
- * Note: It do not return the taskName, because stylelint task
- *       is async henc need to return it's results.
+ * Note: Because stylelint task is async it returns it's gulp process.
  *
- * @param taskName
- *    The name of the task to setup.
+ * @param theme
+ *    Name of the theme to setup the task.
  * @param config
  *    Selected theme configuration object.
+ *
+ * @return string
+ *    The name of the new task.
  */
-function stylelintTask(taskName, config) {
+function stylelintTask(theme, config) {
+  var taskName = 'stylelint_' + theme;
+
   gulp.task(taskName, function lintCssTask() {
     return gulp.src(config.sass.paths)
       .pipe(stylelint({
@@ -123,29 +130,57 @@ function stylelintTask(taskName, config) {
         ]
       }));
   });
+
+  return taskName;
 }
 
+/**
+ * Watch sass and stylelint tasks.
+ *
+ * @param theme
+ *    Name of the theme to setup the task.
+ * @param config
+ *    Selected theme configuration object.
+ *
+ * @return string
+ *    The name of the new task.
+ */
+function watchTasks(theme, config) {
+  var taskName = 'watch_' + theme;
 
- /**
-  * Dynamically setup tasks base on the selected theme.
-  *
-  * @param themes
-  *   Theme name as an string array. Used as index in the
-  *   configuration pobject.
-  */
+  gulp.task(taskName, function() {
+    gulp.watch(config.sass.paths, ['sass']);
+    gulp.watch(config.sass.paths, ['stylelint']);
+
+    if (argv.sync && config.hasOwnProperty('twig')) {
+      gulp.watch(config.twig.paths).on('change', browserSync.reload);
+    }
+  });
+
+  return taskName;
+}
+
+/**
+ * Dynamically setup tasks base on the selected theme.
+ *
+ * @param themes
+ *   Theme name as an string array. Used as index in the
+ *   configuration pobject.
+ */
 function setupTasks(themes) {
   // Start browser sync.
-  var browserSync;
   if (argv.sync) {
     browserSync = require('browser-sync').create();
     browserSync.init({
-      proxy: "itkore.vm",
-      host: "itkore.vm"
+      proxy: argv.domain,
+      host: argv.domain
     });
   }
 
+  // Define task arrays.
   var sassTaskNames = [];
   var stylelintTaskNames = [];
+  var watchTasksNames = [];
 
   // Ensure themes is an array and if not convert it.
   if (Object.prototype.toString.call(themes) !== '[object Array]') {
@@ -161,19 +196,22 @@ function setupTasks(themes) {
     sassTaskNames.push(sassTask(theme, config));
 
     // Stylelint tasks.
-    var taskName = 'stylelint_' + theme;
-    var lint = stylelintTask(taskName, config);
-    stylelintTaskNames.push(taskName);
+    stylelintTaskNames.push(stylelintTask(theme, config));
+
+    // Watch tasks.
+    watchTasksNames.push(watchTasks(theme, config));
   }
 
   // Define tasks.
   gulp.task('sass', sassTaskNames);
   gulp.task('stylelint', stylelintTaskNames);
+  gulp.task('watch', watchTasksNames);
+
+  // Default task;
+  gulp.task('default', ['sass', 'watch']);
 }
 
 /**
  * ------- Run task's -------
  */
 setupTasks(argv.theme);
-
-
