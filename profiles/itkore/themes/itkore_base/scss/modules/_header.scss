@@ -8,10 +8,12 @@
 .header {
   background-size: cover;
   color: $white;
+  flex: 1 0 auto;
   margin-bottom: 1em;
   padding-bottom: 2em;
   position: relative;
   width: 100%;
+
 
   &:before {
     @extend %image-overlay;

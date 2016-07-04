@@ -1,0 +1,45 @@
+<?php
+/**
+ * @file
+ * Add cookie information page.
+ */
+
+use \Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_install().
+ *
+ * Adds cookie message node to site.
+ *
+ * @see system_install()
+ */
+function itk_cookie_message_install() {
+  // Create node
+
+  $title = 'Information om cookies';
+  $content = '<p>En cookie er en tekstfil, der lagres på din computer (eller tilsvarende) for at kunne genkende den. Cookies indeholder oplysninger i anonymiseret form og de kan ikke indeholde virus.</p>';
+  $content .= '<h3>Cookies på dette site</h3>';
+  $content .= '<p>På dette website anvender vi cookies til at samle statistik om dit besøg. Vi bruger oplysningerne til at forbedre brugeroplevelsen.</p>';
+  $content .= '<p>Oplysningerne fra dette sites cookies bliver behandlet af sitets ejer samt ITK, Aarhus Kommune.</p>';
+  $content .= '<h3>Fravalg af cookies</h3>';
+  $content .= '<p>Hvis du nu eller i fremtiden ønsker at fravælge cookies, kan du gøre dette via dine browser-indstillinger. Hvis du fravælger cookies ved hjælp af dine browser-indstillinger, vil dine besøg ikke blive registreret.</p>';
+  $content .= '<p><a href="http://minecookies.org/cookiehandtering/">Læs hvordan du fravælger cookies via din browser på minecookies.org</a></p>';
+  $content .= '<h3>Hvorfor informerer vi om cookies?</h3>';
+  $content .= '<p>Vi informerer om cookies efter <a href="https://www.retsinformation.dk/Forms/R0710.aspx?id=139279">Bekendtgørelse om krav til information og samtykke ved lagring af eller adgang til oplysninger i slutbrugeres terminaludstyr</a>.';
+
+  $node = Node::create(array(
+    'title' => $title,
+    'nid' => NULL,
+    'type' => 'page',
+    'uid' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => REQUEST_TIME,
+    'body' => [
+      'value' => $content,
+      'format' => 'filtered_html'
+    ],
+    'path' => 'information-om-cookies'
+  ));
+  $node->save();
+}

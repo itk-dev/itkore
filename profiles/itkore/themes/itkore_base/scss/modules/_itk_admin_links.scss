@@ -21,12 +21,12 @@
 
     &.is-visible {
       opacity: .8;
-      z-index: 80
+      z-index: 80;
     }
   }
 
   &--icon {
-    background: url('../images/edit.svg') $theme-color center no-repeat;
+    background: url("../images/edit.svg") $theme-color center no-repeat;
     background-size: 2em;
 
     border-radius: 2em;
@@ -50,18 +50,15 @@
 
   &--items {
     bottom: -25em;
+    display: flex;
+    flex-direction: column-reverse;
     height: 20em;
     margin: 0;
     padding: 0;
     position: fixed;
     right: 6.5em;
-    
     transition: bottom .4s;
     transition-timing-function: ease-in-out;
-
-    display: flex;
-    flex-direction: column-reverse;
-
     z-index: 81;
 
     &.is-open {
@@ -79,8 +76,8 @@
 
       background-color: $theme-color;
       display: inline-block;
-      padding: .5em;
       margin: .5em 0;;
+      padding: .5em;
     }
   }
 }

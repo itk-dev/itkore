@@ -89,9 +89,9 @@ function itk_cookie_message_get_settings(\Drupal\Core\Language\LanguageInterface
 
   // Merge default values into localized settings.
   $localized_settings += array(
-    'text' => t('This site uses cookies', array(), array('langcode' => $language->getId())),
-    'read_more_url' => '',
-    'read_more_text' => t('Read more', array(), array('langcode' => $language->getId())),
+    'text' => t('We use cookies to improve your user experience', array(), array('langcode' => $language->getId())),
+    'read_more_url' => '/information-om-cookies',
+    'read_more_text' => t('Read more about cookies', array(), array('langcode' => $language->getId())),
     'accept_button_text' => t('Accept cookies', array(), array('langcode' => $language->getId())),
   );
 

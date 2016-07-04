@@ -32,6 +32,9 @@
 }
 
 .content {
+  flex: 1 0 auto;
+  min-height: 80%;
+
   &--inner {
     margin-bottom: 11em;
     margin-left: auto;

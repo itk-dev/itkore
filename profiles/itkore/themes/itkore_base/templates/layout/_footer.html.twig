@@ -1,23 +1,27 @@
 {% if footer_text or footer_twitter or footer_instagram or footer_linkedin or footer_facebook %}
   <footer class="footer">
     <div class="footer--content">
-      <div class="footer--mail">
-        {{ footer_text }}
-      </div>
-      <div class="footer--social">
-        {% if footer_twitter %}
-          <a href="{{ footer_twitter }}"><figure class="footer--icons"><img src="{{ directory }}/images/twitter.png"></figure></a>
-        {% endif %}
-        {% if footer_instagram %}
-          <a href="{{ footer_instagram }}"><figure class="footer--icons"><img src="{{ directory }}/images/instagram.png"></figure></a>
-        {% endif %}
-        {% if footer_linkedin %}
-          <a href="{{ footer_linkedin }}"><figure class="footer--icons"><img src="{{ directory }}/images/linkedin.png"></figure></a>
-        {% endif %}
-        {% if footer_facebook %}
-          <a href="{{ footer_facebook }}"><figure class="footer--icons"><img src="{{ directory }}/images/facebook.png"></figure></a>
-        {% endif %}
-      </div>
+      {% if footer_text %}
+        <div class="footer--left">
+          {{ footer_text }}
+        </div>
+      {% endif %}
+      {% if footer_twitter or footer_instagram or footer_linkedin or footer_facebook %}
+        <div class="footer--right">
+          {% if footer_twitter %}
+            <a href="{{ footer_twitter }}"><figure class="footer--icons"><img src="{{ directory }}/images/twitter.png"></figure></a>
+          {% endif %}
+          {% if footer_instagram %}
+            <a href="{{ footer_instagram }}"><figure class="footer--icons"><img src="{{ directory }}/images/instagram.png"></figure></a>
+          {% endif %}
+          {% if footer_linkedin %}
+            <a href="{{ footer_linkedin }}"><figure class="footer--icons"><img src="{{ directory }}/images/linkedin.png"></figure></a>
+          {% endif %}
+          {% if footer_facebook %}
+            <a href="{{ footer_facebook }}"><figure class="footer--icons"><img src="{{ directory }}/images/facebook.png"></figure></a>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
   </footer>
 {% endif %}

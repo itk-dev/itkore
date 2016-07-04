@@ -16,11 +16,11 @@ html {
   height: 100%;
 }
 
-// http: //galengidman.com/2014/03/25/responsive-flexible-height-sticky-footers-in-css/
 body {
   background-color: $white;
   color: $gray-darker;
-  display: table;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   margin: 0;
   position: relative;
