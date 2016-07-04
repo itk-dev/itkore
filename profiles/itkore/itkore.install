@@ -113,8 +113,7 @@ function itkore_install() {
     ->save(TRUE);
 
 
-  // Create "Page not found node"
-
+  // Create "Page not found" node
   $title = 'Siden blev ikke fundet';
   $content = '<h3>Fejlen kan skyldes at:</h3><ul><li>Siden er blevet slettet eller flyttet.</li><li>Du har tastet forkert i adressefeltet.</li><li>Der er en fejl i det link du klikkede på.</li></ul>';
 
