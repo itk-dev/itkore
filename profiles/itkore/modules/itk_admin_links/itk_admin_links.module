@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * @TODO: Missing description.
+ */
 
 /**
  * Implements hook_theme().

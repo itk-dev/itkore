@@ -4,7 +4,7 @@ machine:
   node:
     version: 4.2.6
   hosts:
-    local.example.com: 127.0.0.1
+    test.localhost: 127.0.0.1
   environment:
     TESTS: profiles/itkore/behat-tests/
 
@@ -28,7 +28,7 @@ dependencies:
 
     # Apache configuration
     - mkdir -p ~/logs
-    - sudo cp ${TESTS}/httpd.conf.circle /etc/apache2/sites-available/default
+    - sudo cp ${TESTS}/httpd.conf.circle /etc/apache2/sites-available/000-default.conf
     - sudo a2enmod rewrite
     - sudo service apache2 restart
 
@@ -56,10 +56,10 @@ test:
     ## Needs to disable browser sync.
 
     # Run site install
-    - (cd ${TESTS} && bin/behat -f pretty -c circleci.yml)
+    - (cd ${TESTS} && bin/behat -f junit -o xml -c circleci.yml)
 
   post:
-
-general:
-  artifacts:
-    - "/home/ubuntu/logs/"
+    - cp -r /home/ubuntu/itkore/profiles/itkore/behat-tests/failures $CIRCLE_ARTIFACTS/
+    - cp -r /home/ubuntu/logs/ $CIRCLE_ARTIFACTS
+    - mkdir -p $CIRCLE_TEST_REPORTS/behat
+    - cp -r ${TESTS}/xml/* $CIRCLE_TEST_REPORTS/behat/

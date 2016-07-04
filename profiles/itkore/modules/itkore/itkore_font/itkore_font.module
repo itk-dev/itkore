@@ -7,8 +7,8 @@
 use Drupal\Core\Config;
 
 /**
-* Implements hook_page_attachments().
-*/
+ * Implements hook_page_attachments().
+ */
 function itkore_font_page_attachments(array &$page) {
   $config = \Drupal::config('itkore_font.settings');
   $font = $config->get('itkore_font');

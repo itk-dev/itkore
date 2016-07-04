@@ -8,8 +8,8 @@ use Drupal\file\Entity\File;
 use Drupal\Core\Config;
 
 /**
-* Implements hook_preprocess_html().
-*/
+ * Implements hook_preprocess_html().
+ */
 function itkore_admin_page_attachments(array &$page) {
   // Attached custom CSS to the admin pages.
   $page['#attached']['library'][] = 'itkore_admin/itkore_admin_styles';
@@ -17,7 +17,7 @@ function itkore_admin_page_attachments(array &$page) {
 
 
 /**
- * Implements hook_preprocess_page()
+ * Implements hook_preprocess_page().
  *
  * The variables used here comes from the "admin/site-setup" administration
  * configuration form.
@@ -28,7 +28,7 @@ function itkore_admin_preprocess_page(&$variables) {
 
   // Front page variables for page template.
   if (isset($config) && $variables['is_front'] == TRUE) {
-    // Set variables
+    // Set variables.
     $variables['front_title'] = $config->get('itkore_frontpage.frontpage_title');
     $variables['front_lead'] = $config->get('itkore_frontpage.frontpage_lead');
     $variables['front_sub'] = $config->get('itkore_frontpage.frontpage_sub');
