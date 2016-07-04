@@ -5,11 +5,11 @@ When I visit the site as an anonymous user i should be able to read and navigate
   Scenario: A visitor should see a maximum of three (newest) news on the front page
     Given "news" content:
       | title | body      | field_excerpt | field_lead | promote | created          |
-      | Test1 | Test body | Test Excerpt  | Test Lead  | 1       | 2013-09-11 12:30 |
-      | Test2 | Test body | Test Excerpt  | Test Lead  | 1       | 2014-10-03 11:00 |
-      | Test3 | Test body | Test Excerpt  | Test Lead  | 1       | 2014-11-21 11:00 |
-      | Test4 | Test body | Test Excerpt  | Test Lead  | 1       | 2014-12-17 11:00 |
-      | Test5 | Test body | Test Excerpt  | Test Lead  | 1       | 2015-01-14 11:00 |
+      | Test1 | Test body | Test Excerpt  | Test Lead  | 0       | 2013-09-11 12:30 |
+      | Test2 | Test body | Test Excerpt  | Test Lead  | 0       | 2014-10-03 11:00 |
+      | Test3 | Test body | Test Excerpt  | Test Lead  | 0       | 2014-11-21 11:00 |
+      | Test4 | Test body | Test Excerpt  | Test Lead  | 0       | 2014-12-17 11:00 |
+      | Test5 | Test body | Test Excerpt  | Test Lead  | 0       | 2015-01-14 11:00 |
     When I go to the homepage
     Then I should see "Nyheder"
     And I should not see "Test1"
@@ -22,11 +22,11 @@ When I visit the site as an anonymous user i should be able to read and navigate
   Scenario: A visitor should see all news on /nyheder
     Given "news" content:
       | title | body      | field_excerpt | field_lead | promote | created          |
-      | Test1 | Test body | Test Excerpt  | Test Lead  | 1       | 2013-09-11 12:30 |
-      | Test2 | Test body | Test Excerpt  | Test Lead  | 1       | 2014-10-03 11:00 |
-      | Test3 | Test body | Test Excerpt  | Test Lead  | 1       | 2014-11-21 11:00 |
-      | Test4 | Test body | Test Excerpt  | Test Lead  | 1       | 2014-12-17 11:00 |
-      | Test5 | Test body | Test Excerpt  | Test Lead  | 1       | 2015-01-14 11:00 |
+      | Test1 | Test body | Test Excerpt  | Test Lead  | 0       | 2013-09-11 12:30 |
+      | Test2 | Test body | Test Excerpt  | Test Lead  | 0       | 2014-10-03 11:00 |
+      | Test3 | Test body | Test Excerpt  | Test Lead  | 0       | 2014-11-21 11:00 |
+      | Test4 | Test body | Test Excerpt  | Test Lead  | 0       | 2014-12-17 11:00 |
+      | Test5 | Test body | Test Excerpt  | Test Lead  | 0       | 2015-01-14 11:00 |
     Then I visit "nyheder"
     And I should see "Test1"
     And I should see "Test2"
