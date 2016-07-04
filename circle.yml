@@ -59,7 +59,7 @@ test:
     - (cd ${TESTS} && bin/behat -f junit -o xml -c circleci.yml)
 
   post:
-    - cp -r /home/ubuntu/itkore/profiles/itkore/behat-tests/failures $CIRCLE_ARTIFACTS/ 2>/dev/null || :
+    - cp -r /home/ubuntu/itkore/profiles/itkore/behat-tests/failures $CIRCLE_ARTIFACTS/ 2>/dev/null \|\| :
     - cp -r /home/ubuntu/logs/ $CIRCLE_ARTIFACTS
     - mkdir -p $CIRCLE_TEST_REPORTS/behat
     - cp -r ${TESTS}/xml/* $CIRCLE_TEST_REPORTS/behat/
