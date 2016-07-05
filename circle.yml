@@ -7,6 +7,7 @@ machine:
     test.localhost: 127.0.0.1
   environment:
     TESTS: profiles/itkore/behat-tests/
+    THEMES: profiles/itkore/themes/
 
 dependencies:
   pre:
@@ -38,6 +39,9 @@ dependencies:
     # Install behat
     - (cd ${TESTS} && composer install)
 
+    # Install gulp
+    - (cd ${THEMES} && npm install)
+
 test:
   override:
     # Install the site
@@ -52,8 +56,17 @@ test:
     - drush locale-check
     - drush locale-update
 
+    # Run lints
+    - (cd ${THEMES} && gulp stylelint)
+    - (cd ${THEMES} && gulp eslint)
+
     # Test that sass was compiled.
-    ## Needs to disable browser sync.
+    - (cd ${THEMES} && gulp sass)
+    - (cd ${THEMES} && git diff --exit-code)
+
+    # Test minified JS.
+    - (cd ${THEMES} && gulp jsMinify)
+    - (cd ${THEMES} && git diff --exit-code)
 
     # Run site install
     - (cd ${TESTS} && bin/behat -f junit -o xml -c circleci.yml)
