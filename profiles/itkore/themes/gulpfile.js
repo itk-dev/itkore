@@ -6,14 +6,13 @@ var argv = require('yargs')
   .alias('t', 'theme')
   .alias('d', 'domain')
   .default('sync', false)
-  .default('theme', ['base'])
+  .default('theme', ['base', 'blue', 'orange'])
   .default('domain', 'itkore.vm')
   .argv;
 
 // Gulp basic.
 var gulp = require('gulp');
 var help = require('gulp-help');
-var gulpif = require('gulp-if');
 
 // Gulp plugins.
 var sass = require('gulp-sass');
@@ -24,6 +23,10 @@ var rename = require('gulp-rename');
 var stylelint = require('gulp-stylelint');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
+
+// ESLint stuff.
+var eslint = require('eslint/lib/cli');
+var globby = require('globby');
 
 // Browser-sync needs to be a globe variable.
 var browserSync;
@@ -54,11 +57,11 @@ var configuration = {
     },
     "twig": {
       "paths": './itkore_blue/templates/**/*.twig'
-    },
+    }
   },
   // Orange sub-theme.
   'orange' : {
-    "sassPath": {
+    "sass": {
       "paths": './itkore_orange/scss/**/*.scss',
       'dest': './itkore_orange/css'
     },
@@ -66,7 +69,7 @@ var configuration = {
       "paths": './itkore_orange/templates/**/*.twig'
     }
   }
-}
+};
 
 /**
  * Setup task for sass compilation.
@@ -152,6 +155,10 @@ function watchTasks(theme, config) {
     gulp.watch(config.sass.paths, ['sass']);
     gulp.watch(config.sass.paths, ['stylelint']);
 
+    if (config.hasOwnProperty('js')) {
+      gulp.watch(config.js.paths, ['eslint']);
+    }
+
     if (argv.sync && config.hasOwnProperty('twig')) {
       gulp.watch(config.twig.paths).on('change', browserSync.reload);
     }
@@ -163,6 +170,8 @@ function watchTasks(theme, config) {
 /**
  * ESLint tasks (JavaScript)
  *
+ * Note: We dont use gulp-eslint as that package is out-dated.
+ *
  * @param theme
  *    Name of the theme to setup the task.
  * @param config
@@ -172,12 +181,20 @@ function watchTasks(theme, config) {
  *    The name of the new task.
  */
 function ESLintTasks(theme, config) {
-  var taskName = 'watch_' + theme;
+  var taskName = 'eslint_' + theme;
 
-  gulp.task(taskName, function() {
-    return gulp.src(config.js.paths).pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failOnError());
+  gulp.task(taskName, function(done) {
+    globby(config.js.paths).then(
+      function(paths) {
+        // Additional CLI options can be added here.
+        var code = eslint.execute(paths.join(' '));
+        done();
+      },
+      function(err) {
+        // Unexpected failure, include stack.
+        done(err);
+      }
+    );
   });
 
   return taskName;
@@ -239,7 +256,7 @@ function setupTasks(themes) {
   gulp.task('watch', watchTasksNames);
 
   // Default task;
-  gulp.task('default', ['sass', 'stylelint']);
+  gulp.task('default', ['sass', 'stylelint', 'eslint']);
 }
 
 /**

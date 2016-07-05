@@ -3,7 +3,7 @@
  * Toggle hamburger menu.
  */
 (function ($) {
-  "use strict";
+  'use strict';
 
   var hamburger_button = $('.js-menu-toggle');
   var hamburger_menu = $('.js-hamburger-menu');
@@ -11,11 +11,11 @@
   var body = $('body');
   var overlay = $('.js-hamburger-menu-overlay');
 
-  hamburger_button.click(function() {
-    hamburger_button.toggleClass("is-open");
+  hamburger_button.click(function () {
+    hamburger_button.toggleClass('is-open');
 
     // Toggle hamburger menu.
-    hamburger_menu.toggleClass("is-open");
+    hamburger_menu.toggleClass('is-open');
 
     // Toggle overlay.
     overlay.toggleClass('is-visible');
@@ -26,7 +26,7 @@
   });
 
   hamburger_menu.click(
-    function(e) {
+    function (e) {
       e.stopPropagation();
     }
   );

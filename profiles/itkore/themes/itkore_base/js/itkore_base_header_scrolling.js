@@ -2,7 +2,7 @@
  * @file
  * Header changes when the users scrolls.
  */
-(function($) {
+(function ($) {
   'use strict';
 
   /**
