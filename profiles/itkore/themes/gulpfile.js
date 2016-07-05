@@ -11,8 +11,28 @@ var argv = require('yargs')
   .argv;
 
 // Gulp basic.
-var gulp = require('gulp');
-var help = require('gulp-help');
+var chalk = require('chalk');
+var gulp = require('gulp-help')(require('gulp'), {
+  'afterPrintCallback' : function() {
+    var args = [];
+    console.log(chalk.underline('Global parameters'));
+
+    args.push('');
+    args.push(chalk.cyan('--theme (-t)'));
+    args.push('Limit the theme(s) that should be used. Use one --theme for each theme you want' + '\n');
+    args.push(chalk.cyan('--sync (-s)'));
+    args.push('Enabled browser-sync' + '\n');
+    args.push(chalk.cyan('--domain (-d)'));
+    args.push('Domain to use with browser-sync' + '\n\n');
+
+    console.log.apply(console, args);
+    console.log(chalk.underline('Usage examples:'));
+    console.log(chalk.cyan('  *') + chalk.green(' gulp watch --theme base --theme blue --domain test.itkore.vm --sync'));
+    console.log(chalk.cyan('  *') + chalk.green(' gulp watch --sync'));
+    console.log(chalk.cyan('  *') + chalk.green(' gulp sass -t base'));
+    console.log('\n' + 'It will always default to use all themes' + '\n');
+  }
+});
 
 // Gulp plugins.
 var sass = require('gulp-sass');
@@ -86,7 +106,7 @@ function sassTask(theme, config) {
   var taskName = 'sass_' + theme;
 
   // Process SCSS.
-  gulp.task(taskName, function () {
+  gulp.task(taskName, false, function () {
     // Configure auto-prefixer.
     var processors = [
       autoprefixer({browsers: ['last 2 versions']})
@@ -125,7 +145,7 @@ function sassTask(theme, config) {
 function stylelintTask(theme, config) {
   var taskName = 'stylelint_' + theme;
 
-  gulp.task(taskName, function lintCssTask() {
+  gulp.task(taskName, false, function lintCssTask() {
     return gulp.src(config.sass.paths)
       .pipe(stylelint({
         reporters: [
@@ -151,7 +171,7 @@ function stylelintTask(theme, config) {
 function watchTasks(theme, config) {
   var taskName = 'watch_' + theme;
 
-  gulp.task(taskName, function() {
+  gulp.task(taskName, false, function() {
     gulp.watch(config.sass.paths, ['sass']);
     gulp.watch(config.sass.paths, ['stylelint']);
 
@@ -183,7 +203,7 @@ function watchTasks(theme, config) {
 function ESLintTasks(theme, config) {
   var taskName = 'eslint_' + theme;
 
-  gulp.task(taskName, function(done) {
+  gulp.task(taskName, false, function(done) {
     globby(config.js.paths).then(
       function(paths) {
         // Additional CLI options can be added here.
@@ -214,7 +234,7 @@ function ESLintTasks(theme, config) {
 function minifyJSTasks(theme, config) {
   var taskName = 'eslint_' + theme;
 
-  gulp.task(taskName, function () {
+  gulp.task(taskName, false, function () {
     gulp.src(config.js.paths)
       .pipe(sourcemaps.init())
       .pipe(uglify())
@@ -281,11 +301,11 @@ function setupTasks(themes) {
   }
 
   // Define tasks.
-  gulp.task('sass', sassTaskNames);
-  gulp.task('stylelint', stylelintTaskNames);
-  gulp.task('eslint', eslintTaskNames);
-  gulp.task('jsMinify', jsMinifyTaskNames);
-  gulp.task('watch', watchTasksNames);
+  gulp.task('sass', 'Compile SCSS into CSS', sassTaskNames);
+  gulp.task('stylelint', 'Use style-lint to check SCSS (using stylelintrc.json rules)', stylelintTaskNames);
+  gulp.task('eslint', 'Lint JavaScript with ESLint (using .eslintrc rules)', eslintTaskNames);
+  gulp.task('jsMinify', 'Minify JavaScript files', jsMinifyTaskNames);
+  gulp.task('watch', 'Watch for changes in files', watchTasksNames);
 
   // Default task;
   gulp.task('default', ['sass', 'jsMinify', 'stylelint', 'eslint']);
