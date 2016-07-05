@@ -100,7 +100,7 @@ function sassTask(theme, config) {
       .pipe(gulp.dest(config.sass.dest));
 
     // It's unknow why gulp-if don't work with browers-sync, so this if
-    // statement is as litte hack.
+    // statement is as little hack.
     if (argv.sync) {
       pipe.pipe(browserSync.stream());
     }
@@ -170,7 +170,7 @@ function watchTasks(theme, config) {
 /**
  * ESLint tasks (JavaScript)
  *
- * Note: We dont use gulp-eslint as that package is out-dated.
+ * Note: We don't use gulp-eslint as that package is out-dated.
  *
  * @param theme
  *    Name of the theme to setup the task.
@@ -201,6 +201,33 @@ function ESLintTasks(theme, config) {
 }
 
 /**
+ * Minify JavaScript.
+ *
+ * @param theme
+ *    Name of the theme to setup the task.
+ * @param config
+ *    Selected theme configuration object.
+ *
+ * @return string
+ *    The name of the new task.
+ */
+function minifyJSTasks(theme, config) {
+  var taskName = 'eslint_' + theme;
+
+  gulp.task(taskName, function () {
+    gulp.src(config.js.paths)
+      .pipe(sourcemaps.init())
+      .pipe(uglify())
+      .pipe(sourcemaps.write('/maps'))
+      .pipe(rename({extname: ".min.js"}))
+      .pipe(gulp.dest(config.js.dest));
+    }
+  );
+
+  return taskName;
+}
+
+/**
  * Dynamically setup tasks base on the selected theme.
  *
  * @param themes
@@ -221,8 +248,8 @@ function setupTasks(themes) {
   var sassTaskNames = [];
   var stylelintTaskNames = [];
   var eslintTaskNames = [];
+  var jsMinifyTaskNames = [];
   var watchTasksNames = [];
-
 
   // Ensure themes is an array and if not convert it.
   if (Object.prototype.toString.call(themes) !== '[object Array]') {
@@ -237,12 +264,16 @@ function setupTasks(themes) {
     // SASS tasks.
     sassTaskNames.push(sassTask(theme, config));
 
-    // Stylelint tasks.
+    // Style-lint tasks.
     stylelintTaskNames.push(stylelintTask(theme, config));
 
-    // ESLint tasks.
+    // JavaScript tasks.
     if (config.hasOwnProperty('js')) {
+      // Lint JavaScript.
       eslintTaskNames.push(ESLintTasks(theme, config));
+
+      // Minify JavaScript
+      jsMinifyTaskNames.push(minifyJSTasks(theme, config));
     }
 
     // Watch tasks.
@@ -253,10 +284,11 @@ function setupTasks(themes) {
   gulp.task('sass', sassTaskNames);
   gulp.task('stylelint', stylelintTaskNames);
   gulp.task('eslint', eslintTaskNames);
+  gulp.task('jsMinify', jsMinifyTaskNames);
   gulp.task('watch', watchTasksNames);
 
   // Default task;
-  gulp.task('default', ['sass', 'stylelint', 'eslint']);
+  gulp.task('default', ['sass', 'jsMinify', 'stylelint', 'eslint']);
 }
 
 /**
