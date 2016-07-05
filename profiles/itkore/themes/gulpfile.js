@@ -208,7 +208,7 @@ function setupTasks(themes) {
   gulp.task('watch', watchTasksNames);
 
   // Default task;
-  gulp.task('default', ['sass', 'watch']);
+  gulp.task('default', ['sass', 'stylelint']);
 }
 
 /**
