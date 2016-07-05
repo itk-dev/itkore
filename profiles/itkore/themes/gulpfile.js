@@ -161,6 +161,29 @@ function watchTasks(theme, config) {
 }
 
 /**
+ * ESLint tasks (JavaScript)
+ *
+ * @param theme
+ *    Name of the theme to setup the task.
+ * @param config
+ *    Selected theme configuration object.
+ *
+ * @return string
+ *    The name of the new task.
+ */
+function ESLintTasks(theme, config) {
+  var taskName = 'watch_' + theme;
+
+  gulp.task(taskName, function() {
+    return gulp.src(config.js.paths).pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
+  });
+
+  return taskName;
+}
+
+/**
  * Dynamically setup tasks base on the selected theme.
  *
  * @param themes
@@ -180,7 +203,9 @@ function setupTasks(themes) {
   // Define task arrays.
   var sassTaskNames = [];
   var stylelintTaskNames = [];
+  var eslintTaskNames = [];
   var watchTasksNames = [];
+
 
   // Ensure themes is an array and if not convert it.
   if (Object.prototype.toString.call(themes) !== '[object Array]') {
@@ -198,6 +223,11 @@ function setupTasks(themes) {
     // Stylelint tasks.
     stylelintTaskNames.push(stylelintTask(theme, config));
 
+    // ESLint tasks.
+    if (config.hasOwnProperty('js')) {
+      eslintTaskNames.push(ESLintTasks(theme, config));
+    }
+
     // Watch tasks.
     watchTasksNames.push(watchTasks(theme, config));
   }
@@ -205,6 +235,7 @@ function setupTasks(themes) {
   // Define tasks.
   gulp.task('sass', sassTaskNames);
   gulp.task('stylelint', stylelintTaskNames);
+  gulp.task('eslint', eslintTaskNames);
   gulp.task('watch', watchTasksNames);
 
   // Default task;
