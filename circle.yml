@@ -57,15 +57,15 @@ test:
     - drush locale-update
 
     # Run lints
-    - (cd ${THEMES} && gulp stylelint)
-    - (cd ${THEMES} && gulp eslint)
+    - (cd ${THEMES} && node_modules/gulp/bin/gulp.js stylelint)
+    - (cd ${THEMES} && node_modules/gulp/bin/gulp.js eslint)
 
     # Test that sass was compiled.
-    - (cd ${THEMES} && gulp sass)
+    - (cd ${THEMES} && node_modules/gulp/bin/gulp.js sass)
     - (cd ${THEMES} && git diff --exit-code)
 
     # Test minified JS.
-    - (cd ${THEMES} && gulp jsMinify)
+    - (cd ${THEMES} && node_modules/gulp/bin/gulp.js jsMinify)
     - (cd ${THEMES} && git diff --exit-code)
 
     # Run site install
