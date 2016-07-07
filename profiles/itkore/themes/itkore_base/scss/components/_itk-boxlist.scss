@@ -7,11 +7,165 @@
  */
 
 
-/* Variables
+/* Styles
    ========================================================================== */
 
-$boxlist-padding: 1em;
+// Gallery display ( Frontpage promoted)
+.itk-boxlist-gallery {
+  display: flex;
+  flex-flow: row wrap;
 
+
+  &--item {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 100%;
+    flex-flow: column nowrap; /* Build as column to position elements vertically */
+    justify-content: flex-start;
+    margin-bottom: $layout-padding;
+    padding-bottom: 3em;  /* Make room for footer link absolute positioning. */
+    padding-left: $layout-padding; /* Have each element define it's side padding */
+    padding-right: $layout-padding;
+    position: relative;
+    text-align: center;
+
+    @include breakpoint($breakpoint-tablet) {
+      flex: 0 0 50%;
+    }
+
+    @include breakpoint($breakpoint-desk) {
+      flex: 0 0 33%;
+    }
+  }
+
+  // Allow header to expand
+  &--header {
+    flex: 0 0 auto;
+    order: 2;
+    width: 100%;
+  }
+
+  // Class name created from image style.
+  .related-page-image {
+    align-self: center;
+    display: block;
+    flex: 0 0 auto;
+    margin-bottom: 1em;
+    margin-top: 1.25em;
+    max-width: 5em;
+    order: 1;
+    width: 100%;
+  }
+
+  // Allow content to expand.
+  &--content {
+    flex: 1 0 auto;
+    margin-bottom: 1em;
+    order: 3;
+    width: 100%;
+  }
+
+  // Absolutely positioned from bottom.
+  &--link {
+    @include strip-link-styles($link-color);
+
+    background-color: transparent;
+    border: 1px solid $link-color;
+    border-radius: 5em;
+    bottom: 0;
+    font-weight: 300;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    order: 4;
+    padding: .5em 1em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    transition: background-color .5s, border .5s, color .5s;
+    width: 200px;
+
+    &:hover {
+      background-color: $link-color;
+      border: 1px solid $link-color;
+      color: $white;
+    }
+  }
+}
+
+
+
+// Boxlist display (Frontpage news/Content node references)
+.itk-boxlist {
+  display: flex;
+  flex-flow: row wrap;
+  margin: $layout-padding;  // We have the boxlist set the side margins
+
+  &--item {
+    border-top: 1px solid $gray-lighter;
+    display: flex;
+    flex: 0 0 100%;
+    flex-flow: row nowrap;
+    margin-bottom: $layout-padding;
+    padding-top: $layout-padding;
+
+    @include breakpoint($breakpoint-desk) {
+      border: 1px solid $gray-lighter;
+      padding-top: 0;
+    }
+  }
+
+  // Class name created from image style.
+  .related-page-image,
+  .news-teaser-image {
+    flex: 0 0 72px;
+    height: 72px; /* Static height to ensure a quadratic container */
+    padding-right: $layout-padding / 2; /* Share padding with content in case of no image. */
+
+    @include breakpoint($breakpoint-tablet) {
+      flex: 0 0 150px;
+      height: 150px;
+    }
+
+    @include breakpoint($breakpoint-desk) {
+      flex: 0 0 224px;
+      height: 224px;
+      padding-top: 0;
+    }
+  }
+
+  &--content {
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    padding-left: $layout-padding / 2; /* Share padding with image in case of no image. */
+
+    // add additional borders on desktop display.
+    @include breakpoint($breakpoint-desk) {
+      padding-bottom: $layout-padding;
+      padding-right: $layout-padding;
+      padding-top: $layout-padding;
+    }
+  }
+
+  &--meta {
+    color: $gray-light;
+    margin-bottom: .75em;
+  }
+
+  &--link {
+    display: inline-block; /* Best way to break inherited flex. */
+    margin-top: .75em;
+  }
+
+  .button {
+    width: 200px; /* Same as other butttons/links on frontpage */
+  }
+}
+
+
+
+
+/*
 .itk-boxlist {
   margin-left: $layout-padding;
   margin-right: $layout-padding;
@@ -62,8 +216,8 @@ $boxlist-padding: 1em;
     padding-top: 0;
 
     @include breakpoint(600px) {
-      padding-left: $boxlist-padding;
-      padding-right: $boxlist-padding;
+      padding-left: $layout-padding;
+      padding-right: $layout-padding;
     }
 
     p + a {
@@ -118,6 +272,8 @@ $boxlist-padding: 1em;
   }
 }
 
+*/
+/*
 .itk-boxlist-gallery {
   display: flex;
   flex-flow: row wrap;
@@ -140,7 +296,7 @@ $boxlist-padding: 1em;
     flex-basis: 40%;
     flex-flow: column;
     margin-bottom: 4em;
-    margin-left: $boxlist-padding;
+    margin-left: $layout-padding;
     margin-right: 1em;
 
     @include breakpoint($breakpoint-tablet) {
@@ -230,3 +386,5 @@ $boxlist-padding: 1em;
     }
   }
 }
+
+*/

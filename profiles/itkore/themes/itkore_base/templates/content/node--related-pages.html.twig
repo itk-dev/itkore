@@ -69,10 +69,8 @@
 #}
 
 <article class="itk-boxlist-gallery--item">
-  <header>
-    <h2 class="itk-boxlist-gallery--header"><a href="{{ url }}">{{ label }}</a></h2>
-  </header>
+  <h2 class="itk-boxlist-gallery--header"><a href="{{ url }}">{{ label }}</a></h2>
   {{ content.field_related_page_image }}
-  {{ content.field_related_page_teaser }}
+  <p class="itk-boxlist-gallery--content">{{ content.field_related_page_teaser }}</p>
   <a href="{{ url }}" class="itk-boxlist-gallery--link">{% trans %}Read more{% endtrans %}</a>
 </article>

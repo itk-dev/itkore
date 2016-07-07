@@ -38,9 +38,15 @@
  * @ingroup themeable
  */
 #}
+{%
+set classes = [
+'red',
+'green',
+]
+%}
   {% if not label_hidden %}
     {{ label }}
   {% endif %}
   {% for item in items %}
-    <figure>{{ item.content }}</figure>
+    {{ item.content }}
   {% endfor %}

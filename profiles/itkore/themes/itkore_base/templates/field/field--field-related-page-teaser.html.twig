@@ -38,9 +38,9 @@
  * @ingroup themeable
  */
 #}
-  {% if not label_hidden %}
-    {{ label }}
-  {% endif %}
-  {% for item in items %}
-    <p>{{ item.content }}</p>
-  {% endfor %}
+{% if not label_hidden %}
+  {{ label }}
+{% endif %}
+{% for item in items %}
+  {{ item.content }}
+{% endfor %}
