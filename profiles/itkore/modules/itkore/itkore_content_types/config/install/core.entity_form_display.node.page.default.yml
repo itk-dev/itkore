@@ -1,5 +1,3 @@
-uuid: b55d8e2f-5b0d-45ae-a83a-25a8385e14d4
-langcode: da
 status: true
 dependencies:
   config:
