@@ -2,3 +2,4 @@ settings.php
 sites/sites.php
 sites/*/files
 sites/all/config/sync
+vendor
