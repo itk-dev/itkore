@@ -3,3 +3,5 @@ sites/sites.php
 sites/*/files
 sites/all/config/sync
 vendor
+core
+modules
