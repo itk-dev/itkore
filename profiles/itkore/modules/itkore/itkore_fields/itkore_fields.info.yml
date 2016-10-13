@@ -1,0 +1,10 @@
+name: ITKore fields
+description: 'ITKore field storage definitions'
+type: module
+core: 8.x
+package: ITKore
+dependencies:
+  - taxonomy
+  - node
+  - entity_reference_revisions
+  - paragraphs

@@ -1,0 +1,5 @@
+name: ITKore text filters
+description: 'Holds ITKore text filters'
+type: module
+core: 8.x
+package: ITKore

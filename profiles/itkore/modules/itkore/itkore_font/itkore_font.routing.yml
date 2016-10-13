@@ -1,0 +1,7 @@
+itkore_font.settings:
+  path: '/admin/appearance/font_select'
+  defaults:
+    _form: '\Drupal\itkore_font\Form\ItkoreFontSettingsForm'
+    _title: 'Select font'
+  requirements:
+    _permission: 'administer themes'

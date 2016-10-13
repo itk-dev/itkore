@@ -1,0 +1,49 @@
+/**
+ *
+ * Buttons.
+ *
+ */
+
+.button,
+.button:link,
+.button:visited {
+  background-color: $theme-color;
+  border: 1px solid $theme-color;
+  border-radius: 1em;
+  box-sizing: border-box;
+  color: $white;
+  display: inline-block;
+  font-weight: 300;
+  margin: 2em 0;
+  padding: .5em 1.5em;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .5s, border .5s, color .5s;
+
+  &:hover {
+    background-color: transparent;
+    color: $link-color;
+  }
+
+  &.is-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 95%;
+
+    @include breakpoint($breakpoint-desk) {
+      max-width: 35%;
+    }
+  }
+
+  &.is-inverted {
+    background-color: transparent;
+    border: 1px solid $theme-color;
+    color: $link-color;
+
+    &:hover {
+      background-color: $theme-color;
+      color: $white;
+    }
+  }
+}

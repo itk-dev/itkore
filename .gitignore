@@ -4,4 +4,5 @@ sites/*/files
 sites/all/config/sync
 vendor
 core
-modules
+/modules/
+/profiles/itkore/modules/contrib/

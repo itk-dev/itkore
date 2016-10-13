@@ -1,0 +1,5 @@
+name: ITKore font
+description: 'Adds font selection to theme settings'
+type: module
+core: 8.x
+package: ITKore

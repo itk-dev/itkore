@@ -1,0 +1,95 @@
+/**
+ *
+ * Hamburger menu
+ *
+ */
+
+
+.hamburger-menu {
+  background-color: $white;
+  bottom: 0;
+  cursor: auto;
+  margin-right: 0;
+  max-width: 90%;
+  overflow: hidden;
+  position: fixed;
+  right: -30em;
+  top: 0;
+  transition: right .3s;
+  transition-timing-function: ease-in-out;
+  width: 30em;
+  z-index: z($z-index-elements, hamburger-menu);
+
+  &.is-open {
+    right: 0;
+  }
+
+  &--overlay {
+    bottom: 0;
+    height: 100%;
+    opacity: .85;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+    z-index: 6;
+
+    &.is-visible {
+      background-color: $black;
+      cursor: pointer;
+      transition: background .3s;
+      visibility: visible;
+    }
+  }
+
+  &--inner {
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  &--links {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 5em;
+    text-align: center;
+
+    a {
+      @include strip-link-styles($gray-darkest, none);
+
+      font-weight: 600;
+
+      &:hover {
+        color: $theme-color;
+      }
+
+      &.is-sub {
+        font-weight: 200;
+      }
+    }
+  }
+
+  &--group {
+    margin-bottom: 1.75em;
+    padding-bottom: 1.5em;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $gray-lighter;
+    }
+  }
+
+  // Nesting since we use the same template.
+  & .nav--link {
+    color: $gray-darker;
+    display: list-item;
+    font-size: 1.2em;
+    list-style: none;
+    margin-bottom: .25em;
+    text-decoration: none;
+
+    &.is-active {
+      &.is-sub {
+        @include strip-link-styles($theme-color, none);
+      }
+    }
+  }
+}

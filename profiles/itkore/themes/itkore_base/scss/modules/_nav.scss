@@ -1,0 +1,171 @@
+/**
+ *
+ * Navigation.
+ *
+ */
+
+
+.is-frontpage {
+  .nav {
+    background-color: transparent;
+    right: 0;
+  }
+
+  .nav,
+  .nav.is-sticky {
+    @include breakpoint($breakpoint-desk) {
+      &--links {
+        a {
+          @include strip-link-styles($white, none);
+        }
+      }
+
+      .nav--link {
+        &:hover {
+          background-color: $theme-color;
+        }
+      }
+    }
+  }
+
+  .nav-toggle span {
+    background: $white;
+  }
+}
+
+.nav,
+.nav.is-sticky,
+.is-frontpage .nav.is-sticky {
+  height: 5.5em;
+  position: absolute;
+  top: 0;
+  transition: top .35s, right .35s, padding .35s;
+  width: 100%;
+  z-index: z($z-index-elements, nav);
+
+  @include breakpoint($breakpoint-desk) {
+    background-color: rgba(0,0,0, .75);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+
+  &--links {
+    display: none; // Hiding navigation on smaller screens
+
+    @include breakpoint($breakpoint-desk) {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+      font-weight: 300;
+      justify-content: flex-end;
+      margin-right: 6em;
+      text-align: right;
+
+      a {
+        @include strip-link-styles($white, none);
+      }
+    }
+  }
+
+  // Drupals markup dictates that .nav--link has to be inside .nav
+  .nav--link {
+    @include breakpoint($breakpoint-desk) {
+      align-items: center;
+      align-self: stretch;
+      color: $white;
+      display: flex;
+      font-size: 1.2em;
+      padding-left: 1.2em;
+      padding-right: 1.2em;
+      text-decoration: none;
+      transition: top .35s, right .35s, border 1s, padding .35s, background-color .25s;
+
+      &.is-active,
+      &.is-active:hover {
+        background-color: $theme-color;
+
+        @include strip-link-styles($white, none);
+      }
+
+      &:hover {
+        background-color: rgb(112, 112, 112);
+
+        @include strip-link-styles($white, none);
+      }
+    }
+  }
+}
+
+// hamburger menu toggle-effect
+
+.nav-toggle {
+  cursor: pointer;
+  height: 36px;
+  position: absolute;
+  right: 2em;
+  top: 1.6em;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  width: 40px;
+  z-index: z($z-index-elements, nav-toggle);
+
+  @include breakpoint($breakpoint-desk) {
+    position: fixed;
+  }
+
+  span {
+    background: $white;
+    display: block;
+    height: 5px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+    width: 100%;
+  }
+
+  &.is-open {
+    span {
+      background: $black;
+    }
+  }
+}
+
+.nav-toggle span:nth-child(1) {
+  top: 0px;
+}
+
+.nav-toggle span:nth-child(2),
+.nav-toggle span:nth-child(3) {
+  top: 15px;
+}
+
+.nav-toggle span:nth-child(4) {
+  top: 30px;
+}
+
+.nav-toggle.is-open span:nth-child(1) {
+  left: 50%;
+  top: 15px;
+
+  width: 0%;
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.nav-toggle.is-open span:nth-child(4) {
+  left: 50%;
+  top: 15px;
+  width: 0%;
+}

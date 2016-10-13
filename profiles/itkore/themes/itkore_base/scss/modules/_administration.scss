@@ -1,0 +1,59 @@
+/**
+ *
+ * Administration
+ *
+ *
+ */
+
+
+/* Styles
+================================================================================================================== */
+.administration {
+
+  // Page tabs used on entity pages (/user, /node)
+  &--tabs {
+    bottom: 0;
+    margin: 0;
+    margin-right: 1em;
+    position: fixed;
+    right: 0;
+    z-index: 99;
+
+    // Link nesting rather than adding classes to tabs links.
+    a {
+      background: $theme-color;
+      margin: .5em .2em 0;
+      padding: .5em 1em;
+
+      @include strip-link-styles($white);
+
+      &.active {  // Drupal state class.
+        background: $gray-darkest;
+
+        @include strip-link-styles($white);
+      }
+
+      &:hover {
+        background: $gray-darker;
+
+        @include strip-link-styles($white);
+      }
+    }
+
+    ul {
+      background: $white;
+      list-style: none;
+      margin: 0;
+      padding: 1em .5em 0;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: .3em;
+    }
+
+    li:last-child {
+      margin-right: 0;
+    }
+  }
+}

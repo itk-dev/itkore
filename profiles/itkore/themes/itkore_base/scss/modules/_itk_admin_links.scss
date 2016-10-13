@@ -1,0 +1,83 @@
+/**
+ *
+ * ITK admin links.
+ *
+ */
+
+.itk-admin-links {
+  &--overlay {
+    background-color: $white;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    transition: opacity .4s;
+    transition-timing-function: ease-in-out;
+
+    z-index: -1;
+
+    &.is-visible {
+      opacity: .8;
+      z-index: 80;
+    }
+  }
+
+  &--icon {
+    background: url("../images/edit.svg") $theme-color center no-repeat;
+    background-size: 2em;
+
+    border-radius: 2em;
+    bottom: 2em;
+    cursor: pointer;
+    display: block;
+    height: 3.5em;
+    position: fixed;
+    right: 2em;
+
+    transition: transform .4s;
+    transition-timing-function: ease-in-out;
+
+    width: 3.5em;
+    z-index: 81;
+
+    &.is-open {
+      transform: rotate(90deg);
+    }
+  }
+
+  &--items {
+    bottom: -25em;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 20em;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    right: 6.5em;
+    transition: bottom .4s;
+    transition-timing-function: ease-in-out;
+    z-index: 81;
+
+    &.is-open {
+      bottom: 2.2em;
+    }
+  }
+
+  &--item {
+    color: $white;
+    list-style-type: none;
+    text-align: right;
+
+    a {
+      @include strip-link-styles($white);
+
+      background-color: $theme-color;
+      display: inline-block;
+      margin: .5em 0;;
+      padding: .5em;
+    }
+  }
+}
