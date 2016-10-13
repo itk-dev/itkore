@@ -1,5 +1,0 @@
-itkore_font.settings:
-  title: 'Font Settings'
-  route_name: itkore_font.settings
-  base_route: system.themes_page
-  weight: 30

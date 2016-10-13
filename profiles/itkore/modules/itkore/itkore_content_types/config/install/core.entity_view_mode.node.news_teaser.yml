@@ -1,8 +1,0 @@
-status: true
-dependencies:
-  module:
-    - node
-id: node.news_teaser
-label: 'News teaser'
-targetEntityType: node
-cache: true

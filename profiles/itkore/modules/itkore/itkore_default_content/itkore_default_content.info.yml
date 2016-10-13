@@ -1,9 +1,0 @@
-name: ITKore default content
-description: 'Provides ITKore default content'
-type: module
-core: 8.x
-package: ITKore
-dependencies:
-  - node
-  - entity_reference
-  - field

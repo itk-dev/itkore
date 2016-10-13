@@ -1,7 +1,0 @@
-/**
- * Add icon for admin menu.
- */
-.toolbar-icon-itkore-admin-settings:before {
-  background-image: url(../icons/questionmark-disc.svg);
-}
-

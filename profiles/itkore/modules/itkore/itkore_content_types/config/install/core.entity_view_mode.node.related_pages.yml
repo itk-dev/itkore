@@ -1,8 +1,0 @@
-status: true
-dependencies:
-  module:
-    - node
-id: node.related_pages
-label: 'Related Pages'
-targetEntityType: node
-cache: true
